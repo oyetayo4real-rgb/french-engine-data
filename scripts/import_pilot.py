@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import codecs
 import hashlib
 import json
 import random
@@ -26,6 +27,8 @@ LEFFF = DATA / "raw" / "lefff-2.1.txt.gz"
 MANIFEST = DATA / "source-checksums.json"
 OUTPUT = DATA / "pilot-300.json"
 LICENCES = "Lexique CC BY-SA 4.0; Dicollecte MPL-2.0; Lefff LGPLLR"
+ACCENT_SENTINELS = ("été", "français", "cœur", "garçon", "où", "noël", "à")
+MOJIBAKE_MARKERS = ("\\ufffd", "Ã")
 
 
 def sha256(path: Path) -> str:
@@ -36,15 +39,76 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def decode_utf8(path: Path, *, gzip_text: bool = False) -> str:
+def decode_source(path: Path, encoding: str, *, gzip_text: bool = False, source_name: str) -> str:
     import gzip
     opener = gzip.open if gzip_text else open
-    with opener(path, "rb") as f:
-        raw = f.read()
-    text = raw.decode("utf-8-sig", errors="strict")
-    if "\ufffd" in text:
-        raise ValueError(f"replacement character found in decoded text: {path}")
+    try:
+        with opener(path, "rb") as f:
+            raw = f.read()
+        text = raw.decode(encoding, errors="strict")
+    except (UnicodeError, OSError) as exc:
+        raise ValueError(f"Source decode failed for {source_name} ({path.name}) using declared encoding {encoding}: {exc}") from exc
+    if "\\ufffd" in text:
+        raise ValueError(f"Source {source_name} ({path.name}) contains U+FFFD after {encoding} decoding")
+    print(f"ENCODING: {source_name} | file={path.name} | encoding={encoding} | confirmed=strict decode")
     return text
+
+
+def choose_text_encoding(path: Path, *, gzip_text: bool, source_name: str) -> tuple[str, str]:
+    """Confirm encoding by strict decoding plus French accent sentinels; never lossy-decode."""
+    import gzip
+    opener = gzip.open if gzip_text else open
+    try:
+        with opener(path, "rb") as f:
+            raw = f.read()
+    except OSError as exc:
+        raise ValueError(f"Cannot read source {source_name} ({path.name}): {exc}") from exc
+
+    failures = []
+    for encoding in ("utf-8-sig", "cp1252", "iso-8859-1"):
+        try:
+            text = raw.decode(encoding, errors="strict")
+        except UnicodeError as exc:
+            failures.append(f"{encoding}: {exc}")
+            continue
+        if "\\ufffd" in text or "Ã" in text:
+            failures.append(f"{encoding}: replacement/mojibake marker detected")
+            continue
+        # Require a minimum set of accent-bearing French forms to confirm that
+        # decoding retained real orthography rather than merely accepting bytes.
+        found = [word for word in ACCENT_SENTINELS if word.casefold() in text.casefold()]
+        if len(found) < 3 or not any(ch in text for ch in "éèêàùçôîû"):
+            failures.append(f"{encoding}: accent confirmation failed (found {found})")
+            continue
+        print(f"ENCODING: {source_name} | file={path.name} | encoding={encoding} | confirmed=strict decode + accent sentinels {found}")
+        return encoding, text
+    details = "; ".join(failures)
+    raise ValueError(f"Cannot confirm text encoding for source {source_name} ({path.name}); refusing import. Attempts: {details}")
+
+
+def read_hunspell_encoding(zf: zipfile.ZipFile, dic_name: str) -> tuple[str, str]:
+    stem = dic_name.rsplit(".", 1)[0]
+    aff_name = next((name for name in zf.namelist()
+                     if name.rsplit(".", 1)[0] == stem and name.lower().endswith(".aff")), None)
+    if aff_name is None:
+        raise ValueError(f"Cannot confirm Hunspell encoding: no matching .aff file for {dic_name}")
+    raw_aff = zf.read(aff_name)
+    try:
+        ascii_header = raw_aff[:65536].decode("ascii", errors="strict")
+    except UnicodeError:
+        # The SET directive is ASCII by specification; inspect only bytes before
+        # the first non-ASCII byte so encoding is never guessed from dictionary data.
+        ascii_header = raw_aff[:65536].splitlines()[0].decode("ascii", errors="strict")
+    match = re.search(r"(?im)^\\s*SET\\s+([^\\s#]+)", ascii_header)
+    if not match:
+        raise ValueError(f"Cannot confirm Hunspell encoding: no SET line found in {aff_name}")
+    declared = match.group(1).strip()
+    try:
+        codec = codecs.lookup(declared).name
+    except LookupError as exc:
+        raise ValueError(f"Unknown Hunspell SET encoding {declared!r} in {aff_name}") from exc
+    print(f"ENCODING: Dicollecte/Hunspell | file={dic_name} | matching_aff={aff_name} | SET {declared} | codec={codec}")
+    return declared, codec
 
 
 def source_hashes() -> dict:
@@ -79,28 +143,36 @@ def read_dicollecte_words() -> set[str]:
         names = zf.namelist()
         candidates = [n for n in names if n.lower().endswith(".dic")]
         if not candidates:
-            raise ValueError("Dicollecte archive contains no .dic dictionary")
+            raise ValueError("Dicollecte source file hunspell-french-dictionaries-v7.7.zip contains no .dic dictionary")
         chosen = next((n for n in candidates if "toutesvariantes" in n.lower()), candidates[0])
-        raw = zf.read(chosen).decode("utf-8-sig", errors="strict")
+        declared, codec = read_hunspell_encoding(zf, chosen)
+        try:
+            raw = zf.read(chosen).decode(codec, errors="strict")
+        except UnicodeError as exc:
+            raise ValueError(f"Source decode failed for Dicollecte/Hunspell file {chosen} using SET {declared}: {exc}") from exc
+        if "\\ufffd" in raw or "Ã" in raw:
+            raise ValueError(f"Dicollecte/Hunspell file {chosen} contains U+FFFD or mojibake marker after {declared} decoding")
         lines = raw.splitlines()
         for line in lines[1:]:
             token = line.strip().split("/", 1)[0]
             if token and not token.isdigit():
                 words.add(token.casefold())
+        if not all(word in raw.casefold() for word in ("été", "français", "garçon", "où", "noël", "à")):
+            raise ValueError(f"Dicollecte/Hunspell file {chosen} failed required accent-sentinel confirmation")
     if len(words) < 1000:
         raise ValueError(f"Unexpectedly small Dicollecte dictionary: {len(words)} entries")
     return words
 
 
 def read_lefff_forms() -> set[str]:
-    text = decode_utf8(LEFFF, gzip_text=True)
+    encoding, text = choose_text_encoding(LEFFF, gzip_text=True, source_name="Lefff 2.1")
     forms: set[str] = set()
     for line in text.splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        if "\t" in line:
-            surface = line.split("\t", 1)[0].strip()
+        if "\\t" in line:
+            surface = line.split("\\t", 1)[0].strip()
         elif "," in line:
             surface = line.split(",", 1)[0].strip()
         else:
@@ -109,6 +181,10 @@ def read_lefff_forms() -> set[str]:
             forms.add(surface.casefold())
     if len(forms) < 1000:
         raise ValueError(f"Unexpectedly small Lefff form set: {len(forms)} entries")
+    # Confirm this source itself retained accented forms before it is used as a cross-check.
+    found = [word for word in ACCENT_SENTINELS if word.casefold() in text.casefold()]
+    if len(found) < 3:
+        raise ValueError(f"Lefff source encoding confirmation failed; accent sentinels found: {found}")
     return forms
 
 
@@ -124,7 +200,7 @@ def find_col(fieldnames: list[str], *choices: str) -> str:
 def load_pilot() -> list[dict]:
     dico = read_dicollecte_words()
     lefff = read_lefff_forms()
-    text = decode_utf8(LEXIQUE)
+    lexique_encoding, text = choose_text_encoding(LEXIQUE, gzip_text=False, source_name="Lexique 3.83")
     reader = csv.DictReader(text.splitlines(), delimiter="\t")
     if not reader.fieldnames:
         raise ValueError("Lexique TSV has no header")
@@ -215,6 +291,11 @@ def validate(rows: list[dict]) -> None:
         seen.add(key)
         if "\ufffd" in json.dumps(row, ensure_ascii=False):
             raise ValueError(f"Row {i}: invalid Unicode replacement character")
+    for i, row in enumerate(rows, 1):
+        serialized = json.dumps(row, ensure_ascii=False)
+        bad = next((marker for marker in MOJIBAKE_MARKERS if marker in serialized), None)
+        if bad:
+            raise ValueError(f"Row {i} ({row.get('form')!r}): output contains forbidden replacement/mojibake marker {bad!r}")
     if rows != sorted(rows, key=lambda item: (-item["frequency"], item["form"].casefold(), item["lemma"].casefold())):
         raise ValueError("Pilot is not sorted by descending frequency")
 
@@ -233,6 +314,15 @@ def main() -> int:
     OUTPUT.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     reread = json.loads(OUTPUT.read_text(encoding="utf-8"))
     validate(reread)
+    # Required accent-bearing words must survive decoding in the source files and
+    # in any output entry that contains a corresponding form; do not silently repair.
+    output_text = OUTPUT.read_text(encoding="utf-8", errors="strict")
+    for marker in MOJIBAKE_MARKERS:
+        if marker in output_text:
+            raise ValueError(f"Output JSON contains forbidden replacement/mojibake marker {marker!r}")
+    # The source-level sentinel checks above ensure the canonical accented spellings
+    # are present in the parsed lexical sources, even if some are outside the top 300.
+    print("ACCENT SENTINELS: source decoding checked for été, français, cœur, garçon, où, noël, à; output mojibake scan passed.")
     print(f"VALID: {len(reread)} entries; schema OK; duplicate forms 0; UTF-8 OK; source SHA-256 checksums stable.")
     print("COUNTS: entries=300; needs_review=300; unique_forms=300")
     if args.print_random:
