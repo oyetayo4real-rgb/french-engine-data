@@ -1,0 +1,8402 @@
+[
+  {
+    "lemma": "être",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 32236.5,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "est",
+        "frequency": 19417.69
+      },
+      {
+        "form": "était",
+        "frequency": 2356.65
+      },
+      {
+        "form": "es",
+        "frequency": 1849.07
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "ne",
+    "part_of_speech": "ADV",
+    "gender": null,
+    "lemma_frequency": 22287.83,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "ne",
+        "frequency": 13357.03
+      },
+      {
+        "form": "n'",
+        "frequency": 8860.45
+      },
+      {
+        "form": "n",
+        "frequency": 70.36
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "avoir",
+    "part_of_speech": "AUX",
+    "gender": null,
+    "lemma_frequency": 18559.22,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "a",
+        "frequency": 6350.91
+      },
+      {
+        "form": "ai",
+        "frequency": 4902.1
+      },
+      {
+        "form": "as",
+        "frequency": 2144.15
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "tu",
+    "part_of_speech": "PRO:per",
+    "gender": null,
+    "lemma_frequency": 14661.76,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "tu",
+        "frequency": 14661.76
+      },
+      {
+        "form": "tue",
+        "frequency": 7.19
+      },
+      {
+        "form": "tues",
+        "frequency": 0.75
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "aller",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 9992.77,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "va",
+        "frequency": 3382.55
+      },
+      {
+        "form": "vais",
+        "frequency": 1644.99
+      },
+      {
+        "form": "allez",
+        "frequency": 1414.85
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "faire",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 8813.48,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fait",
+        "frequency": 2751.99
+      },
+      {
+        "form": "faire",
+        "frequency": 2735.96
+      },
+      {
+        "form": "fais",
+        "frequency": 1390.92
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "dire",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 5946.15,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dit",
+        "frequency": 2146.01
+      },
+      {
+        "form": "dire",
+        "frequency": 1564.52
+      },
+      {
+        "form": "dis",
+        "frequency": 1025.78
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "pouvoir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 5524.47,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "peux",
+        "frequency": 1743.78
+      },
+      {
+        "form": "peut",
+        "frequency": 1209.64
+      },
+      {
+        "form": "pu",
+        "frequency": 366.22
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "vouloir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 5249.3,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "veux",
+        "frequency": 2486.93
+      },
+      {
+        "form": "veut",
+        "frequency": 701.19
+      },
+      {
+        "form": "voulez",
+        "frequency": 553.4
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "savoir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 4516.71,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sais",
+        "frequency": 2492.92
+      },
+      {
+        "form": "savoir",
+        "frequency": 421.1
+      },
+      {
+        "form": "savez",
+        "frequency": 407.94
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "voir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 4119.43,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "voir",
+        "frequency": 1401.1
+      },
+      {
+        "form": "vu",
+        "frequency": 905.21
+      },
+      {
+        "form": "vois",
+        "frequency": 689.75
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "devoir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 3232.57,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dois",
+        "frequency": 894.69
+      },
+      {
+        "form": "doit",
+        "frequency": 654.84
+      },
+      {
+        "form": "dû",
+        "frequency": 363.68
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "tout",
+    "part_of_speech": "PRO:ind",
+    "gender": "m",
+    "lemma_frequency": 2948.75,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "tout",
+        "frequency": 1366.45
+      },
+      {
+        "form": "tous",
+        "frequency": 910.39
+      },
+      {
+        "form": "toute",
+        "frequency": 441.79
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "venir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 2763.82,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "viens",
+        "frequency": 944.81
+      },
+      {
+        "form": "venir",
+        "frequency": 367.13
+      },
+      {
+        "form": "vient",
+        "frequency": 352.24
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sur",
+    "part_of_speech": "PRE",
+    "gender": null,
+    "lemma_frequency": 2520.11,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sur",
+        "frequency": 2520.11
+      },
+      {
+        "form": "sure",
+        "frequency": 12.38
+      },
+      {
+        "form": "surs",
+        "frequency": 1.11
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "suivre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 2090.54,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "suis",
+        "frequency": 1819.44
+      },
+      {
+        "form": "suivre",
+        "frequency": 73.92
+      },
+      {
+        "form": "suivez",
+        "frequency": 57.03
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "parler",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1970.55,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "parler",
+        "frequency": 728.02
+      },
+      {
+        "form": "parle",
+        "frequency": 451.68
+      },
+      {
+        "form": "parlé",
+        "frequency": 248.94
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "prendre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1913.83,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "prendre",
+        "frequency": 465.77
+      },
+      {
+        "form": "prends",
+        "frequency": 431.5
+      },
+      {
+        "form": "pris",
+        "frequency": 374.6
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "croire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1711.99,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "crois",
+        "frequency": 904.45
+      },
+      {
+        "form": "croire",
+        "frequency": 193.37
+      },
+      {
+        "form": "croyais",
+        "frequency": 162.56
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "aimer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1655.07,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "aime",
+        "frequency": 751.29
+      },
+      {
+        "form": "aimerais",
+        "frequency": 227.66
+      },
+      {
+        "form": "aimes",
+        "frequency": 170.38
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "falloir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1653.76,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "faut",
+        "frequency": 1318.11
+      },
+      {
+        "form": "fallait",
+        "frequency": 110.88
+      },
+      {
+        "form": "faudra",
+        "frequency": 85.73
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "bon",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 1554.44,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "bon",
+        "frequency": 836.29
+      },
+      {
+        "form": "bonne",
+        "frequency": 578.93
+      },
+      {
+        "form": "bonnes",
+        "frequency": 71.25
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "passer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1495.49,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "passe",
+        "frequency": 523.58
+      },
+      {
+        "form": "passer",
+        "frequency": 345.68
+      },
+      {
+        "form": "passé",
+        "frequency": 297.63
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "penser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1485.47,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "pense",
+        "frequency": 517.64
+      },
+      {
+        "form": "pensais",
+        "frequency": 199.51
+      },
+      {
+        "form": "penses",
+        "frequency": 186.9
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "attendre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1351.46,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "attends",
+        "frequency": 478.32
+      },
+      {
+        "form": "attendez",
+        "frequency": 230.66
+      },
+      {
+        "form": "attendre",
+        "frequency": 177.44
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "trouver",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 1335.49,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "trouvé",
+        "frequency": 339.29
+      },
+      {
+        "form": "trouver",
+        "frequency": 324.94
+      },
+      {
+        "form": "trouve",
+        "frequency": 284.45
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "laisser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1334.1,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "laisse",
+        "frequency": 479.63
+      },
+      {
+        "form": "laissez",
+        "frequency": 265.61
+      },
+      {
+        "form": "laisser",
+        "frequency": 243.13
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "arriver",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1252.42,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "arrive",
+        "frequency": 525.1
+      },
+      {
+        "form": "arrivé",
+        "frequency": 203.06
+      },
+      {
+        "form": "arriver",
+        "frequency": 182.88
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "donner",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1209.67,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "donne",
+        "frequency": 401.06
+      },
+      {
+        "form": "donné",
+        "frequency": 234.66
+      },
+      {
+        "form": "donner",
+        "frequency": 233.3
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "regarder",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1197.29,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "regarde",
+        "frequency": 613.45
+      },
+      {
+        "form": "regardez",
+        "frequency": 261.81
+      },
+      {
+        "form": "regarder",
+        "frequency": 138.3
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "appeler",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1165.48,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "appelle",
+        "frequency": 485.77
+      },
+      {
+        "form": "appeler",
+        "frequency": 192.69
+      },
+      {
+        "form": "appelé",
+        "frequency": 144.29
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "partir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1111.97,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "partir",
+        "frequency": 388.25
+      },
+      {
+        "form": "parti",
+        "frequency": 162.93
+      },
+      {
+        "form": "pars",
+        "frequency": 109.45
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "petit",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 1106.8,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "petit",
+        "frequency": 573.72
+      },
+      {
+        "form": "petite",
+        "frequency": 355.66
+      },
+      {
+        "form": "petits",
+        "frequency": 112.92
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "mettre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1004.83,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "mettre",
+        "frequency": 271.05
+      },
+      {
+        "form": "mis",
+        "frequency": 228.57
+      },
+      {
+        "form": "mets",
+        "frequency": 151.83
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "rester",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 1003.56,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "reste",
+        "frequency": 320.44
+      },
+      {
+        "form": "rester",
+        "frequency": 310.38
+      },
+      {
+        "form": "restez",
+        "frequency": 105.52
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "arrêter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 993.79,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "arrête",
+        "frequency": 456.59
+      },
+      {
+        "form": "arrêter",
+        "frequency": 178.62
+      },
+      {
+        "form": "arrêtez",
+        "frequency": 174.12
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "connaître",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 961.03,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "connais",
+        "frequency": 415.87
+      },
+      {
+        "form": "connaissez",
+        "frequency": 125.09
+      },
+      {
+        "form": "connaît",
+        "frequency": 103.42
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sûr",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 943.56,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sûr",
+        "frequency": 801.64
+      },
+      {
+        "form": "sûre",
+        "frequency": 122.03
+      },
+      {
+        "form": "sûrs",
+        "frequency": 17.43
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "tuer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 928.06,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "tuer",
+        "frequency": 346.18
+      },
+      {
+        "form": "tué",
+        "frequency": 259.79
+      },
+      {
+        "form": "tue",
+        "frequency": 116.46
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "mourir",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 916.4,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "mort",
+        "frequency": 318.84
+      },
+      {
+        "form": "mourir",
+        "frequency": 234.74
+      },
+      {
+        "form": "morte",
+        "frequency": 112.36
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "demander",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 909.77,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "demande",
+        "frequency": 289.34
+      },
+      {
+        "form": "demandé",
+        "frequency": 212.89
+      },
+      {
+        "form": "demander",
+        "frequency": 188.86
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "comprendre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 893.51,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "comprends",
+        "frequency": 368.53
+      },
+      {
+        "form": "compris",
+        "frequency": 198.16
+      },
+      {
+        "form": "comprendre",
+        "frequency": 135.24
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "seul",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 891.45,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "seul",
+        "frequency": 461.2
+      },
+      {
+        "form": "seule",
+        "frequency": 349.74
+      },
+      {
+        "form": "seuls",
+        "frequency": 63.29
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sortir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 884.26,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sortir",
+        "frequency": 285.45
+      },
+      {
+        "form": "sors",
+        "frequency": 156.13
+      },
+      {
+        "form": "sortez",
+        "frequency": 87.79
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "vrai",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 807.03,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "vrai",
+        "frequency": 678.47
+      },
+      {
+        "form": "vraie",
+        "frequency": 83.64
+      },
+      {
+        "form": "vrais",
+        "frequency": 31.01
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "ami",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 747.98,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "ami",
+        "frequency": 360.9
+      },
+      {
+        "form": "amis",
+        "frequency": 252.66
+      },
+      {
+        "form": "amie",
+        "frequency": 113.54
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "entendre",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 728.67,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "entendu",
+        "frequency": 256.43
+      },
+      {
+        "form": "entends",
+        "frequency": 163.49
+      },
+      {
+        "form": "entendre",
+        "frequency": 137.9
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "chercher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 712.46,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "chercher",
+        "frequency": 341.01
+      },
+      {
+        "form": "cherche",
+        "frequency": 150.75
+      },
+      {
+        "form": "cherchez",
+        "frequency": 42.95
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "aider",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 688.71,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "aider",
+        "frequency": 362.77
+      },
+      {
+        "form": "aide",
+        "frequency": 119.69
+      },
+      {
+        "form": "aidez",
+        "frequency": 64.36
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "beau",
+    "part_of_speech": "ADJ",
+    "gender": "f",
+    "lemma_frequency": 671.86,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "belle",
+        "frequency": 284.08
+      },
+      {
+        "form": "beau",
+        "frequency": 281.23
+      },
+      {
+        "form": "beaux",
+        "frequency": 57.2
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "essayer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 670.4,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "essaie",
+        "frequency": 168.04
+      },
+      {
+        "form": "essayer",
+        "frequency": 134.69
+      },
+      {
+        "form": "essayé",
+        "frequency": 124.02
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "grand",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 638.72,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "grand",
+        "frequency": 338.27
+      },
+      {
+        "form": "grande",
+        "frequency": 198.25
+      },
+      {
+        "form": "grands",
+        "frequency": 59.52
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "revenir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 618.62,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "reviens",
+        "frequency": 163.19
+      },
+      {
+        "form": "revenir",
+        "frequency": 105.46
+      },
+      {
+        "form": "revient",
+        "frequency": 63.17
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "plaire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 607.21,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "plaît",
+        "frequency": 499.91
+      },
+      {
+        "form": "plais",
+        "frequency": 21.48
+      },
+      {
+        "form": "plaire",
+        "frequency": 19.0
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "jouer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 570.12,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "jouer",
+        "frequency": 225.84
+      },
+      {
+        "form": "joue",
+        "frequency": 122.88
+      },
+      {
+        "form": "joué",
+        "frequency": 69.83
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "finir",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 557.61,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fini",
+        "frequency": 292.55
+      },
+      {
+        "form": "finir",
+        "frequency": 96.48
+      },
+      {
+        "form": "finit",
+        "frequency": 29.97
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "perdre",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 546.08,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "perdu",
+        "frequency": 217.23
+      },
+      {
+        "form": "perdre",
+        "frequency": 131.47
+      },
+      {
+        "form": "perds",
+        "frequency": 48.13
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sentir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 535.4,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sens",
+        "frequency": 240.85
+      },
+      {
+        "form": "sent",
+        "frequency": 74.27
+      },
+      {
+        "form": "sentir",
+        "frequency": 58.48
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "rentrer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 532.51,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "rentrer",
+        "frequency": 166.36
+      },
+      {
+        "form": "rentre",
+        "frequency": 151.42
+      },
+      {
+        "form": "rentré",
+        "frequency": 44.27
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "vivre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 510.19,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "vivre",
+        "frequency": 218.52
+      },
+      {
+        "form": "vit",
+        "frequency": 74.42
+      },
+      {
+        "form": "vécu",
+        "frequency": 51.14
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "rendre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 508.81,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "rendre",
+        "frequency": 141.31
+      },
+      {
+        "form": "rends",
+        "frequency": 84.13
+      },
+      {
+        "form": "rend",
+        "frequency": 82.91
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "tenir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 504.69,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "tiens",
+        "frequency": 110.63
+      },
+      {
+        "form": "tenez",
+        "frequency": 99.49
+      },
+      {
+        "form": "tenir",
+        "frequency": 82.83
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "oublier",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 486.96,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "oublié",
+        "frequency": 154.09
+      },
+      {
+        "form": "oublie",
+        "frequency": 104.78
+      },
+      {
+        "form": "oublier",
+        "frequency": 85.96
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "travailler",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 479.49,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "travaille",
+        "frequency": 149.22
+      },
+      {
+        "form": "travailler",
+        "frequency": 147.84
+      },
+      {
+        "form": "travaillé",
+        "frequency": 49.81
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "écouter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 470.93,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "écoute",
+        "frequency": 214.67
+      },
+      {
+        "form": "écoutez",
+        "frequency": 92.46
+      },
+      {
+        "form": "écouter",
+        "frequency": 73.13
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "manger",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 467.82,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "manger",
+        "frequency": 207.63
+      },
+      {
+        "form": "mange",
+        "frequency": 103.81
+      },
+      {
+        "form": "mangé",
+        "frequency": 60.43
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "mort",
+    "part_of_speech": "NOM",
+    "gender": null,
+    "lemma_frequency": 460.05,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "mort",
+        "frequency": 372.07
+      },
+      {
+        "form": "morts",
+        "frequency": 78.09
+      },
+      {
+        "form": "morte",
+        "frequency": 15.87
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "mal",
+    "part_of_speech": "ADV",
+    "gender": null,
+    "lemma_frequency": 453.95,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "mal",
+        "frequency": 453.95
+      },
+      {
+        "form": "maux",
+        "frequency": 8.31
+      },
+      {
+        "form": "male",
+        "frequency": 0.44
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "entrer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 450.11,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "entrer",
+        "frequency": 160.13
+      },
+      {
+        "form": "entrez",
+        "frequency": 104.85
+      },
+      {
+        "form": "entre",
+        "frequency": 84.08
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "devenir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 438.57,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "devenir",
+        "frequency": 108.83
+      },
+      {
+        "form": "devenu",
+        "frequency": 92.42
+      },
+      {
+        "form": "devient",
+        "frequency": 69.59
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "commencer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 436.83,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "commence",
+        "frequency": 143.51
+      },
+      {
+        "form": "commencé",
+        "frequency": 102.62
+      },
+      {
+        "form": "commencer",
+        "frequency": 92.51
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "dernier",
+    "part_of_speech": "ADJ",
+    "gender": "f",
+    "lemma_frequency": 431.08,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dernière",
+        "frequency": 224.41
+      },
+      {
+        "form": "dernier",
+        "frequency": 138.57
+      },
+      {
+        "form": "derniers",
+        "frequency": 41.81
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "payer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 416.68,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "payer",
+        "frequency": 149.1
+      },
+      {
+        "form": "payé",
+        "frequency": 66.22
+      },
+      {
+        "form": "paie",
+        "frequency": 53.51
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "tirer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 415.14,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "tirer",
+        "frequency": 113.71
+      },
+      {
+        "form": "tire",
+        "frequency": 107.25
+      },
+      {
+        "form": "tiré",
+        "frequency": 76.78
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "ouvrir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 413.32,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "ouvre",
+        "frequency": 141.45
+      },
+      {
+        "form": "ouvrir",
+        "frequency": 79.61
+      },
+      {
+        "form": "ouvrez",
+        "frequency": 64.17
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "oeil",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 413.04,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "yeux",
+        "frequency": 315.89
+      },
+      {
+        "form": "oeil",
+        "frequency": 97.13
+      },
+      {
+        "form": "oeils",
+        "frequency": 0.01
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "fait",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 412.07,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fait",
+        "frequency": 384.71
+      },
+      {
+        "form": "faits",
+        "frequency": 27.36
+      },
+      {
+        "form": "faites",
+        "frequency": 0.19
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "changer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 411.99,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "changer",
+        "frequency": 140.5
+      },
+      {
+        "form": "changé",
+        "frequency": 117.83
+      },
+      {
+        "form": "change",
+        "frequency": 67.83
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "tomber",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 407.82,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "tomber",
+        "frequency": 180.25
+      },
+      {
+        "form": "tombe",
+        "frequency": 66.39
+      },
+      {
+        "form": "tombé",
+        "frequency": 62.89
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "foutre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 400.67,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fous",
+        "frequency": 133.75
+      },
+      {
+        "form": "foutre",
+        "frequency": 97.99
+      },
+      {
+        "form": "fout",
+        "frequency": 51.51
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "excuser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 399.19,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "excusez",
+        "frequency": 230.25
+      },
+      {
+        "form": "excuse",
+        "frequency": 111.82
+      },
+      {
+        "form": "excuser",
+        "frequency": 43.01
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "dormir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 392.09,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dormir",
+        "frequency": 160.77
+      },
+      {
+        "form": "dort",
+        "frequency": 55.05
+      },
+      {
+        "form": "dors",
+        "frequency": 55.03
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "premier",
+    "part_of_speech": "ADJ",
+    "gender": "f",
+    "lemma_frequency": 376.98,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "première",
+        "frequency": 197.34
+      },
+      {
+        "form": "premier",
+        "frequency": 146.12
+      },
+      {
+        "form": "premiers",
+        "frequency": 19.36
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "occuper",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 375.14,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "occupe",
+        "frequency": 139.84
+      },
+      {
+        "form": "occuper",
+        "frequency": 97.22
+      },
+      {
+        "form": "occupé",
+        "frequency": 41.37
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "marcher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 364.37,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "marche",
+        "frequency": 154.71
+      },
+      {
+        "form": "marcher",
+        "frequency": 85.34
+      },
+      {
+        "form": "marché",
+        "frequency": 44.87
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "envoyer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 360.16,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "envoie",
+        "frequency": 98.92
+      },
+      {
+        "form": "envoyé",
+        "frequency": 82.52
+      },
+      {
+        "form": "envoyer",
+        "frequency": 69.77
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "apprendre",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 348.47,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "appris",
+        "frequency": 120.98
+      },
+      {
+        "form": "apprendre",
+        "frequency": 101.76
+      },
+      {
+        "form": "apprends",
+        "frequency": 27.5
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "boire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 339.05,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "boire",
+        "frequency": 142.15
+      },
+      {
+        "form": "bu",
+        "frequency": 53.1
+      },
+      {
+        "form": "bois",
+        "frequency": 37.63
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "garder",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 338.4,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "garder",
+        "frequency": 123.09
+      },
+      {
+        "form": "garde",
+        "frequency": 93.72
+      },
+      {
+        "form": "gardez",
+        "frequency": 39.17
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "montrer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 327.33,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "montrer",
+        "frequency": 136.2
+      },
+      {
+        "form": "montre",
+        "frequency": 85.44
+      },
+      {
+        "form": "montré",
+        "frequency": 29.65
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "asseoir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 322.71,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "asseyez",
+        "frequency": 80.07
+      },
+      {
+        "form": "assieds",
+        "frequency": 79.85
+      },
+      {
+        "form": "asseoir",
+        "frequency": 65.1
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "fou",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 321.31,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fou",
+        "frequency": 181.51
+      },
+      {
+        "form": "folle",
+        "frequency": 84.38
+      },
+      {
+        "form": "fous",
+        "frequency": 48.96
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "porter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 319.98,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "porte",
+        "frequency": 93.05
+      },
+      {
+        "form": "porter",
+        "frequency": 79.04
+      },
+      {
+        "form": "portait",
+        "frequency": 25.75
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "souvenir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 315.05,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "souviens",
+        "frequency": 198.3
+      },
+      {
+        "form": "souvenez",
+        "frequency": 36.7
+      },
+      {
+        "form": "souvenirs",
+        "frequency": 32.79
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "prêt",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 314.64,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "prêt",
+        "frequency": 170.23
+      },
+      {
+        "form": "prêts",
+        "frequency": 67.39
+      },
+      {
+        "form": "prête",
+        "frequency": 66.25
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "prier",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 313.12,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "prie",
+        "frequency": 247.29
+      },
+      {
+        "form": "prier",
+        "frequency": 25.46
+      },
+      {
+        "form": "priez",
+        "frequency": 9.13
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "pendant",
+    "part_of_speech": "PRE",
+    "gender": null,
+    "lemma_frequency": 312.62,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "pendant",
+        "frequency": 312.62
+      },
+      {
+        "form": "pendante",
+        "frequency": 0.36
+      },
+      {
+        "form": "pendantes",
+        "frequency": 0.19
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "servir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 309.81,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "servir",
+        "frequency": 73.55
+      },
+      {
+        "form": "sert",
+        "frequency": 73.13
+      },
+      {
+        "form": "sers",
+        "frequency": 44.58
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "écrire",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 305.92,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "écrit",
+        "frequency": 128.35
+      },
+      {
+        "form": "écrire",
+        "frequency": 84.14
+      },
+      {
+        "form": "écris",
+        "frequency": 38.24
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "espérer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 301.08,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "espère",
+        "frequency": 209.19
+      },
+      {
+        "form": "espérais",
+        "frequency": 25.4
+      },
+      {
+        "form": "espérons",
+        "frequency": 21.77
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "désoler",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 297.27,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "désolé",
+        "frequency": 193.29
+      },
+      {
+        "form": "désolée",
+        "frequency": 98.22
+      },
+      {
+        "form": "désolés",
+        "frequency": 2.71
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "retrouver",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 295.17,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "retrouver",
+        "frequency": 100.9
+      },
+      {
+        "form": "retrouve",
+        "frequency": 61.54
+      },
+      {
+        "form": "retrouvé",
+        "frequency": 50.38
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "gagner",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 294.44,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "gagner",
+        "frequency": 92.72
+      },
+      {
+        "form": "gagné",
+        "frequency": 89.92
+      },
+      {
+        "form": "gagne",
+        "frequency": 53.39
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "acheter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 290.7,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "acheter",
+        "frequency": 115.27
+      },
+      {
+        "form": "acheté",
+        "frequency": 72.38
+      },
+      {
+        "form": "achète",
+        "frequency": 39.82
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "vieux",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 282.2,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "vieux",
+        "frequency": 180.08
+      },
+      {
+        "form": "vieille",
+        "frequency": 84.59
+      },
+      {
+        "form": "vieilles",
+        "frequency": 17.52
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "rappeler",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 281.75,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "rappelle",
+        "frequency": 117.92
+      },
+      {
+        "form": "rappeler",
+        "frequency": 46.03
+      },
+      {
+        "form": "rappelles",
+        "frequency": 37.34
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "lire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 281.09,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "lire",
+        "frequency": 89.58
+      },
+      {
+        "form": "lu",
+        "frequency": 82.12
+      },
+      {
+        "form": "lis",
+        "frequency": 39.81
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "monter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 277.32,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "monte",
+        "frequency": 109.76
+      },
+      {
+        "form": "monter",
+        "frequency": 85.7
+      },
+      {
+        "form": "monté",
+        "frequency": 23.72
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "désolé",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 276.66,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "désolé",
+        "frequency": 193.51
+      },
+      {
+        "form": "désolée",
+        "frequency": 81.19
+      },
+      {
+        "form": "désolés",
+        "frequency": 1.59
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "quitter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 276.23,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "quitter",
+        "frequency": 88.02
+      },
+      {
+        "form": "quitté",
+        "frequency": 62.92
+      },
+      {
+        "form": "quitte",
+        "frequency": 49.07
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "emmener",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 272.71,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "emmène",
+        "frequency": 77.85
+      },
+      {
+        "form": "emmener",
+        "frequency": 70.34
+      },
+      {
+        "form": "emmenez",
+        "frequency": 42.79
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "toucher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 270.27,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "touche",
+        "frequency": 91.91
+      },
+      {
+        "form": "touché",
+        "frequency": 50.97
+      },
+      {
+        "form": "toucher",
+        "frequency": 49.43
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "continuer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 269.95,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "continuer",
+        "frequency": 82.29
+      },
+      {
+        "form": "continue",
+        "frequency": 76.64
+      },
+      {
+        "form": "continuez",
+        "frequency": 47.08
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "gros",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 266.95,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "gros",
+        "frequency": 180.91
+      },
+      {
+        "form": "grosse",
+        "frequency": 70.63
+      },
+      {
+        "form": "grosses",
+        "frequency": 15.41
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "revoir",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 262.05,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "revoir",
+        "frequency": 262.05
+      },
+      {
+        "form": "revu",
+        "frequency": 14.38
+      },
+      {
+        "form": "reverra",
+        "frequency": 14.31
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "importer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 259.37,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "importe",
+        "frequency": 251.39
+      },
+      {
+        "form": "importait",
+        "frequency": 2.25
+      },
+      {
+        "form": "importent",
+        "frequency": 2.16
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "manquer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 253.94,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "manque",
+        "frequency": 98.77
+      },
+      {
+        "form": "manqué",
+        "frequency": 38.94
+      },
+      {
+        "form": "manquer",
+        "frequency": 30.61
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "raconter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 253.84,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "raconte",
+        "frequency": 78.06
+      },
+      {
+        "form": "raconter",
+        "frequency": 57.79
+      },
+      {
+        "form": "racontes",
+        "frequency": 34.95
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "mauvais",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 252.69,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "mauvais",
+        "frequency": 138.04
+      },
+      {
+        "form": "mauvaise",
+        "frequency": 88.33
+      },
+      {
+        "form": "mauvaises",
+        "frequency": 26.32
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "répondre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 251.57,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "réponds",
+        "frequency": 63.59
+      },
+      {
+        "form": "répondre",
+        "frequency": 57.76
+      },
+      {
+        "form": "répondu",
+        "frequency": 34.9
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "heureux",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 248.45,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "heureux",
+        "frequency": 155.8
+      },
+      {
+        "form": "heureuse",
+        "frequency": 88.71
+      },
+      {
+        "form": "heureuses",
+        "frequency": 3.94
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sauver",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 246.54,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sauver",
+        "frequency": 103.1
+      },
+      {
+        "form": "sauvé",
+        "frequency": 61.62
+      },
+      {
+        "form": "sauve",
+        "frequency": 24.34
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "retourner",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 245.35,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "retourne",
+        "frequency": 77.27
+      },
+      {
+        "form": "retourner",
+        "frequency": 76.96
+      },
+      {
+        "form": "retournez",
+        "frequency": 23.55
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "rencontrer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 241.04,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "rencontrer",
+        "frequency": 82.72
+      },
+      {
+        "form": "rencontré",
+        "frequency": 77.82
+      },
+      {
+        "form": "rencontre",
+        "frequency": 22.66
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "voler",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 238.82,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "volé",
+        "frequency": 79.01
+      },
+      {
+        "form": "voler",
+        "frequency": 67.88
+      },
+      {
+        "form": "vole",
+        "frequency": 35.31
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "fermer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 238.65,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "ferme",
+        "frequency": 79.68
+      },
+      {
+        "form": "fermer",
+        "frequency": 48.85
+      },
+      {
+        "form": "fermé",
+        "frequency": 34.73
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "valoir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 236.07,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "vaut",
+        "frequency": 161.53
+      },
+      {
+        "form": "valait",
+        "frequency": 15.82
+      },
+      {
+        "form": "vaudrait",
+        "frequency": 14.23
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "descendre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 235.97,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "descendre",
+        "frequency": 65.28
+      },
+      {
+        "form": "descends",
+        "frequency": 62.31
+      },
+      {
+        "form": "descend",
+        "frequency": 26.09
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "feu",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 233.96,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "feu",
+        "frequency": 215.87
+      },
+      {
+        "form": "feux",
+        "frequency": 18.1
+      },
+      {
+        "form": "feue",
+        "frequency": 0.14
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "docteur",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 233.86,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "docteur",
+        "frequency": 223.48
+      },
+      {
+        "form": "docteurs",
+        "frequency": 9.72
+      },
+      {
+        "form": "doctoresse",
+        "frequency": 0.66
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "suffire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 232.08,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "suffit",
+        "frequency": 188.1
+      },
+      {
+        "form": "suffira",
+        "frequency": 13.85
+      },
+      {
+        "form": "suffisait",
+        "frequency": 6.56
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "nouveau",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 229.97,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "nouveau",
+        "frequency": 170.28
+      },
+      {
+        "form": "nouvelles",
+        "frequency": 82.08
+      },
+      {
+        "form": "nouveaux",
+        "frequency": 39.17
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "important",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 229.36,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "important",
+        "frequency": 168.62
+      },
+      {
+        "form": "importante",
+        "frequency": 35.29
+      },
+      {
+        "form": "importantes",
+        "frequency": 13.8
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sembler",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 229.25,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "semble",
+        "frequency": 128.91
+      },
+      {
+        "form": "semblait",
+        "frequency": 26.84
+      },
+      {
+        "form": "semblent",
+        "frequency": 14.09
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "compter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 227.78,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "compte",
+        "frequency": 96.47
+      },
+      {
+        "form": "compter",
+        "frequency": 45.05
+      },
+      {
+        "form": "comptez",
+        "frequency": 21.36
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "joli",
+    "part_of_speech": "ADJ",
+    "gender": "f",
+    "lemma_frequency": 226.45,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "jolie",
+        "frequency": 101.54
+      },
+      {
+        "form": "joli",
+        "frequency": 94.55
+      },
+      {
+        "form": "jolies",
+        "frequency": 20.99
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "chien",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 223.53,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "chien",
+        "frequency": 158.77
+      },
+      {
+        "form": "chiens",
+        "frequency": 50.76
+      },
+      {
+        "form": "chienne",
+        "frequency": 12.84
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "meilleur",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 221.17,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "meilleur",
+        "frequency": 99.59
+      },
+      {
+        "form": "meilleure",
+        "frequency": 73.69
+      },
+      {
+        "form": "meilleurs",
+        "frequency": 32.64
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "marier",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 220.51,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "marier",
+        "frequency": 63.88
+      },
+      {
+        "form": "marié",
+        "frequency": 35.76
+      },
+      {
+        "form": "mariée",
+        "frequency": 30.55
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "poser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 217.2,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "poser",
+        "frequency": 73.73
+      },
+      {
+        "form": "pose",
+        "frequency": 57.41
+      },
+      {
+        "form": "posé",
+        "frequency": 28.09
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "fin",
+    "part_of_speech": "NOM",
+    "gender": null,
+    "lemma_frequency": 213.37,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fin",
+        "frequency": 207.34
+      },
+      {
+        "form": "fine",
+        "frequency": 10.16
+      },
+      {
+        "form": "fins",
+        "frequency": 6.03
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "inquiéter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 212.16,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "inquiète",
+        "frequency": 114.06
+      },
+      {
+        "form": "inquiétez",
+        "frequency": 38.8
+      },
+      {
+        "form": "inquiéter",
+        "frequency": 27.98
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "bouger",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 211.9,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "bouge",
+        "frequency": 85.45
+      },
+      {
+        "form": "bouger",
+        "frequency": 44.32
+      },
+      {
+        "form": "bougez",
+        "frequency": 44.09
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "apporter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 209.91,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "apporte",
+        "frequency": 65.97
+      },
+      {
+        "form": "apporté",
+        "frequency": 54.44
+      },
+      {
+        "form": "apporter",
+        "frequency": 34.43
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "plein",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 208.75,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "plein",
+        "frequency": 104.57
+      },
+      {
+        "form": "pleine",
+        "frequency": 82.13
+      },
+      {
+        "form": "pleins",
+        "frequency": 13.46
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "décider",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 207.76,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "décidé",
+        "frequency": 92.08
+      },
+      {
+        "form": "décider",
+        "frequency": 42.27
+      },
+      {
+        "form": "décide",
+        "frequency": 31.25
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "droit",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 207.62,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "droit",
+        "frequency": 175.6
+      },
+      {
+        "form": "droite",
+        "frequency": 36.33
+      },
+      {
+        "form": "droits",
+        "frequency": 32.01
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "vendre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 206.95,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "vendre",
+        "frequency": 73.62
+      },
+      {
+        "form": "vendu",
+        "frequency": 37.62
+      },
+      {
+        "form": "vends",
+        "frequency": 23.35
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "cher",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 205.75,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "cher",
+        "frequency": 130.7
+      },
+      {
+        "form": "chère",
+        "frequency": 40.8
+      },
+      {
+        "form": "chers",
+        "frequency": 28.61
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "tourner",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 204.15,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "tourne",
+        "frequency": 80.72
+      },
+      {
+        "form": "tourner",
+        "frequency": 51.05
+      },
+      {
+        "form": "tourné",
+        "frequency": 24.84
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "cacher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 204.13,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "cacher",
+        "frequency": 61.06
+      },
+      {
+        "form": "cache",
+        "frequency": 44.82
+      },
+      {
+        "form": "caché",
+        "frequency": 32.13
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "boulot",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 202.97,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "boulot",
+        "frequency": 198.68
+      },
+      {
+        "form": "boulots",
+        "frequency": 4.3
+      },
+      {
+        "form": "boulotte",
+        "frequency": 0.04
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "expliquer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 200.93,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "expliquer",
+        "frequency": 89.21
+      },
+      {
+        "form": "explique",
+        "frequency": 48.02
+      },
+      {
+        "form": "expliquez",
+        "frequency": 14.34
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "battre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 200.35,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "battre",
+        "frequency": 75.92
+      },
+      {
+        "form": "bat",
+        "frequency": 27.36
+      },
+      {
+        "form": "battu",
+        "frequency": 24.13
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "agir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 195.94,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "agit",
+        "frequency": 105.02
+      },
+      {
+        "form": "agir",
+        "frequency": 37.48
+      },
+      {
+        "form": "agi",
+        "frequency": 13.69
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "imaginer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 194.29,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "imagine",
+        "frequency": 77.33
+      },
+      {
+        "form": "imaginer",
+        "frequency": 37.09
+      },
+      {
+        "form": "imaginez",
+        "frequency": 23.35
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "adorer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 193.67,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "adore",
+        "frequency": 121.69
+      },
+      {
+        "form": "adoré",
+        "frequency": 12.81
+      },
+      {
+        "form": "adorer",
+        "frequency": 11.79
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "recevoir",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 192.73,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "reçu",
+        "frequency": 76.46
+      },
+      {
+        "form": "recevoir",
+        "frequency": 37.2
+      },
+      {
+        "form": "reçois",
+        "frequency": 17.48
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "gentil",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 192.64,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "gentil",
+        "frequency": 134.11
+      },
+      {
+        "form": "gentille",
+        "frequency": 41.44
+      },
+      {
+        "form": "gentils",
+        "frequency": 13.98
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "jeter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 192.18,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "jeter",
+        "frequency": 59.28
+      },
+      {
+        "form": "jette",
+        "frequency": 43.48
+      },
+      {
+        "form": "jeté",
+        "frequency": 33.21
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "pleurer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 191.64,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "pleurer",
+        "frequency": 61.6
+      },
+      {
+        "form": "pleure",
+        "frequency": 60.17
+      },
+      {
+        "form": "pleures",
+        "frequency": 17.0
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "amener",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 190.32,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "amène",
+        "frequency": 59.8
+      },
+      {
+        "form": "amené",
+        "frequency": 38.14
+      },
+      {
+        "form": "amener",
+        "frequency": 35.6
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "instant",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 189.41,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "instant",
+        "frequency": 182.14
+      },
+      {
+        "form": "instants",
+        "frequency": 7.27
+      },
+      {
+        "form": "instantes",
+        "frequency": 0.01
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "parent",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 188.38,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "parents",
+        "frequency": 177.04
+      },
+      {
+        "form": "parent",
+        "frequency": 10.03
+      },
+      {
+        "form": "parente",
+        "frequency": 1.12
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "dur",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 187.84,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dur",
+        "frequency": 145.55
+      },
+      {
+        "form": "dure",
+        "frequency": 26.16
+      },
+      {
+        "form": "durs",
+        "frequency": 12.08
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "promettre",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 185.26,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "promis",
+        "frequency": 82.83
+      },
+      {
+        "form": "promets",
+        "frequency": 68.81
+      },
+      {
+        "form": "promettre",
+        "frequency": 10.05
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "mentir",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 185.16,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "menti",
+        "frequency": 47.32
+      },
+      {
+        "form": "mens",
+        "frequency": 42.12
+      },
+      {
+        "form": "mentir",
+        "frequency": 37.01
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "utiliser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 182.44,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "utiliser",
+        "frequency": 61.97
+      },
+      {
+        "form": "utilise",
+        "frequency": 31.68
+      },
+      {
+        "form": "utilisé",
+        "frequency": 30.65
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "lieu",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 182.0,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "lieu",
+        "frequency": 153.12
+      },
+      {
+        "form": "lieux",
+        "frequency": 28.73
+      },
+      {
+        "form": "lieus",
+        "frequency": 0.15
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "coucher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 181.96,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "coucher",
+        "frequency": 82.63
+      },
+      {
+        "form": "couché",
+        "frequency": 35.71
+      },
+      {
+        "form": "couche",
+        "frequency": 29.5
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "préférer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 179.44,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "préfère",
+        "frequency": 90.34
+      },
+      {
+        "form": "préfères",
+        "frequency": 21.62
+      },
+      {
+        "form": "préféré",
+        "frequency": 17.57
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "content",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 178.94,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "content",
+        "frequency": 114.75
+      },
+      {
+        "form": "contente",
+        "frequency": 50.76
+      },
+      {
+        "form": "contents",
+        "frequency": 11.96
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "offrir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 177.8,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "offrir",
+        "frequency": 52.06
+      },
+      {
+        "form": "offre",
+        "frequency": 51.81
+      },
+      {
+        "form": "offert",
+        "frequency": 34.01
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "réveiller",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 175.94,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "réveille",
+        "frequency": 59.67
+      },
+      {
+        "form": "réveiller",
+        "frequency": 36.66
+      },
+      {
+        "form": "réveillé",
+        "frequency": 30.63
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "préparer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 174.33,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "préparer",
+        "frequency": 46.71
+      },
+      {
+        "form": "prépare",
+        "frequency": 45.54
+      },
+      {
+        "form": "préparez",
+        "frequency": 26.72
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "permettre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 172.86,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "permettez",
+        "frequency": 48.28
+      },
+      {
+        "form": "permis",
+        "frequency": 28.04
+      },
+      {
+        "form": "permettre",
+        "frequency": 26.32
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "ramener",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 172.7,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "ramener",
+        "frequency": 51.43
+      },
+      {
+        "form": "ramène",
+        "frequency": 49.52
+      },
+      {
+        "form": "ramené",
+        "frequency": 23.84
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "enlever",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 172.47,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "enlève",
+        "frequency": 55.59
+      },
+      {
+        "form": "enlever",
+        "frequency": 46.74
+      },
+      {
+        "form": "enlevé",
+        "frequency": 20.88
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "chéri",
+    "part_of_speech": "NOM",
+    "gender": "f",
+    "lemma_frequency": 171.98,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "chérie",
+        "frequency": 98.95
+      },
+      {
+        "form": "chéri",
+        "frequency": 69.08
+      },
+      {
+        "form": "chéris",
+        "frequency": 2.41
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "fort",
+    "part_of_speech": "ADV",
+    "gender": null,
+    "lemma_frequency": 171.91,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fort",
+        "frequency": 171.91
+      },
+      {
+        "form": "forte",
+        "frequency": 42.42
+      },
+      {
+        "form": "forts",
+        "frequency": 17.0
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "lâcher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 171.08,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "lâche",
+        "frequency": 75.31
+      },
+      {
+        "form": "lâchez",
+        "frequency": 48.02
+      },
+      {
+        "form": "lâcher",
+        "frequency": 19.41
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "choisir",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 170.48,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "choisi",
+        "frequency": 58.19
+      },
+      {
+        "form": "choisir",
+        "frequency": 47.09
+      },
+      {
+        "form": "choisis",
+        "frequency": 21.33
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "conduire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 169.64,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "conduire",
+        "frequency": 60.56
+      },
+      {
+        "form": "conduit",
+        "frequency": 34.51
+      },
+      {
+        "form": "conduis",
+        "frequency": 29.82
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "calmer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 168.54,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "calme",
+        "frequency": 94.16
+      },
+      {
+        "form": "calmez",
+        "frequency": 34.63
+      },
+      {
+        "form": "calmer",
+        "frequency": 22.89
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "chanter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 166.34,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "chante",
+        "frequency": 56.16
+      },
+      {
+        "form": "chanter",
+        "frequency": 48.12
+      },
+      {
+        "form": "chantait",
+        "frequency": 8.76
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "disparaître",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 166.13,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "disparu",
+        "frequency": 86.21
+      },
+      {
+        "form": "disparaître",
+        "frequency": 27.16
+      },
+      {
+        "form": "disparaît",
+        "frequency": 10.02
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "lever",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 165.98,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "lève",
+        "frequency": 67.72
+      },
+      {
+        "form": "lever",
+        "frequency": 35.9
+      },
+      {
+        "form": "levez",
+        "frequency": 22.23
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "présenter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 165.88,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "présente",
+        "frequency": 61.59
+      },
+      {
+        "form": "présenter",
+        "frequency": 56.16
+      },
+      {
+        "form": "présenté",
+        "frequency": 12.58
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "accepter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 165.84,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "accepter",
+        "frequency": 43.39
+      },
+      {
+        "form": "accepte",
+        "frequency": 38.41
+      },
+      {
+        "form": "accepté",
+        "frequency": 28.46
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "long",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 164.02,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "long",
+        "frequency": 79.18
+      },
+      {
+        "form": "longue",
+        "frequency": 54.12
+      },
+      {
+        "form": "longs",
+        "frequency": 17.65
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "casser",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 160.61,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "cassé",
+        "frequency": 42.71
+      },
+      {
+        "form": "casse",
+        "frequency": 41.32
+      },
+      {
+        "form": "casser",
+        "frequency": 36.24
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "prochain",
+    "part_of_speech": "ADJ",
+    "gender": "f",
+    "lemma_frequency": 160.27,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "prochaine",
+        "frequency": 100.44
+      },
+      {
+        "form": "prochain",
+        "frequency": 51.95
+      },
+      {
+        "form": "prochaines",
+        "frequency": 4.27
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "frapper",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 160.04,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "frappé",
+        "frequency": 43.83
+      },
+      {
+        "form": "frappe",
+        "frequency": 41.37
+      },
+      {
+        "form": "frapper",
+        "frequency": 37.08
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "copain",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 158.62,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "copain",
+        "frequency": 61.14
+      },
+      {
+        "form": "copine",
+        "frequency": 56.28
+      },
+      {
+        "form": "copains",
+        "frequency": 30.47
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "ignorer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 156.55,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "ignore",
+        "frequency": 76.78
+      },
+      {
+        "form": "ignorais",
+        "frequency": 24.82
+      },
+      {
+        "form": "ignorer",
+        "frequency": 13.04
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "couper",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 155.82,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "couper",
+        "frequency": 41.45
+      },
+      {
+        "form": "coupe",
+        "frequency": 32.66
+      },
+      {
+        "form": "coupé",
+        "frequency": 30.34
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "taire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 154.46,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "tais",
+        "frequency": 77.46
+      },
+      {
+        "form": "taire",
+        "frequency": 31.81
+      },
+      {
+        "form": "taisez",
+        "frequency": 24.3
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "tromper",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 149.09,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "trompé",
+        "frequency": 29.98
+      },
+      {
+        "form": "trompe",
+        "frequency": 27.72
+      },
+      {
+        "form": "tromper",
+        "frequency": 27.42
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "ressembler",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 148.62,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "ressemble",
+        "frequency": 83.47
+      },
+      {
+        "form": "ressemblait",
+        "frequency": 13.41
+      },
+      {
+        "form": "ressembles",
+        "frequency": 11.93
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "jurer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 148.41,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "jure",
+        "frequency": 104.04
+      },
+      {
+        "form": "juré",
+        "frequency": 17.59
+      },
+      {
+        "form": "jurer",
+        "frequency": 7.58
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "plan",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 147.54,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "plan",
+        "frequency": 119.54
+      },
+      {
+        "form": "plans",
+        "frequency": 28.0
+      },
+      {
+        "form": "plane",
+        "frequency": 0.66
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "courir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 146.5,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "courir",
+        "frequency": 47.19
+      },
+      {
+        "form": "court",
+        "frequency": 19.25
+      },
+      {
+        "form": "cours",
+        "frequency": 18.75
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "remettre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 144.99,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "remettre",
+        "frequency": 47.05
+      },
+      {
+        "form": "remets",
+        "frequency": 24.72
+      },
+      {
+        "form": "remis",
+        "frequency": 20.27
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "noir",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 144.81,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "noir",
+        "frequency": 72.2
+      },
+      {
+        "form": "noire",
+        "frequency": 41.57
+      },
+      {
+        "form": "noirs",
+        "frequency": 21.65
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "refuser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 143.96,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "refuse",
+        "frequency": 49.29
+      },
+      {
+        "form": "refusé",
+        "frequency": 26.03
+      },
+      {
+        "form": "refuser",
+        "frequency": 21.34
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "président",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 143.39,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "président",
+        "frequency": 131.53
+      },
+      {
+        "form": "présidente",
+        "frequency": 9.21
+      },
+      {
+        "form": "présidents",
+        "frequency": 2.48
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "terminer",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 142.38,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "terminé",
+        "frequency": 78.47
+      },
+      {
+        "form": "terminée",
+        "frequency": 18.61
+      },
+      {
+        "form": "terminer",
+        "frequency": 18.04
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "patron",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 141.53,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "patron",
+        "frequency": 122.44
+      },
+      {
+        "form": "patronne",
+        "frequency": 11.32
+      },
+      {
+        "form": "patrons",
+        "frequency": 7.5
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "amuser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 141.41,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "amuser",
+        "frequency": 43.77
+      },
+      {
+        "form": "amuse",
+        "frequency": 39.85
+      },
+      {
+        "form": "amusez",
+        "frequency": 14.84
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "intéresser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 140.8,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "intéresse",
+        "frequency": 75.2
+      },
+      {
+        "form": "intéresser",
+        "frequency": 12.94
+      },
+      {
+        "form": "intéressent",
+        "frequency": 9.68
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "reconnaître",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 140.73,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "reconnais",
+        "frequency": 37.36
+      },
+      {
+        "form": "reconnu",
+        "frequency": 25.93
+      },
+      {
+        "form": "reconnaître",
+        "frequency": 25.24
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "rire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 140.24,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "rire",
+        "frequency": 63.29
+      },
+      {
+        "form": "ris",
+        "frequency": 20.86
+      },
+      {
+        "form": "rit",
+        "frequency": 17.47
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "pardonner",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 139.46,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "pardonne",
+        "frequency": 53.11
+      },
+      {
+        "form": "pardonnez",
+        "frequency": 34.31
+      },
+      {
+        "form": "pardonner",
+        "frequency": 21.72
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "embrasser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 138.97,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "embrasse",
+        "frequency": 49.81
+      },
+      {
+        "form": "embrasser",
+        "frequency": 43.91
+      },
+      {
+        "form": "embrassé",
+        "frequency": 10.17
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "danser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 137.36,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "danser",
+        "frequency": 70.06
+      },
+      {
+        "form": "danse",
+        "frequency": 23.48
+      },
+      {
+        "form": "danses",
+        "frequency": 6.81
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "exister",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 136.24,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "existe",
+        "frequency": 85.86
+      },
+      {
+        "form": "existent",
+        "frequency": 10.74
+      },
+      {
+        "form": "existait",
+        "frequency": 9.58
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "différent",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 135.8,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "différent",
+        "frequency": 65.42
+      },
+      {
+        "form": "différente",
+        "frequency": 24.45
+      },
+      {
+        "form": "différentes",
+        "frequency": 23.25
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "génial",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 134.47,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "génial",
+        "frequency": 115.27
+      },
+      {
+        "form": "géniale",
+        "frequency": 15.86
+      },
+      {
+        "form": "géniaux",
+        "frequency": 1.72
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "pareil",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 133.45,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "pareil",
+        "frequency": 95.18
+      },
+      {
+        "form": "pareille",
+        "frequency": 21.01
+      },
+      {
+        "form": "pareils",
+        "frequency": 10.29
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "réussir",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 131.88,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "réussi",
+        "frequency": 78.63
+      },
+      {
+        "form": "réussir",
+        "frequency": 20.99
+      },
+      {
+        "form": "réussit",
+        "frequency": 9.7
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "protéger",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 130.71,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "protéger",
+        "frequency": 62.53
+      },
+      {
+        "form": "protège",
+        "frequency": 27.45
+      },
+      {
+        "form": "protégé",
+        "frequency": 7.76
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "prévenir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 129.28,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "prévenir",
+        "frequency": 42.51
+      },
+      {
+        "form": "préviens",
+        "frequency": 29.86
+      },
+      {
+        "form": "prévenu",
+        "frequency": 24.25
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "maître",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 128.55,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "maître",
+        "frequency": 118.88
+      },
+      {
+        "form": "maîtres",
+        "frequency": 9.67
+      },
+      {
+        "form": "maîtresse",
+        "frequency": 3.63
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "habiter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 128.3,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "habite",
+        "frequency": 59.55
+      },
+      {
+        "form": "habiter",
+        "frequency": 12.73
+      },
+      {
+        "form": "habites",
+        "frequency": 11.71
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "froid",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 127.22,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "froid",
+        "frequency": 98.43
+      },
+      {
+        "form": "froide",
+        "frequency": 21.48
+      },
+      {
+        "form": "froides",
+        "frequency": 4.07
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "normal",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 127.15,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "normal",
+        "frequency": 90.98
+      },
+      {
+        "form": "normale",
+        "frequency": 23.74
+      },
+      {
+        "form": "normaux",
+        "frequency": 8.35
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "déranger",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 126.95,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dérange",
+        "frequency": 63.69
+      },
+      {
+        "form": "déranger",
+        "frequency": 31.38
+      },
+      {
+        "form": "dérangé",
+        "frequency": 7.98
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "reprendre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 126.92,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "reprendre",
+        "frequency": 36.98
+      },
+      {
+        "form": "reprends",
+        "frequency": 20.08
+      },
+      {
+        "form": "repris",
+        "frequency": 16.65
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "détruire",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 126.08,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "détruire",
+        "frequency": 50.12
+      },
+      {
+        "form": "détruit",
+        "frequency": 35.42
+      },
+      {
+        "form": "détruite",
+        "frequency": 7.49
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "pousser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 125.61,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "pousse",
+        "frequency": 29.6
+      },
+      {
+        "form": "pousser",
+        "frequency": 27.51
+      },
+      {
+        "form": "poussez",
+        "frequency": 21.6
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "vivant",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 124.97,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "vivant",
+        "frequency": 76.38
+      },
+      {
+        "form": "vivante",
+        "frequency": 28.12
+      },
+      {
+        "form": "vivants",
+        "frequency": 17.16
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "général",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 124.83,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "général",
+        "frequency": 119.61
+      },
+      {
+        "form": "générale",
+        "frequency": 10.27
+      },
+      {
+        "form": "généraux",
+        "frequency": 3.83
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "découvrir",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 124.2,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "découvert",
+        "frequency": 46.22
+      },
+      {
+        "form": "découvrir",
+        "frequency": 37.11
+      },
+      {
+        "form": "découvre",
+        "frequency": 17.37
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sauter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 123.03,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sauter",
+        "frequency": 57.89
+      },
+      {
+        "form": "saute",
+        "frequency": 22.66
+      },
+      {
+        "form": "sauté",
+        "frequency": 18.77
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "rêver",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 122.95,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "rêve",
+        "frequency": 34.32
+      },
+      {
+        "form": "rêvé",
+        "frequency": 32.08
+      },
+      {
+        "form": "rêver",
+        "frequency": 20.8
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "détester",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 122.87,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "déteste",
+        "frequency": 79.45
+      },
+      {
+        "form": "détestes",
+        "frequency": 8.13
+      },
+      {
+        "form": "détestent",
+        "frequency": 6.63
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "clair",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 122.69,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "clair",
+        "frequency": 88.54
+      },
+      {
+        "form": "claire",
+        "frequency": 21.21
+      },
+      {
+        "form": "claires",
+        "frequency": 7.05
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "con",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 122.62,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "con",
+        "frequency": 93.43
+      },
+      {
+        "form": "cons",
+        "frequency": 19.9
+      },
+      {
+        "form": "conne",
+        "frequency": 8.57
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "faux",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 122.23,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "faux",
+        "frequency": 90.99
+      },
+      {
+        "form": "fausse",
+        "frequency": 21.98
+      },
+      {
+        "form": "fausses",
+        "frequency": 9.26
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "paraître",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 122.14,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "paraît",
+        "frequency": 81.22
+      },
+      {
+        "form": "paraître",
+        "frequency": 15.31
+      },
+      {
+        "form": "paru",
+        "frequency": 5.92
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "empêcher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 121.85,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "empêcher",
+        "frequency": 55.99
+      },
+      {
+        "form": "empêche",
+        "frequency": 31.46
+      },
+      {
+        "form": "empêché",
+        "frequency": 7.81
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "maintenir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 121.32,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "maintenant",
+        "frequency": 95.61
+      },
+      {
+        "form": "maintenir",
+        "frequency": 10.27
+      },
+      {
+        "form": "maintenez",
+        "frequency": 4.28
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sujet",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 120.42,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sujet",
+        "frequency": 107.92
+      },
+      {
+        "form": "sujets",
+        "frequency": 12.51
+      },
+      {
+        "form": "sujette",
+        "frequency": 0.7
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "supposer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 120.31,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "suppose",
+        "frequency": 89.07
+      },
+      {
+        "form": "supposé",
+        "frequency": 12.07
+      },
+      {
+        "form": "supposons",
+        "frequency": 4.54
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "épouser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 118.78,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "épouser",
+        "frequency": 57.87
+      },
+      {
+        "form": "épousé",
+        "frequency": 18.09
+      },
+      {
+        "form": "épouse",
+        "frequency": 15.97
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "blanc",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 118.74,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "blanc",
+        "frequency": 53.93
+      },
+      {
+        "form": "blanche",
+        "frequency": 35.92
+      },
+      {
+        "form": "blancs",
+        "frequency": 19.31
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "agent",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 117.9,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "agent",
+        "frequency": 92.42
+      },
+      {
+        "form": "agents",
+        "frequency": 25.0
+      },
+      {
+        "form": "agente",
+        "frequency": 0.48
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "approcher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 117.65,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "approche",
+        "frequency": 44.17
+      },
+      {
+        "form": "approchez",
+        "frequency": 27.75
+      },
+      {
+        "form": "approcher",
+        "frequency": 19.62
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "craindre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 117.44,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "crains",
+        "frequency": 40.76
+      },
+      {
+        "form": "craint",
+        "frequency": 23.43
+      },
+      {
+        "form": "craindre",
+        "frequency": 18.73
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "crier",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 116.94,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "crie",
+        "frequency": 35.65
+      },
+      {
+        "form": "crier",
+        "frequency": 31.49
+      },
+      {
+        "form": "crié",
+        "frequency": 13.0
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "inviter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 116.83,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "invite",
+        "frequency": 29.01
+      },
+      {
+        "form": "invité",
+        "frequency": 28.27
+      },
+      {
+        "form": "inviter",
+        "frequency": 22.63
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "réfléchir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 116.71,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "réfléchir",
+        "frequency": 47.59
+      },
+      {
+        "form": "réfléchi",
+        "frequency": 27.23
+      },
+      {
+        "form": "réfléchis",
+        "frequency": 15.7
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "arranger",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 116.14,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "arranger",
+        "frequency": 48.51
+      },
+      {
+        "form": "arrange",
+        "frequency": 22.14
+      },
+      {
+        "form": "arrangé",
+        "frequency": 18.24
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "naître",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 116.11,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "né",
+        "frequency": 53.72
+      },
+      {
+        "form": "née",
+        "frequency": 23.63
+      },
+      {
+        "form": "naître",
+        "frequency": 12.74
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "passé",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 115.89,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "passé",
+        "frequency": 101.77
+      },
+      {
+        "form": "passée",
+        "frequency": 5.47
+      },
+      {
+        "form": "passés",
+        "frequency": 4.65
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "souffrir",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 113.83,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "souffrir",
+        "frequency": 34.26
+      },
+      {
+        "form": "souffre",
+        "frequency": 31.52
+      },
+      {
+        "form": "souffert",
+        "frequency": 18.45
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "remercier",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 113.7,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "remercie",
+        "frequency": 51.61
+      },
+      {
+        "form": "remercier",
+        "frequency": 38.6
+      },
+      {
+        "form": "remerciez",
+        "frequency": 6.25
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "baiser",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 112.82,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "baiser",
+        "frequency": 42.25
+      },
+      {
+        "form": "baise",
+        "frequency": 22.02
+      },
+      {
+        "form": "baisé",
+        "frequency": 17.65
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "avocat",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 112.69,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "avocat",
+        "frequency": 89.28
+      },
+      {
+        "form": "avocats",
+        "frequency": 15.76
+      },
+      {
+        "form": "avocate",
+        "frequency": 7.56
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "attraper",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 112.52,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "attraper",
+        "frequency": 35.32
+      },
+      {
+        "form": "attrape",
+        "frequency": 24.29
+      },
+      {
+        "form": "attrapé",
+        "frequency": 19.2
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "client",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 112.12,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "client",
+        "frequency": 53.63
+      },
+      {
+        "form": "clients",
+        "frequency": 47.03
+      },
+      {
+        "form": "cliente",
+        "frequency": 9.22
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "courant",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 111.58,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "courant",
+        "frequency": 108.69
+      },
+      {
+        "form": "courants",
+        "frequency": 2.89
+      },
+      {
+        "form": "courante",
+        "frequency": 1.83
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "dépêcher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 111.44,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dépêche",
+        "frequency": 55.9
+      },
+      {
+        "form": "dépêchez",
+        "frequency": 35.35
+      },
+      {
+        "form": "dépêchons",
+        "frequency": 10.21
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "vérifier",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 110.87,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "vérifier",
+        "frequency": 45.69
+      },
+      {
+        "form": "vérifié",
+        "frequency": 21.64
+      },
+      {
+        "form": "vérifie",
+        "frequency": 20.47
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "abandonner",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 110.87,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "abandonner",
+        "frequency": 28.37
+      },
+      {
+        "form": "abandonne",
+        "frequency": 24.04
+      },
+      {
+        "form": "abandonné",
+        "frequency": 22.56
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sérieux",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 110.48,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sérieux",
+        "frequency": 80.99
+      },
+      {
+        "form": "sérieuse",
+        "frequency": 23.64
+      },
+      {
+        "form": "sérieuses",
+        "frequency": 5.85
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "brûler",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 110.28,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "brûle",
+        "frequency": 33.66
+      },
+      {
+        "form": "brûler",
+        "frequency": 23.14
+      },
+      {
+        "form": "brûlé",
+        "frequency": 20.41
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "sauf",
+    "part_of_speech": "PRE",
+    "gender": null,
+    "lemma_frequency": 108.54,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "sauf",
+        "frequency": 108.54
+      },
+      {
+        "form": "saufs",
+        "frequency": 2.38
+      },
+      {
+        "form": "sauve",
+        "frequency": 1.24
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "soldat",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 107.92,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "soldats",
+        "frequency": 54.96
+      },
+      {
+        "form": "soldat",
+        "frequency": 52.78
+      },
+      {
+        "form": "soldate",
+        "frequency": 0.18
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "amoureux",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 107.79,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "amoureux",
+        "frequency": 63.41
+      },
+      {
+        "form": "amoureuse",
+        "frequency": 41.65
+      },
+      {
+        "form": "amoureuses",
+        "frequency": 2.73
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "assurer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 107.71,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "assure",
+        "frequency": 43.77
+      },
+      {
+        "form": "assurer",
+        "frequency": 34.92
+      },
+      {
+        "form": "assuré",
+        "frequency": 8.4
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "humain",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 107.1,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "humain",
+        "frequency": 50.53
+      },
+      {
+        "form": "humaine",
+        "frequency": 32.37
+      },
+      {
+        "form": "humains",
+        "frequency": 18.15
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "traiter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 104.04,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "traiter",
+        "frequency": 25.23
+      },
+      {
+        "form": "traite",
+        "frequency": 24.08
+      },
+      {
+        "form": "traité",
+        "frequency": 15.51
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "blesser",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 103.74,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "blessé",
+        "frequency": 49.12
+      },
+      {
+        "form": "blesser",
+        "frequency": 19.93
+      },
+      {
+        "form": "blessée",
+        "frequency": 13.0
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "colonel",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 103.7,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "colonel",
+        "frequency": 102.86
+      },
+      {
+        "form": "colonels",
+        "frequency": 0.71
+      },
+      {
+        "form": "colonelle",
+        "frequency": 0.14
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "certain",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 103.57,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "certain",
+        "frequency": 65.2
+      },
+      {
+        "form": "certaine",
+        "frequency": 32.77
+      },
+      {
+        "form": "certaines",
+        "frequency": 2.7
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "secret",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 103.49,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "secret",
+        "frequency": 81.34
+      },
+      {
+        "form": "secrets",
+        "frequency": 22.15
+      },
+      {
+        "form": "secrète",
+        "frequency": 14.43
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "dégager",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 102.47,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dégage",
+        "frequency": 56.41
+      },
+      {
+        "form": "dégagez",
+        "frequency": 27.61
+      },
+      {
+        "form": "dégager",
+        "frequency": 8.22
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "dangereux",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "lemma_frequency": 101.84,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "dangereux",
+        "frequency": 83.48
+      },
+      {
+        "form": "dangereuse",
+        "frequency": 13.61
+      },
+      {
+        "form": "dangereuses",
+        "frequency": 4.75
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "filer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 100.97,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "file",
+        "frequency": 36.47
+      },
+      {
+        "form": "filer",
+        "frequency": 25.86
+      },
+      {
+        "form": "filé",
+        "frequency": 15.18
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "risquer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 100.4,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "risque",
+        "frequency": 42.32
+      },
+      {
+        "form": "risquer",
+        "frequency": 13.06
+      },
+      {
+        "form": "risqué",
+        "frequency": 10.77
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "mener",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 99.86,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "mène",
+        "frequency": 31.86
+      },
+      {
+        "form": "mener",
+        "frequency": 22.45
+      },
+      {
+        "form": "mené",
+        "frequency": 10.41
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "attaquer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 99.63,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "attaquer",
+        "frequency": 25.91
+      },
+      {
+        "form": "attaqué",
+        "frequency": 20.04
+      },
+      {
+        "form": "attaque",
+        "frequency": 16.63
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "prince",
+    "part_of_speech": "NOM",
+    "gender": "f",
+    "lemma_frequency": 98.9,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "princesse",
+        "frequency": 46.31
+      },
+      {
+        "form": "prince",
+        "frequency": 44.83
+      },
+      {
+        "form": "princes",
+        "frequency": 5.29
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "professeur",
+    "part_of_speech": "NOM",
+    "gender": null,
+    "lemma_frequency": 98.55,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "professeur",
+        "frequency": 90.02
+      },
+      {
+        "form": "professeurs",
+        "frequency": 8.35
+      },
+      {
+        "form": "professeure",
+        "frequency": 0.17
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "fumer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 98.49,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fumer",
+        "frequency": 35.91
+      },
+      {
+        "form": "fume",
+        "frequency": 29.46
+      },
+      {
+        "form": "fumes",
+        "frequency": 9.68
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "répéter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 98.31,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "répète",
+        "frequency": 45.14
+      },
+      {
+        "form": "répéter",
+        "frequency": 22.22
+      },
+      {
+        "form": "répétez",
+        "frequency": 7.95
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "signer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 98.19,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "signer",
+        "frequency": 29.25
+      },
+      {
+        "form": "signé",
+        "frequency": 24.19
+      },
+      {
+        "form": "signe",
+        "frequency": 15.28
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "ficher",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 97.84,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "fiche",
+        "frequency": 60.95
+      },
+      {
+        "form": "fichez",
+        "frequency": 12.73
+      },
+      {
+        "form": "fiches",
+        "frequency": 6.86
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "mériter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 97.06,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "mérite",
+        "frequency": 39.92
+      },
+      {
+        "form": "mérité",
+        "frequency": 11.34
+      },
+      {
+        "form": "mérites",
+        "frequency": 11.08
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "rejoindre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 96.98,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "rejoindre",
+        "frequency": 41.59
+      },
+      {
+        "form": "rejoins",
+        "frequency": 20.16
+      },
+      {
+        "form": "rejoint",
+        "frequency": 11.16
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "discuter",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 96.42,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "discuter",
+        "frequency": 50.43
+      },
+      {
+        "form": "discute",
+        "frequency": 14.75
+      },
+      {
+        "form": "discuté",
+        "frequency": 10.85
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "avancer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 95.62,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "avance",
+        "frequency": 30.92
+      },
+      {
+        "form": "avancer",
+        "frequency": 22.65
+      },
+      {
+        "form": "avancez",
+        "frequency": 19.95
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "reposer",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 95.2,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "reposer",
+        "frequency": 39.81
+      },
+      {
+        "form": "repose",
+        "frequency": 33.27
+      },
+      {
+        "form": "reposez",
+        "frequency": 7.81
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "échapper",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 95.07,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "échapper",
+        "frequency": 39.72
+      },
+      {
+        "form": "échappé",
+        "frequency": 19.84
+      },
+      {
+        "form": "échappe",
+        "frequency": 16.76
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "charger",
+    "part_of_speech": "VER",
+    "gender": null,
+    "lemma_frequency": 93.02,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "charge",
+        "frequency": 28.43
+      },
+      {
+        "form": "chargé",
+        "frequency": 23.18
+      },
+      {
+        "form": "charger",
+        "frequency": 15.58
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "chat",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 93.0,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "chat",
+        "frequency": 57.71
+      },
+      {
+        "form": "chatte",
+        "frequency": 16.54
+      },
+      {
+        "form": "chats",
+        "frequency": 16.0
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "ennemi",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 92.37,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "ennemi",
+        "frequency": 59.98
+      },
+      {
+        "form": "ennemis",
+        "frequency": 29.22
+      },
+      {
+        "form": "ennemie",
+        "frequency": 2.56
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "gamin",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "lemma_frequency": 92.22,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "gamin",
+        "frequency": 55.94
+      },
+      {
+        "form": "gamins",
+        "frequency": 22.15
+      },
+      {
+        "form": "gamine",
+        "frequency": 12.0
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "obliger",
+    "part_of_speech": "VER",
+    "gender": "m",
+    "lemma_frequency": 91.63,
+    "lemma_frequency_column": "freqlemfilms2",
+    "form_frequency_column": "freqfilms2",
+    "top_forms": [
+      {
+        "form": "obligé",
+        "frequency": 36.43
+      },
+      {
+        "form": "oblige",
+        "frequency": 14.74
+      },
+      {
+        "form": "obligée",
+        "frequency": 12.01
+      }
+    ],
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  }
+]

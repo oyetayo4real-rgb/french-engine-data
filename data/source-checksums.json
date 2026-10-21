@@ -1,0 +1,17 @@
+{
+  "algorithm": "SHA-256",
+  "files": {
+    "Lexique383.tsv": {
+      "sha256": "637ba37a767a66679c48371d673ece50cbf541b49a4e40e598963d4f3fbce52b",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "hunspell-french-dictionaries-v7.7.zip": {
+      "sha256": "44314d992f94b4658c31a86ef2351724a43067531b0af3643f91bf0220eee616",
+      "url": "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
+    },
+    "lefff-2.1.txt.gz": {
+      "sha256": "5691730cf8d42f97dba2bac2b1d8ada9fe5e438a1159cd63ba0ebb6845dda363",
+      "url": "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
+    }
+  }
+}
