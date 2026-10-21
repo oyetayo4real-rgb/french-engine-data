@@ -207,9 +207,15 @@ def find_col(fieldnames: list[str], *choices: str) -> str:
 
 
 def load_pilot() -> list[dict]:
-    dico = read_dicollecte_words()
-    lefff = read_lefff_forms()
+    # Decode/report each plain-text source separately before cross-checking the
+    # Hunspell archive, so logs identify all source encodings even if its SET
+    # declaration is absent and the import must stop safely.
     lexique_encoding, text = choose_text_encoding(LEXIQUE, gzip_text=False, source_name="Lexique 3.83")
+    missing_sentinels = [word for word in ACCENT_SENTINELS if word.casefold() not in text.casefold()]
+    if missing_sentinels:
+        raise ValueError(f"Lexique source {LEXIQUE.name} lost required accented words: {missing_sentinels}")
+    lefff = read_lefff_forms()
+    dico = read_dicollecte_words()
     reader = csv.DictReader(text.splitlines(), delimiter="\t")
     if not reader.fieldnames:
         raise ValueError("Lexique TSV has no header")
