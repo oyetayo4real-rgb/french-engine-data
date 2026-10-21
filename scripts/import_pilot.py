@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Build a Lexique-only 300-form pilot; other sources are optional cross-checks."""
+"""Build 300 distinct Lexique lemmas; Dicollecte and Lefff are optional cross-checks."""
 from __future__ import annotations
-import argparse, csv, gzip, hashlib, json, random, re, sys, zipfile, codecs
+import argparse, codecs, csv, gzip, hashlib, json, random, re, sys, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,46 +22,81 @@ LEXIQUE_README = "https://www.lexique.org/databases/Lexique383/README-Lexique.tx
 DICO_URL = "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
 LEFFF_URL = "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
 
-def sha256_bytes(raw: bytes) -> str:
-    return hashlib.sha256(raw).hexdigest()
-
 def sha256_file(path: Path) -> str:
-    return sha256_bytes(path.read_bytes())
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def source_bytes(path: Path, compressed: bool = False) -> bytes:
     raw = path.read_bytes()
     return gzip.decompress(raw) if compressed else raw
 
-def choose_encoding(raw: bytes, label: str) -> tuple[str, str]:
-    """Only choose encodings under the user's explicit evidence rule."""
-    non_ascii = any(byte >= 0x80 for byte in raw)
-    try:
-        text = raw.decode("utf-8-sig", errors="strict")
-        if non_ascii:
-            encoding = "UTF-8"
-        else:
-            missing = [s for s in SENTINELS if s.casefold() not in text.casefold()]
-            if missing:
-                raise ValueError(f"{label}: strict UTF-8 succeeds but file has no non-ASCII bytes; Latin-1 sentinel fallback missing {missing}")
-            encoding = "ISO-8859-1"
-            text = raw.decode("iso-8859-1", errors="strict")
-    except UnicodeDecodeError:
-        text = raw.decode("iso-8859-1", errors="strict")
-        missing = [s for s in SENTINELS if s.casefold() not in text.casefold()]
-        if missing:
-            raise ValueError(f"{label}: UTF-8 fails and Latin-1 lacks required sentinels {missing}; encoding unconfirmed")
-        encoding = "ISO-8859-1"
+def choose_lexique_encoding(raw: bytes) -> tuple[str, str]:
+    text = raw.decode("utf-8-sig", errors="strict")
+    if not any(byte >= 0x80 for byte in raw):
+        raise ValueError("Lexique source unexpectedly contains no non-ASCII bytes; encoding evidence is insufficient")
     if any(marker in text for marker in FORBIDDEN):
-        raise ValueError(f"{label}: forbidden U+FFFD or mojibake marker detected after {encoding} decode")
-    print(f"ENCODING: {label} | encoding={encoding} | evidence=non-ASCII strict UTF-8" if encoding == "UTF-8" else f"ENCODING: {label} | encoding={encoding} | evidence=UTF-8 failed or ASCII-only and all six sentinels present in Latin-1")
-    return encoding, text
+        raise ValueError("Lexique source contains forbidden U+FFFD or mojibake marker")
+    print("ENCODING: Lexique 3.83 | UTF-8 | strict UTF-8 succeeds and non-ASCII bytes are present")
+    return "UTF-8", text
 
-def read_lexique() -> tuple[list[dict], str]:
+def probe_lefff(raw: bytes) -> tuple[str | None, str, dict]:
+    """Probe decompressed Lefff bytes with strict decoders and byte-level œ evidence."""
+    codecs_to_test = ("utf-8", "iso-8859-1", "iso-8859-15", "cp1252")
+    probe = {"source":"Lefff 2.1 decompressed payload", "tests":{}, "byte_evidence":{}}
+    for codec in codecs_to_test:
+        try:
+            text = raw.decode(codec, errors="strict")
+            probe["tests"][codec] = {
+                "strict_decode_succeeds": True,
+                "coeur_intact": "cœur" in text.casefold(),
+                "oeuf_intact": "œuf" in text.casefold(),
+                "both_words_intact": "cœur" in text.casefold() and "œuf" in text.casefold()
+            }
+        except UnicodeDecodeError as exc:
+            probe["tests"][codec] = {"strict_decode_succeeds":False, "error":str(exc),
+                                     "coeur_intact":False, "oeuf_intact":False, "both_words_intact":False}
+    patterns = {
+        "UTF-8 cœur": bytes.fromhex("63 c5 93 75 72"),
+        "UTF-8 œuf": bytes.fromhex("c5 93 75 66"),
+        "ISO-8859-15 cœur": bytes.fromhex("63 bd 75 72"),
+        "ISO-8859-15 œuf": bytes.fromhex("bd 75 66"),
+        "cp1252 cœur": bytes.fromhex("63 9c 75 72"),
+        "cp1252 œuf": bytes.fromhex("9c 75 66")
+    }
+    for label, pattern in patterns.items():
+        probe["byte_evidence"][label] = raw.lower().count(pattern)
+    # Decisive evidence requires both spellings in the same encoding and the
+    # corresponding byte representation in the decompressed payload.
+    candidates = []
+    if probe["tests"]["utf-8"].get("both_words_intact"):
+        candidates.append("utf-8")
+    if (probe["tests"]["iso-8859-15"].get("both_words_intact")
+        and probe["byte_evidence"]["ISO-8859-15 cœur"] > 0
+        and probe["byte_evidence"]["ISO-8859-15 œuf"] > 0):
+        candidates.append("iso-8859-15")
+    if (probe["tests"]["cp1252"].get("both_words_intact")
+        and probe["byte_evidence"]["cp1252 cœur"] > 0
+        and probe["byte_evidence"]["cp1252 œuf"] > 0):
+        candidates.append("cp1252")
+    # ISO-8859-1 can decode every byte but cannot represent œ; absence of œ
+    # in that decoded text is expected and is not evidence against the file.
+    probe["tests"]["iso-8859-1"]["note"] = "ISO-8859-1 has no œ character; a missing œ in cœur/œuf is expected."
+    if len(candidates) == 1:
+        chosen = candidates[0]
+        text = raw.decode(chosen, errors="strict")
+        if any(marker in text for marker in FORBIDDEN):
+            return None, "", {**probe, "decision":"unavailable", "reason":f"candidate {chosen} decoded but output contains forbidden marker"}
+        probe["decision"] = chosen
+        probe["reason"] = "unique candidate preserves both cœur and œuf and matches its characteristic byte sequences"
+        print(f"ENCODING: Lefff 2.1 | {chosen} | {probe['reason']}")
+        return chosen, text, probe
+    probe["decision"] = "unavailable"
+    probe["reason"] = f"encoding not decisive; candidates={candidates!r}"
+    print(f"ENCODING: Lefff 2.1 | unavailable | {probe['reason']}")
+    return None, "", probe
+
+def read_lexique() -> tuple[list[dict], str, dict]:
     raw = source_bytes(LEXIQUE)
-    encoding, text = choose_encoding(raw, "Lexique 3.83")
-    missing = [s for s in SENTINELS if s.casefold() not in text.casefold()]
-    if missing:
-        raise ValueError(f"Lexique decoded text is missing accent sentinels {missing}")
+    encoding, text = choose_lexique_encoding(raw)
     reader = csv.DictReader(text.splitlines(), delimiter="\t")
     if not reader.fieldnames:
         raise ValueError("Lexique TSV has no header")
@@ -76,10 +111,11 @@ def read_lexique() -> tuple[list[dict], str]:
     lemma_col = col("lemme", "lemma")
     pos_col = col("cgram", "catgram", "pos")
     gender_col = col("genre", "gender")
-    number_col = col("nombre", "number")
-    freq_col = col("freqfilms2")
-    print(f"RANKING: Lexique 3.83 column {freq_col!r} (frequency in film subtitles, per Lexique README {LEXIQUE_README})")
-    by_form = {}
+    form_freq_col = col("freqfilms2")
+    lemma_freq_col = col("freqlemfilms2")
+    print(f"RANKING: lemma-frequency column {lemma_freq_col!r}; forms ranked by {form_freq_col!r}. Lexique README: {LEXIQUE_README}")
+    by_lemma: dict[str, list[dict]] = {}
+    sentinel_seen = {word: word.casefold() in text.casefold() for word in SENTINELS}
     for row in reader:
         form = (row.get(form_col) or "").strip()
         lemma = (row.get(lemma_col) or "").strip()
@@ -88,25 +124,54 @@ def read_lexique() -> tuple[list[dict], str]:
         if len(form) > 48 or any(ch.isdigit() for ch in form) or not all(ch.isalpha() or ch in "-'’ " for ch in form):
             continue
         try:
-            freq = float((row.get(freq_col) or "0").replace(",", "."))
+            form_freq = float((row.get(form_freq_col) or "0").replace(",", "."))
+            lemma_freq = float((row.get(lemma_freq_col) or "0").replace(",", "."))
         except ValueError:
             continue
-        if freq <= 0:
+        if form_freq <= 0 or lemma_freq <= 0:
             continue
-        item = {"lemma": lemma, "form": form, "part_of_speech": (row.get(pos_col) or "").strip(),
-                "gender": (row.get(gender_col) or "").strip() or None,
-                "number": (row.get(number_col) or "").strip() or None,
-                "frequency": freq, "frequency_column": freq_col,
-                "frequency_source": "Lexique 3.83 freqfilms2 (frequency of the form in film subtitles)",
-                "source": [{"name":"Lexique 3.83","url":LEXIQUE_URL}],
-                "licence": LICENCE_LEXIQUE, "needs_review": True}
-        key = form.casefold()
-        if key not in by_form or freq > by_form[key]["frequency"]:
-            by_form[key] = item
-    rows = sorted(by_form.values(), key=lambda x: (-x["frequency"], x["form"].casefold(), x["lemma"].casefold()))[:300]
+        item = {"lemma":lemma, "form":form, "part_of_speech":(row.get(pos_col) or "").strip(),
+                "gender":(row.get(gender_col) or "").strip() or None,
+                "form_frequency":form_freq, "lemma_frequency":lemma_freq,
+                "frequency_column":lemma_freq_col, "form_frequency_column":form_freq_col}
+        by_lemma.setdefault(lemma.casefold(), []).append(item)
+    grouped = []
+    for key, items in by_lemma.items():
+        # Representative POS/gender: the most frequent form; deterministic ties.
+        representative = sorted(items, key=lambda x:(-x["form_frequency"], x["part_of_speech"].casefold(),
+                                                     (x["gender"] or "").casefold(), x["form"].casefold(), x["form"]))[0]
+        lemma_freq = max(item["lemma_frequency"] for item in items)
+        unique_forms = {}
+        for item in items:
+            fkey = item["form"].casefold()
+            if fkey not in unique_forms or item["form_frequency"] > unique_forms[fkey]["form_frequency"]:
+                unique_forms[fkey] = item
+        top_forms = sorted(unique_forms.values(), key=lambda x:(-x["form_frequency"], x["form"].casefold(), x["form"]))[:3]
+        if len(top_forms) < 3:
+            continue
+        grouped.append({
+            "lemma":representative["lemma"], "part_of_speech":representative["part_of_speech"],
+            "gender":representative["gender"], "lemma_frequency":lemma_freq,
+            "lemma_frequency_column":lemma_freq_col,
+            "form_frequency_column":form_freq_col,
+            "top_forms":[{"form":x["form"], "frequency":x["form_frequency"]} for x in top_forms],
+            "source":{"name":"Lexique 3.83","url":LEXIQUE_URL},
+            "licence":LICENCE_LEXIQUE, "needs_review":True
+        })
+    # Tie-break: descending lemma frequency; descending frequency of its most
+    # frequent form; casefolded lemma ascending; original lemma ascending.
+    grouped.sort(key=lambda x:(-x["lemma_frequency"], -x["top_forms"][0]["frequency"],
+                               x["lemma"].casefold(), x["lemma"]))
+    rows = grouped[:300]
     if len(rows) != 300:
-        raise ValueError(f"Expected 300 Lexique-only entries, found {len(rows)}")
-    return rows, encoding
+        raise ValueError(f"Expected 300 distinct lemmas with at least 3 forms, found {len(rows)}")
+    if len({row["lemma"].casefold() for row in rows}) != 300:
+        raise ValueError("Pilot does not contain 300 distinct lemmas")
+    meta = {"source":"Lexique 3.83", "licence":LICENCE_LEXIQUE, "encoding":encoding,
+            "lemma_frequency_column":lemma_freq_col, "form_frequency_column":form_freq_col,
+            "sentinel_presence_in_source":sentinel_seen,
+            "sentinel_note":"Lexique is not forced to contain rare sentinel spellings; absent sentinels are reported, not fabricated."}
+    return rows, encoding, meta
 
 def dicollecte_forms() -> tuple[set[str] | None, dict]:
     detail = {"status":"unavailable", "source":"Dicollecte/Grammalecte Hunspell 7.7", "url":DICO_URL, "licence":LICENCE_DICO, "matched_count":None, "mismatch_count":None, "mismatches":[], "note":""}
@@ -115,34 +180,30 @@ def dicollecte_forms() -> tuple[set[str] | None, dict]:
             names = zf.namelist()
             pairs = []
             for dic in names:
-                if not dic.lower().endswith(".dic"):
-                    continue
+                if not dic.lower().endswith(".dic"): continue
                 stem = dic.rsplit(".",1)[0]
                 aff = next((n for n in names if n.rsplit(".",1)[0] == stem and n.lower().endswith(".aff")), None)
-                if not aff:
-                    continue
+                if not aff: continue
                 data = zf.read(aff)
                 if data.startswith(bytes.fromhex("efbbbf")): data = data[3:]
-                lines = data.decode("iso-8859-1", errors="strict").replace("\r\n","\n").replace("\r","\n").splitlines()
-                set_match = next((re.match(r"^\s*SET\s+([^\s#]+)", line, re.I) for line in lines if re.match(r"^\s*SET\s+([^\s#]+)", line, re.I)), None)
-                if set_match:
-                    pairs.append((dic, aff, set_match.group(1)))
+                aff_text = data.decode("utf-8-sig", errors="strict")
+                lines = aff_text.replace("\r\n","\n").replace("\r","\n").splitlines()
+                match = next((re.match(r"^\s*SET\s+([^\s#]+)", line, re.I) for line in lines if re.match(r"^\s*SET\s+([^\s#]+)", line, re.I)), None)
+                if match: pairs.append((dic, aff, match.group(1)))
             if not pairs:
-                detail["note"] = "unavailable: no paired .aff file declares SET; behavior without SET was not independently confirmed, so encoding was not guessed"
+                detail["note"] = "unavailable: no paired .aff file declares SET; behavior without SET was not independently confirmed"
                 return None, detail
-            chosen = next((p for p in pairs if "toutesvariantes" in p[0].lower()), pairs[0])
-            dic, aff, declared = chosen
+            dic, aff, declared = next((p for p in pairs if "toutesvariantes" in p[0].lower()), pairs[0])
             try: codec = codecs.lookup(declared).name
             except LookupError:
-                detail["note"] = f"unavailable: .aff SET value {declared!r} is not a known codec"
+                detail["note"] = f"unavailable: unknown codec in .aff SET {declared!r}"
                 return None, detail
             raw = zf.read(dic).decode(codec, errors="strict")
             if any(marker in raw for marker in FORBIDDEN):
-                detail["note"] = f"unavailable: forbidden marker found after declared SET {declared}"
+                detail["note"] = f"unavailable: forbidden marker after declared SET {declared}"
                 return None, detail
-            lines = raw.splitlines()
             words = set()
-            for line in lines[1:]:
+            for line in raw.splitlines()[1:]:
                 token = line.strip().split("/",1)[0]
                 if token and not token.isdigit(): words.add(token.casefold())
             detail.update(status="available", encoding=f".aff SET {declared} ({codec})", dictionary=dic, aff=aff)
@@ -151,77 +212,77 @@ def dicollecte_forms() -> tuple[set[str] | None, dict]:
         detail["note"] = f"unavailable: {type(exc).__name__}: {exc}"
         return None, detail
 
-def lefff_forms() -> tuple[set[str] | None, dict]:
+def lefff_forms(probe_out: dict) -> tuple[set[str] | None, dict]:
     detail = {"status":"unavailable", "source":"Lefff 2.1", "url":LEFFF_URL, "licence":LICENCE_LEFFF, "matched_count":None, "mismatch_count":None, "mismatches":[], "note":""}
     try:
         raw = source_bytes(LEFFF, compressed=True)
-        encoding, text = choose_encoding(raw, "Lefff 2.1")
+        encoding, text, probe = probe_lefff(raw)
+        probe_out.update(probe)
+        if encoding is None:
+            detail["note"] = probe["reason"]
+            return None, detail
         forms = set()
         for line in text.splitlines():
             line = line.strip()
             if not line or line.startswith("#"): continue
-            surface = line.split("\t",1)[0].strip() if "\t" in line else (line.split(",",1)[0].strip() if "," in line else line.split()[0].strip())
+            fields = line.split("\t")
+            surface = fields[0].strip() if fields else ""
             if surface: forms.add(surface.casefold())
         if len(forms) < 1000:
-            detail["note"] = f"unavailable: unexpected form count {len(forms)}"
+            detail["note"] = f"unavailable: unexpected surface-form count {len(forms)}"
             return None, detail
-        detail.update(status="available", encoding=encoding)
+        detail.update(status="available", encoding=encoding, parsed_forms=len(forms))
         return forms, detail
     except (OSError, UnicodeError, ValueError) as exc:
         detail["note"] = f"unavailable: {type(exc).__name__}: {exc}"
         return None, detail
 
 def validate_output(rows: list[dict], serialized: str) -> None:
-    if len(rows) != 300: raise ValueError(f"Pilot must contain exactly 300 rows; got {len(rows)}")
-    for marker in FORBIDDEN:
-        if marker in serialized: raise ValueError(f"Output contains forbidden marker {marker!r}")
-    if rows != sorted(rows, key=lambda x: (-x["frequency"], x["form"].casefold(), x["lemma"].casefold())):
-        raise ValueError("Pilot is not sorted by descending freqfilms2")
-    forms = [r["form"].casefold() for r in rows]
-    if len(forms) != len(set(forms)): raise ValueError("Duplicate pilot forms")
-    # The seven sentinel spellings must be present and correctly encoded in the
-    # source-derived output validation evidence; they need not be forced into a
-    # frequency-ranked top-300 list if they are not actually top-300 forms.
-    sentinel_source = source_bytes(LEXIQUE).decode("utf-8-sig", errors="strict")
-    for word in SENTINELS:
-        if word.casefold() not in sentinel_source.casefold():
-            raise ValueError(f"Lexique source/output validation sentinel missing or corrupted: {word}")
+    if len(rows) != 300: raise ValueError(f"Pilot must contain exactly 300 lemmas; got {len(rows)}")
+    if len({r["lemma"].casefold() for r in rows}) != 300: raise ValueError("Pilot has duplicate lemmas")
+    if any(marker in serialized for marker in FORBIDDEN): raise ValueError("Output contains forbidden U+FFFD or mojibake marker")
+    expected = sorted(rows, key=lambda x:(-x["lemma_frequency"], -x["top_forms"][0]["frequency"], x["lemma"].casefold(), x["lemma"]))
+    if rows != expected: raise ValueError("Pilot ordering/tie-break validation failed")
     for row in rows:
-        serialized_row = json.dumps(row, ensure_ascii=False)
-        if any(marker in serialized_row for marker in FORBIDDEN):
-            raise ValueError(f"Forbidden marker in output form {row.get('form')!r}")
+        if len(row["top_forms"]) != 3: raise ValueError(f"Lemma {row['lemma']!r} does not have exactly three forms")
+        if any(marker in json.dumps(row, ensure_ascii=False) for marker in FORBIDDEN):
+            raise ValueError(f"Forbidden marker in lemma {row['lemma']!r}")
+        forms = row["top_forms"]
+        if forms != sorted(forms, key=lambda x:(-x["frequency"], x["form"].casefold(), x["form"])):
+            raise ValueError(f"Top forms are not correctly ranked for lemma {row['lemma']!r}")
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--print-random", type=int, default=40)
     args = parser.parse_args()
     DATA.mkdir(parents=True, exist_ok=True)
-    rows, lexique_encoding = read_lexique()
-    # Cross-check sources are deliberately non-blocking. Unknown encoding means
-    # unavailable, never guessed, and never filters the Lexique-only pilot.
+    rows, lexique_encoding, lexique_meta = read_lexique()
     dico, dico_detail = dicollecte_forms()
-    lefff, lefff_detail = lefff_forms()
-    forms = [row["form"].casefold() for row in rows]
+    probe = {}
+    lefff, lefff_detail = lefff_forms(probe)
+    # Cross-check is at lemma level by comparing each lemma's three surface forms.
+    pilot_forms = [form["form"].casefold() for row in rows for form in row["top_forms"]]
     for words, detail in ((dico, dico_detail), (lefff, lefff_detail)):
-        if words is None:
-            continue
-        detail["matched_count"] = sum(form in words for form in forms)
-        detail["mismatches"] = [rows[i]["form"] for i, form in enumerate(forms) if form not in words]
-        detail["mismatch_count"] = len(detail["mismatches"])
-        detail["note"] = "mismatches are pilot forms absent from this source's normalized form set"
-    CROSSCHECKS.parent.mkdir(parents=True, exist_ok=True)
+        if words is None: continue
+        missing = sorted({form for form in pilot_forms if form not in words}, key=lambda x:(x.casefold(), x))
+        detail["matched_count"] = len(set(pilot_forms) & words)
+        detail["mismatch_count"] = len(missing)
+        detail["mismatches"] = missing
+        detail["note"] = "mismatches are distinct pilot surface forms absent from the cross-check source"
     cross = {"pilot_source":"Lexique 3.83", "pilot_licence":LICENCE_LEXIQUE,
              "sources":{"Dicollecte":dico_detail, "Lefff":lefff_detail},
-             "summary":{"pilot_entries":300, "Dicollecte_matched":dico_detail["matched_count"], "Dicollecte_mismatches":dico_detail["mismatch_count"],
-                        "Lefff_matched":lefff_detail["matched_count"], "Lefff_mismatches":lefff_detail["mismatch_count"]}}
+             "summary":{"pilot_lemmas":300, "pilot_distinct_forms":len(set(pilot_forms)),
+                        "Dicollecte_matched_forms":dico_detail["matched_count"], "Dicollecte_mismatches":dico_detail["mismatch_count"],
+                        "Lefff_matched_forms":lefff_detail["matched_count"], "Lefff_mismatches":lefff_detail["mismatch_count"]}}
     cross_text = json.dumps(cross, ensure_ascii=False, indent=2) + "\n"
     if any(marker in cross_text for marker in FORBIDDEN): raise ValueError("Cross-check output contains forbidden U+FFFD or mojibake marker")
     CROSSCHECKS.write_text(cross_text, encoding="utf-8", errors="strict")
     output_text = json.dumps(rows, ensure_ascii=False, indent=2) + "\n"
     validate_output(rows, output_text)
     OUTPUT.write_text(output_text, encoding="utf-8", errors="strict")
-    reread = json.loads(OUTPUT.read_text(encoding="utf-8", errors="strict"))
-    validate_output(reread, OUTPUT.read_text(encoding="utf-8", errors="strict"))
+    reread_text = OUTPUT.read_text(encoding="utf-8", errors="strict")
+    reread = json.loads(reread_text)
+    validate_output(reread, reread_text)
     manifest = {"algorithm":"SHA-256","files":{
         "Lexique383.tsv":{"sha256":sha256_file(LEXIQUE),"url":LEXIQUE_URL},
         "hunspell-french-dictionaries-v7.7.zip":{"sha256":sha256_file(DICO_ZIP),"url":DICO_URL},
@@ -231,14 +292,19 @@ def main() -> int:
         if prior != manifest: raise ValueError("Source checksum mismatch; upstream bytes changed. Review manifest before updating.")
     else:
         MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n", encoding="utf-8", errors="strict")
-    print(f"VALID: 300 Lexique-only entries; ranked by freqfilms2; Lexique encoding={lexique_encoding}; output Unicode scan passed.")
-    print(f"CROSS-CHECKS: Dicollecte={dico_detail['status']} matched={dico_detail['matched_count']} mismatches={dico_detail['mismatch_count']} note={dico_detail['note']}")
-    print(f"CROSS-CHECKS: Lefff={lefff_detail['status']} matched={lefff_detail['matched_count']} mismatches={lefff_detail['mismatch_count']} note={lefff_detail['note']}")
+    print(f"VALID: 300 distinct Lexique lemmas; ranked by {lexique_meta['lemma_frequency_column']}; tie-break: descending top-form freqfilms2, lemma casefold ascending, original lemma ascending.")
+    print(f"CROSS-CHECKS: Dicollecte status={dico_detail['status']} matched_forms={dico_detail['matched_count']} mismatches={dico_detail['mismatch_count']} note={dico_detail['note']}")
+    print(f"CROSS-CHECKS: Lefff status={lefff_detail['status']} matched_forms={lefff_detail['matched_count']} mismatches={lefff_detail['mismatch_count']} note={lefff_detail['note']}")
+    print("TOP 20 RANKED LEMMAS")
+    for i, row in enumerate(reread[:20], 1):
+        forms = ", ".join(f"{x['form']}({x['frequency']})" for x in row["top_forms"])
+        print(f"{i}. {row['lemma']} | lemma_frequency={row['lemma_frequency']} | column={row['lemma_frequency_column']} | POS={row['part_of_speech']} | gender={row['gender']} | top_forms={forms}")
     if args.print_random:
         sample = random.SystemRandom().sample(reread, min(args.print_random, len(reread)))
-        print(f"RANDOM REVIEW SAMPLE ({len(sample)} entries)")
+        print(f"RANDOM REVIEW SAMPLE ({len(sample)} lemmas)")
         for item in sample:
-            print(f"{item['form']} | lemma={item['lemma']} | pos={item['part_of_speech']} | frequency_column=freqfilms2 | frequency={item['frequency']} | source=Lexique 3.83 | licence={LICENCE_LEXIQUE} | needs_review=true")
+            forms = ", ".join(f"{x['form']}({x['frequency']})" for x in item["top_forms"])
+            print(f"{item['lemma']} | lemma_frequency={item['lemma_frequency']} | POS={item['part_of_speech']} | gender={item['gender']} | top_forms={forms} | source=Lexique 3.83 | licence={LICENCE_LEXIQUE}")
     return 0
 
 if __name__ == "__main__":
