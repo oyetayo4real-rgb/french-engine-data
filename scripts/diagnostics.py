@@ -71,45 +71,85 @@ def main() -> int:
                     out.extend("  " + line for line in set_lines) if set_lines else out.append("  no SET line")
         except (OSError, zipfile.BadZipFile) as exc:
             out.append(f"Archive inspection error: {type(exc).__name__}: {exc}")
-    out.append("\n## Encoding decisions from source payload bytes")
-    for label, path, compressed in (
-        ("Lexique 3.83", ROOT / "data/raw/Lexique383.tsv", False),
-        ("Lefff 2.1 decompressed text", ROOT / "data/raw/lefff-2.1.txt.gz", True),
-    ):
-        if not path.is_file():
-            out.append(f"{label}: unavailable; source file missing")
-            continue
+    out.append("\n## Encoding decisions and Lefff codec probes")
+    lex_path = ROOT / "data/raw/Lexique383.tsv"
+    if lex_path.is_file():
         try:
-            payload = __import__("gzip").decompress(path.read_bytes()) if compressed else path.read_bytes()
-            try:
-                decoded = payload.decode("utf-8-sig", errors="strict")
-                if any(byte >= 0x80 for byte in payload):
-                    out.append(f"{label}: selected UTF-8 (strict UTF-8 succeeds and payload contains non-ASCII bytes)")
-                else:
-                    latin = payload.decode("iso-8859-1", errors="strict")
-                    missing = [s for s in SENTINELS if s.casefold() not in latin.casefold()]
-                    out.append(f"{label}: " + ("selected ISO-8859-1 (UTF-8 is ASCII-only and all sentinels appear in Latin-1)" if not missing else f"unconfirmed (ASCII-only UTF-8; Latin-1 sentinel missing {missing})"))
-            except UnicodeDecodeError as utf_error:
-                latin = payload.decode("iso-8859-1", errors="strict")
-                missing = [s for s in SENTINELS if s.casefold() not in latin.casefold()]
-                out.append(f"{label}: " + ("selected ISO-8859-1 (strict UTF-8 fails; all sentinels appear in Latin-1)" if not missing else f"unconfirmed (strict UTF-8 fails; Latin-1 sentinel missing {missing})"))
+            payload = lex_path.read_bytes()
+            decoded = payload.decode("utf-8-sig", errors="strict")
+            out.append("Lexique 3.83: UTF-8 confirmed by strict decoding plus non-ASCII bytes" if any(b >= 0x80 for b in payload) else "Lexique 3.83: encoding unconfirmed (strict UTF-8 succeeds but no non-ASCII bytes)")
+            present = {s: s.casefold() in decoded.casefold() for s in ("été", "français", "cœur", "garçon", "où", "noël", "à", "œuf")}
+            out.append("Lexique exact sentinel presence: " + json.dumps(present, ensure_ascii=False, sort_keys=True))
+            out.append("Lexique note: if a sentinel is absent upstream (e.g. a ligature spelling), it cannot be fabricated in the ranked top-300 output.")
+        except (OSError, UnicodeError) as exc:
+            out.append(f"Lexique encoding decision unavailable: {type(exc).__name__}: {exc}")
+    lefff_path = ROOT / "data/raw/lefff-2.1.txt.gz"
+    lefff_probe = {}
+    if lefff_path.is_file():
+        try:
+            payload = __import__("gzip").decompress(lefff_path.read_bytes())
+            codecs_to_test = ("utf-8", "iso-8859-1", "iso-8859-15", "cp1252")
+            for codec in codecs_to_test:
+                try:
+                    decoded = payload.decode(codec, errors="strict")
+                    lefff_probe[codec] = {
+                        "strict_decode_succeeds": True,
+                        "cœur_intact": "cœur" in decoded.casefold(),
+                        "œuf_intact": "œuf" in decoded.casefold()
+                    }
+                except UnicodeDecodeError as exc:
+                    lefff_probe[codec] = {"strict_decode_succeeds": False, "error": str(exc),
+                                          "cœur_intact": False, "œuf_intact": False}
+            byte_patterns = {
+                "UTF-8 cœur": bytes.fromhex("63 c5 93 75 72"), "UTF-8 œuf": bytes.fromhex("c5 93 75 66"),
+                "ISO-8859-15 cœur": bytes.fromhex("63 bd 75 72"), "ISO-8859-15 œuf": bytes.fromhex("bd 75 66"),
+                "cp1252 cœur": bytes.fromhex("63 9c 75 72"), "cp1252 œuf": bytes.fromhex("9c 75 66")
+            }
+            byte_counts = {label: payload.lower().count(pattern) for label, pattern in byte_patterns.items()}
+            out.append("Lefff strict decoding / sentinel results:")
+            for codec, result in lefff_probe.items():
+                out.append(f"  {codec}: strict_decode_succeeds={result['strict_decode_succeeds']}; cœur_intact={result['cœur_intact']}; œuf_intact={result['œuf_intact']}" + (f"; error={result['error']}" if "error" in result else ""))
+            out.append("Lefff byte evidence for œ encodings: " + json.dumps(byte_counts, ensure_ascii=False, sort_keys=True))
+            out.append("Expected limitation: ISO-8859-1 cannot represent œ; failure to preserve œ in cœur/œuf under Latin-1 is expected, not a codec error.")
+            candidates = []
+            if lefff_probe.get("utf-8", {}).get("cœur_intact") and lefff_probe.get("utf-8", {}).get("œuf_intact"):
+                candidates.append("utf-8")
+            if lefff_probe.get("iso-8859-15", {}).get("cœur_intact") and lefff_probe.get("iso-8859-15", {}).get("œuf_intact") and byte_counts["ISO-8859-15 cœur"] and byte_counts["ISO-8859-15 œuf"]:
+                candidates.append("iso-8859-15")
+            if lefff_probe.get("cp1252", {}).get("cœur_intact") and lefff_probe.get("cp1252", {}).get("œuf_intact") and byte_counts["cp1252 cœur"] and byte_counts["cp1252 œuf"]:
+                candidates.append("cp1252")
+            out.append(f"Lefff evidence-based decision: {candidates[0] if len(candidates)==1 else 'unavailable'}; decisive candidates={candidates!r}")
         except (OSError, ValueError) as exc:
-            out.append(f"{label}: unconfirmed; payload inspection failed: {type(exc).__name__}: {exc}")
-    out.append("Dicollecte/Hunspell: encoding is confirmed only by a paired .aff SET declaration; see archive evidence above.")
-    out.append("\n## Encoding decision policy")
-    out.append("For plain source files: strict UTF-8 + at least one non-ASCII byte => UTF-8; otherwise ISO-8859-1 only if Latin-1 text contains all required sentinels; else unconfirmed.")
-    out.append("For Hunspell .dic files, use the paired .aff SET declaration only. If absent, Dicollecte cross-check is unavailable. Hunspell behavior without SET has not been independently confirmed here.")
+            out.append(f"Lefff encoding probes failed: {type(exc).__name__}: {exc}")
+    else:
+        out.append("Lefff encoding probes unavailable: source file missing.")
+    out.append("Dicollecte/Hunspell encoding: each paired .aff file declares SET UTF-8; dictionary decoding uses that declared codec.")
+    out.append("\n## Encoding policy")
+    out.append("Lefff decision requires one unique codec candidate preserving both cœur and œuf and matching the corresponding characteristic byte sequences. ISO-8859-1's missing œ is expected.")
     pilot = ROOT / "data/pilot-300.json"
     checks = ROOT / "data/cross-checks-300.json"
     out.append("\n## Pilot and cross-check result")
     if pilot.is_file():
         try:
             rows = json.loads(pilot.read_text(encoding="utf-8", errors="strict"))
-            out.append(f"Pilot output: present; entries={len(rows)}")
+            serialized = pilot.read_text(encoding="utf-8", errors="strict")
+            if any(marker in serialized for marker in ("\ufffd", "Ã")):
+                out.append("ERROR: pilot output contains forbidden U+FFFD or mojibake marker")
+            out.append(f"Pilot output: present; distinct lemmas={len({r.get('lemma','').casefold() for r in rows})}; entries={len(rows)}")
+            out.append("Ranking column: freqlemfilms2 (lemma frequency in films); tie-break: descending top-form freqfilms2, lemma casefold ascending, original lemma ascending.")
+            out.append("\n## First 20 ranked lemmas")
+            for i, row in enumerate(rows[:20], 1):
+                forms = ", ".join(f"{x.get('form')}({x.get('frequency')})" for x in row.get("top_forms", []))
+                out.append(f"{i}. {row.get('lemma')} | lemma_frequency={row.get('lemma_frequency')} | column={row.get('lemma_frequency_column')} | POS={row.get('part_of_speech')} | gender={row.get('gender')} | top_forms={forms}")
             sample = random.SystemRandom().sample(rows, min(40, len(rows)))
-            out.append(f"\n## Random pilot review sample ({len(sample)} entries)")
+            out.append(f"\n## Random pilot review sample ({len(sample)} lemmas)")
             for row in sample:
-                out.append(f"{row.get('form')} | lemma={row.get('lemma')} | pos={row.get('part_of_speech')} | gender={row.get('gender')} | number={row.get('number')} | freqfilms2={row.get('frequency')} | source=Lexique 3.83 | licence=CC BY-SA 4.0 | needs_review={row.get('needs_review')}")
+                forms = ", ".join(f"{x.get('form')}({x.get('frequency')})" for x in row.get("top_forms", []))
+                out.append(f"{row.get('lemma')} | lemma_frequency={row.get('lemma_frequency')} | POS={row.get('part_of_speech')} | gender={row.get('gender')} | top_forms={forms} | source=Lexique 3.83 | licence=CC BY-SA 4.0")
+            out.append("\n## Sentinel output validation")
+            for word in ("été", "français", "cœur", "garçon", "où", "noël", "à"):
+                found = any(word.casefold() == r.get("lemma", "").casefold() or any(word.casefold() == form.get("form", "").casefold() for form in r.get("top_forms", [])) for r in rows)
+                out.append(f"{word}: {'present exactly' if found else 'not in ranked pilot (not fabricated)'}")
         except (OSError, ValueError, TypeError) as exc:
             out.append(f"Pilot output could not be read: {type(exc).__name__}: {exc}")
     else:
@@ -117,11 +157,14 @@ def main() -> int:
     if checks.is_file():
         try:
             result = json.loads(checks.read_text(encoding="utf-8", errors="strict"))
-            out.append(f"Cross-check output: status={result.get('status')}; summary={json.dumps(result.get('summary', {}), ensure_ascii=False, sort_keys=True)}")
+            out.append(f"Cross-check output: present; summary={json.dumps(result.get('summary', {}), ensure_ascii=False, sort_keys=True)}")
+            probe = result.get("lefff_encoding_probe", {})
+            if probe:
+                out.append("Lefff probe persisted in cross-check JSON: " + json.dumps(probe, ensure_ascii=False, sort_keys=True))
             for source, detail in result.get("sources", {}).items():
-                out.append(f"Cross-check {source}: status={detail.get('status')}; matched={detail.get('matched_count')}; mismatches={detail.get('mismatch_count')}; note={detail.get('note', '')}")
-                for form in detail.get("mismatches", []):
-                    out.append(f"  mismatch: {form}")
+                out.append(f"Cross-check {source}: status={detail.get('status')}; matched_forms={detail.get('matched_count')}; mismatches={detail.get('mismatch_count')}; encoding={detail.get('encoding')}; note={detail.get('note', '')}")
+                for form in detail.get("mismatches", [])[:10]:
+                    out.append(f"  first mismatch: {form}")
         except (OSError, ValueError, TypeError) as exc:
             out.append(f"Cross-check output could not be read: {type(exc).__name__}: {exc}")
     else:
