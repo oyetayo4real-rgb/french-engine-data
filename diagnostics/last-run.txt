@@ -44,6 +44,7 @@ FILE fr-reforme1990.dic | size=1210222
 FILE fr-toutesvariantes.aff | size=224335
 FILE fr-toutesvariantes.dic | size=1270292
 FILE README_dict_fr.txt | size=2758
+AFF display decoding: strict UTF-8
 
 AFF: fr-classique.aff | size=199870
 First 5 lines (BOM stripped; CRLF normalized):
@@ -51,9 +52,10 @@ First 5 lines (BOM stripped; CRLF normalized):
   # License, v. 2.0. If a copy of the MPL was not distributed with this
   # file, You can obtain one at http://mozilla.org/MPL/2.0/.
   
-  # AFFIXES DU DICTIONNAIRE ORTHOGRAPHIQUE FRANÃAIS âCLASSIQUEâ v7.7
+  # AFFIXES DU DICTIONNAIRE ORTHOGRAPHIQUE FRANÇAIS “CLASSIQUE” v7.7
 SET lines:
   SET UTF-8
+AFF display decoding: strict UTF-8
 
 AFF: fr-reforme1990.aff | size=207912
 First 5 lines (BOM stripped; CRLF normalized):
@@ -61,9 +63,10 @@ First 5 lines (BOM stripped; CRLF normalized):
   # License, v. 2.0. If a copy of the MPL was not distributed with this
   # file, You can obtain one at http://mozilla.org/MPL/2.0/.
   
-  # AFFIXES DU DICTIONNAIRE ORTHOGRAPHIQUE FRANÃAIS âRÃFORME 1990â v7.7
+  # AFFIXES DU DICTIONNAIRE ORTHOGRAPHIQUE FRANÇAIS “RÉFORME 1990” v7.7
 SET lines:
   SET UTF-8
+AFF display decoding: strict UTF-8
 
 AFF: fr-toutesvariantes.aff | size=224335
 First 5 lines (BOM stripped; CRLF normalized):
@@ -71,7 +74,7 @@ First 5 lines (BOM stripped; CRLF normalized):
   # License, v. 2.0. If a copy of the MPL was not distributed with this
   # file, You can obtain one at http://mozilla.org/MPL/2.0/.
   
-  # AFFIXES DU DICTIONNAIRE ORTHOGRAPHIQUE FRANÃAIS âTOUTES VARIANTESâ v7.7
+  # AFFIXES DU DICTIONNAIRE ORTHOGRAPHIQUE FRANÇAIS “TOUTES VARIANTES” v7.7
 SET lines:
   SET UTF-8
 
