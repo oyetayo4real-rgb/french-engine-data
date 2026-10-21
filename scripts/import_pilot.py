@@ -77,7 +77,7 @@ def read_lexique() -> tuple[list[dict], str]:
     pos_col = col("cgram", "catgram", "pos")
     gender_col = col("genre", "gender")
     number_col = col("nombre", "number")
-    freq_col = col("freqfilms")
+    freq_col = col("freqfilms2")
     print(f"RANKING: Lexique 3.83 column {freq_col!r} (frequency in film subtitles, per Lexique README {LEXIQUE_README})")
     by_form = {}
     for row in reader:
@@ -97,7 +97,7 @@ def read_lexique() -> tuple[list[dict], str]:
                 "gender": (row.get(gender_col) or "").strip() or None,
                 "number": (row.get(number_col) or "").strip() or None,
                 "frequency": freq, "frequency_column": freq_col,
-                "frequency_source": "Lexique 3.83 freqfilms (frequency in film subtitles)",
+                "frequency_source": "Lexique 3.83 freqfilms2 (frequency of the form in film subtitles)",
                 "source": [{"name":"Lexique 3.83","url":LEXIQUE_URL}],
                 "licence": LICENCE_LEXIQUE, "needs_review": True}
         key = form.casefold()
@@ -231,14 +231,14 @@ def main() -> int:
         if prior != manifest: raise ValueError("Source checksum mismatch; upstream bytes changed. Review manifest before updating.")
     else:
         MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n", encoding="utf-8", errors="strict")
-    print(f"VALID: 300 Lexique-only entries; ranked by freqfilms; Lexique encoding={lexique_encoding}; output Unicode scan passed.")
+    print(f"VALID: 300 Lexique-only entries; ranked by freqfilms2; Lexique encoding={lexique_encoding}; output Unicode scan passed.")
     print(f"CROSS-CHECKS: Dicollecte={dico_detail['status']} matched={dico_detail['matched_count']} mismatches={dico_detail['mismatch_count']} note={dico_detail['note']}")
     print(f"CROSS-CHECKS: Lefff={lefff_detail['status']} matched={lefff_detail['matched_count']} mismatches={lefff_detail['mismatch_count']} note={lefff_detail['note']}")
     if args.print_random:
         sample = random.SystemRandom().sample(reread, min(args.print_random, len(reread)))
         print(f"RANDOM REVIEW SAMPLE ({len(sample)} entries)")
         for item in sample:
-            print(f"{item['form']} | lemma={item['lemma']} | pos={item['part_of_speech']} | frequency_column=freqfilms | frequency={item['frequency']} | source=Lexique 3.83 | licence={LICENCE_LEXIQUE} | needs_review=true")
+            print(f"{item['form']} | lemma={item['lemma']} | pos={item['part_of_speech']} | frequency_column=freqfilms2 | frequency={item['frequency']} | source=Lexique 3.83 | licence={LICENCE_LEXIQUE} | needs_review=true")
     return 0
 
 if __name__ == "__main__":
