@@ -56,7 +56,12 @@ def main() -> int:
                     data = zf.read(info.filename)
                     if data.startswith(bytes.fromhex("efbbbf")):
                         data = data[3:]
-                    text = data.decode("iso-8859-1", errors="strict")
+                    try:
+                        text = data.decode("utf-8-sig", errors="strict")
+                        out.append("AFF display decoding: strict UTF-8")
+                    except UnicodeDecodeError:
+                        text = data.decode("iso-8859-1", errors="strict")
+                        out.append("AFF display decoding: ISO-8859-1 fallback for byte-preserving display only; not an encoding decision")
                     lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
                     out.append(f"\nAFF: {info.filename} | size={info.file_size}")
                     out.append("First 5 lines (BOM stripped; CRLF normalized):")
