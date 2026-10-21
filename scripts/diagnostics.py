@@ -97,7 +97,7 @@ def main() -> int:
             present = {s: s.casefold() in decoded.casefold() for s in ("été", "français", "cœur", "garçon", "où", "noël", "à", "œuf")}
             out.append("Lexique exact sentinel presence: " + json.dumps(present, ensure_ascii=False, sort_keys=True))
             out.append("Lexique note: sentinel presence is informational only; no requirement that cœur or any other rare sentinel occur.")
-            out.append("Lexique source forbidden-marker check: " + ("no U+FFFD or \"Ã\" found" if not any(marker in decoded for marker in ("\\ufffd", "Ã")) else "ERROR: forbidden U+FFFD or \"Ã\" found"))
+            out.append("Lexique source forbidden-marker check: " + ("no U+FFFD or \"Ã\" found" if not any(marker in decoded for marker in ("\ufffd", "Ã")) else "ERROR: forbidden U+FFFD or \"Ã\" found"))
         except (OSError, UnicodeError) as exc:
             out.append(f"Lexique encoding decision unavailable: {type(exc).__name__}: {exc}")
     lefff_path = ROOT / "data/raw/lefff-2.1.txt.gz"
