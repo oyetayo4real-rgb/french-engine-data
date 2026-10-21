@@ -24,15 +24,15 @@ def inspect(path: Path, label: str, out: list[str]) -> bytes | None:
     out.append(f"Starts with UTF-8 BOM: {'yes' if raw.startswith(bytes.fromhex('efbbbf')) else 'no'}")
     out.append(f"First 120 bytes hex: {raw[:120].hex(' ')}")
     out.append(f"Bytes >= 0x80: {sum(byte >= 0x80 for byte in raw)}")
-    try:
-        raw.decode("utf-8-sig", errors="strict")
-        out.append("Strict UTF-8 decode succeeds: yes")
-    except UnicodeDecodeError as exc:
-        out.append(f"Strict UTF-8 decode succeeds: no ({exc})")
-    latin = raw.decode("iso-8859-1", errors="strict")
-    missing = [s for s in SENTINELS if s.casefold() not in latin.casefold()]
-    out.append(f"Latin-1 decode succeeds: yes (Latin-1 maps every byte)")
-    out.append(f"Latin-1 contains all sentinels {SENTINELS}: {'yes' if not missing else 'no; missing=' + repr(missing)}")
+    if label == "Lexique 3.83":
+        try:
+            decoded = raw.decode("utf-8-sig", errors="strict")
+            out.append("Strict UTF-8 decode succeeds: yes")
+            out.append("Lexique source sentinel presence: " + json.dumps({s: s.casefold() in decoded.casefold() for s in SENTINELS}, ensure_ascii=False, sort_keys=True))
+        except UnicodeDecodeError as exc:
+            out.append(f"Strict UTF-8 decode succeeds: no ({exc})")
+    else:
+        out.append("Container bytes are not text-decoded; compressed/archive payloads are inspected separately below.")
     return raw
 
 def main() -> int:
@@ -50,25 +50,41 @@ def main() -> int:
                 for info in zf.infolist():
                     out.append(f"FILE {info.filename} | size={info.file_size}")
                 affs = [info for info in zf.infolist() if info.filename.lower().endswith(".aff")]
+                dics = [info for info in zf.infolist() if info.filename.lower().endswith(".dic")]
                 if not affs:
                     out.append("No .aff files found.")
+                set_by_stem = {}
                 for info in affs:
                     data = zf.read(info.filename)
                     if data.startswith(bytes.fromhex("efbbbf")):
                         data = data[3:]
-                    try:
-                        text = data.decode("utf-8-sig", errors="strict")
-                        out.append("AFF display decoding: strict UTF-8")
-                    except UnicodeDecodeError:
-                        text = data.decode("iso-8859-1", errors="strict")
-                        out.append("AFF display decoding: ISO-8859-1 fallback for byte-preserving display only; not an encoding decision")
+                    text = data.decode("utf-8-sig", errors="strict")
                     lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
-                    out.append(f"\nAFF: {info.filename} | size={info.file_size}")
+                    out.append(f"\nAFF: {info.filename} | size={info.file_size} | strict UTF-8: yes")
                     out.append("First 5 lines (BOM stripped; CRLF normalized):")
                     out.extend("  " + line for line in lines[:5])
                     set_lines = [line for line in lines if line.lstrip().lower().startswith("set ") or line.lstrip().lower() == "set"]
                     out.append("SET lines:")
                     out.extend("  " + line for line in set_lines) if set_lines else out.append("  no SET line")
+                    set_match = next((__import__("re").match(r"^\s*SET\s+([^\s#]+)", line, __import__("re").I) for line in lines if __import__("re").match(r"^\s*SET\s+([^\s#]+)", line, __import__("re").I)), None)
+                    if set_match:
+                        set_by_stem[info.filename.rsplit(".", 1)[0]] = set_match.group(1)
+                if not dics:
+                    out.append("No .dic files found.")
+                for info in dics:
+                    stem = info.filename.rsplit(".", 1)[0]
+                    declared = set_by_stem.get(stem)
+                    out.append(f"\nDIC: {info.filename} | size={info.file_size} | paired .aff SET={declared or 'missing'}")
+                    if not declared:
+                        out.append("DIC strict decoding: not attempted because the paired .aff has no SET declaration.")
+                        continue
+                    try:
+                        codec = __import__("codecs").lookup(declared).name
+                        text = zf.read(info.filename).decode(codec, errors="strict")
+                        out.append(f"DIC strict decoding using declared SET {declared} ({codec}): yes")
+                        out.append("DIC sentinel presence: " + json.dumps({s: s.casefold() in text.casefold() for s in SENTINELS}, ensure_ascii=False, sort_keys=True))
+                    except (UnicodeError, LookupError) as exc:
+                        out.append(f"DIC strict decoding using declared SET {declared}: no ({type(exc).__name__}: {exc})")
         except (OSError, zipfile.BadZipFile) as exc:
             out.append(f"Archive inspection error: {type(exc).__name__}: {exc}")
     out.append("\n## Encoding decisions and Lefff codec probes")
@@ -80,7 +96,8 @@ def main() -> int:
             out.append("Lexique 3.83: UTF-8 confirmed by strict decoding plus non-ASCII bytes" if any(b >= 0x80 for b in payload) else "Lexique 3.83: encoding unconfirmed (strict UTF-8 succeeds but no non-ASCII bytes)")
             present = {s: s.casefold() in decoded.casefold() for s in ("été", "français", "cœur", "garçon", "où", "noël", "à", "œuf")}
             out.append("Lexique exact sentinel presence: " + json.dumps(present, ensure_ascii=False, sort_keys=True))
-            out.append("Lexique note: if a sentinel is absent upstream (e.g. a ligature spelling), it cannot be fabricated in the ranked top-300 output.")
+            out.append("Lexique note: sentinel presence is informational only; no requirement that cœur or any other rare sentinel occur.")
+            out.append("Lexique source forbidden-marker check: " + ("no U+FFFD or \"Ã\" found" if not any(marker in decoded for marker in ("\\ufffd", "Ã")) else "ERROR: forbidden U+FFFD or \"Ã\" found"))
         except (OSError, UnicodeError) as exc:
             out.append(f"Lexique encoding decision unavailable: {type(exc).__name__}: {exc}")
     lefff_path = ROOT / "data/raw/lefff-2.1.txt.gz"
@@ -137,6 +154,8 @@ def main() -> int:
                 out.append("ERROR: pilot output contains forbidden U+FFFD or mojibake marker")
             out.append(f"Pilot output: present; distinct lemmas={len({r.get('lemma','').casefold() for r in rows})}; entries={len(rows)}")
             out.append("Ranking column: freqlemfilms2 (lemma frequency in films); tie-break: descending top-form freqfilms2, lemma casefold ascending, original lemma ascending.")
+            accented_count = sum(1 for row in rows if __import__("re").search(r"[éèêàçù]", row.get("lemma", ""), __import__("re").I) or any(__import__("re").search(r"[éèêàçù]", form.get("form", ""), __import__("re").I) for form in row.get("top_forms", [])))
+            out.append(f"Accented output entries (at least one of é, è, ê, à, ç, ù): {accented_count}; minimum required: 20; check: {'PASS' if accented_count >= 20 else 'FAIL'}")
             out.append("\n## First 20 ranked lemmas")
             for i, row in enumerate(rows[:20], 1):
                 forms = ", ".join(f"{x.get('form')}({x.get('frequency')})" for x in row.get("top_forms", []))
