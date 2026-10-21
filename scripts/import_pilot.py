@@ -53,7 +53,7 @@ def source_hashes() -> dict:
         "files": {
             "Lexique383.tsv": {"sha256": sha256(LEXIQUE), "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"},
             "hunspell-french-dictionaries-v7.7.zip": {"sha256": sha256(DICO_ZIP), "url": "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"},
-            "lefff-2.1.txt.gz": {"sha256": sha256(LEFFF), "url": "https://www.labri.fr/perso/clement/lefff/lefff-2.1.txt.gz"},
+            "lefff-2.1.txt.gz": {"sha256": sha256(LEFFF), "url": "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"},
         },
     }
 

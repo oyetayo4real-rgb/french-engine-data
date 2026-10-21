@@ -29,12 +29,34 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Download official source files
+      - name: Check official source URLs (HEAD only)
+        shell: bash
         run: |
+          set -euo pipefail
+          check_url() {
+            local source="$1"
+            local url="$2"
+            echo "HEAD check: ${source}: ${url}"
+            if ! curl --fail --silent --head --location "${url}" >/dev/null; then
+              echo "::error title=Source unreachable::${source} URL is unreachable from this GitHub Actions runner: ${url}"
+              exit 1
+            fi
+            echo "HEAD OK: ${source}"
+          }
+          check_url "Lexique 3.83" "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+          check_url "Dicollecte/Grammalecte 7.7" "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
+          check_url "Lefff 2.1" "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
+      - name: Download official source files
+        shell: bash
+        run: |
+          set -euo pipefail
           mkdir -p data/raw data
-          curl --fail --location --retry 3 --output data/raw/Lexique383.tsv https://www.lexique.org/databases/Lexique383/Lexique383.tsv
-          curl --fail --location --retry 3 --output data/raw/hunspell-french-dictionaries-v7.7.zip https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip
-          curl --fail --location --retry 3 --output data/raw/lefff-2.1.txt.gz https://www.labri.fr/perso/clement/lefff/lefff-2.1.txt.gz
+          echo "Downloading Lexique 3.83: https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+          curl --fail --location --show-error --retry 3 --output data/raw/Lexique383.tsv "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+          echo "Downloading Dicollecte/Grammalecte 7.7: https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
+          curl --fail --location --show-error --retry 3 --output data/raw/hunspell-french-dictionaries-v7.7.zip "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
+          echo "Downloading Lefff 2.1: https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
+          curl --fail --location --show-error --retry 3 --output data/raw/lefff-2.1.txt.gz "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
       - name: Build, checksum, and validate 300-entry pilot
         env:
           PRINT_RANDOM: ${{ github.event.inputs.print_random || '40' }}
