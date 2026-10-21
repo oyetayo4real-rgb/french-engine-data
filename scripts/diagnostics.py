@@ -104,7 +104,7 @@ def main() -> int:
             sample = random.SystemRandom().sample(rows, min(40, len(rows)))
             out.append(f"\n## Random pilot review sample ({len(sample)} entries)")
             for row in sample:
-                out.append(f"{row.get('form')} | lemma={row.get('lemma')} | pos={row.get('part_of_speech')} | gender={row.get('gender')} | number={row.get('number')} | freqfilms={row.get('frequency')} | source=Lexique 3.83 | licence=CC BY-SA 4.0 | needs_review={row.get('needs_review')}")
+                out.append(f"{row.get('form')} | lemma={row.get('lemma')} | pos={row.get('part_of_speech')} | gender={row.get('gender')} | number={row.get('number')} | freqfilms2={row.get('frequency')} | source=Lexique 3.83 | licence=CC BY-SA 4.0 | needs_review={row.get('needs_review')}")
         except (OSError, ValueError, TypeError) as exc:
             out.append(f"Pilot output could not be read: {type(exc).__name__}: {exc}")
     else:
