@@ -270,7 +270,7 @@ def main() -> int:
         detail["mismatches"] = missing
         detail["note"] = "mismatches are distinct pilot surface forms absent from the cross-check source"
     cross = {"pilot_source":"Lexique 3.83", "pilot_licence":LICENCE_LEXIQUE,
-             "sources":{"Dicollecte":dico_detail, "Lefff":lefff_detail},
+             "sources":{"Dicollecte":dico_detail, "Lefff":lefff_detail}, "lefff_encoding_probe":probe,
              "summary":{"pilot_lemmas":300, "pilot_distinct_forms":len(set(pilot_forms)),
                         "Dicollecte_matched_forms":dico_detail["matched_count"], "Dicollecte_mismatches":dico_detail["mismatch_count"],
                         "Lefff_matched_forms":lefff_detail["matched_count"], "Lefff_mismatches":lefff_detail["mismatch_count"]}}
