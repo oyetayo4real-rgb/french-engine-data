@@ -75,6 +75,11 @@ First 5 lines (BOM stripped; CRLF normalized):
 SET lines:
   SET UTF-8
 
+## Encoding decisions from source payload bytes
+Lexique 3.83: selected UTF-8 (strict UTF-8 succeeds and payload contains non-ASCII bytes)
+Lefff 2.1 decompressed text: unconfirmed (strict UTF-8 fails; Latin-1 sentinel missing ['cœur'])
+Dicollecte/Hunspell: encoding is confirmed only by a paired .aff SET declaration; see archive evidence above.
+
 ## Encoding decision policy
 For plain source files: strict UTF-8 + at least one non-ASCII byte => UTF-8; otherwise ISO-8859-1 only if Latin-1 text contains all required sentinels; else unconfirmed.
 For Hunspell .dic files, use the paired .aff SET declaration only. If absent, Dicollecte cross-check is unavailable. Hunspell behavior without SET has not been independently confirmed here.
