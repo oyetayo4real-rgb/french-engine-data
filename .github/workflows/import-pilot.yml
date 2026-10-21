@@ -1,5 +1,8 @@
 name: Import and validate 300-entry pilot
 
+# Generated data/diagnostics are intentionally absent from the push path filter.
+# Do not use [skip ci] on diagnostics commits: it can suppress a batched code push.
+
 on:
   workflow_dispatch:
     inputs:
@@ -12,9 +15,8 @@ on:
     paths:
       - "LICENSES.md"
       - "README.md"
-      - "scripts/import_pilot.py"
-      - "scripts/diagnostics.py"
-      - ".github/workflows/import-pilot.yml"
+      - "scripts/**"
+      - ".github/workflows/**"
 
 permissions:
   contents: write
@@ -94,6 +96,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Diagnostics file is unchanged."
           else
-            git commit -m "Record source and pilot diagnostics [skip ci]"
+            git commit -m "Record source and pilot diagnostics"
             git push
           fi
