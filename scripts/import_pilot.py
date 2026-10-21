@@ -93,16 +93,12 @@ def read_hunspell_encoding(zf: zipfile.ZipFile, dic_name: str) -> tuple[str, str
     if aff_name is None:
         raise ValueError(f"Cannot confirm Hunspell encoding: no matching .aff file for {dic_name}")
     raw_aff = zf.read(aff_name)
-    try:
-        ascii_header = raw_aff[:65536].decode("ascii", errors="strict")
-    except UnicodeError:
-        # The SET directive is ASCII by specification; inspect only bytes before
-        # the first non-ASCII byte so encoding is never guessed from dictionary data.
-        ascii_header = raw_aff[:65536].splitlines()[0].decode("ascii", errors="strict")
-    match = re.search(r"(?im)^\\s*SET\\s+([^\\s#]+)", ascii_header)
+    # SET syntax is ASCII; search the raw bytes so later non-ASCII comments
+    # cannot prevent reading the declared encoding.
+    match = re.search(rb"(?im)^\\s*SET\\s+([^\\s#]+)", raw_aff[:262144])
     if not match:
         raise ValueError(f"Cannot confirm Hunspell encoding: no SET line found in {aff_name}")
-    declared = match.group(1).strip()
+    declared = match.group(1).decode("ascii", errors="strict").strip()
     try:
         codec = codecs.lookup(declared).name
     except LookupError as exc:
