@@ -86,25 +86,24 @@ def choose_text_encoding(path: Path, *, gzip_text: bool, source_name: str) -> tu
     raise ValueError(f"Cannot confirm text encoding for source {source_name} ({path.name}); refusing import. Attempts: {details}")
 
 
-def read_hunspell_encoding(zf: zipfile.ZipFile, dic_name: str) -> tuple[str, str]:
+def read_hunspell_encoding(zf: zipfile.ZipFile, dic_name: str) -> tuple[str, str, str]:
     stem = dic_name.rsplit(".", 1)[0]
     aff_name = next((name for name in zf.namelist()
                      if name.rsplit(".", 1)[0] == stem and name.lower().endswith(".aff")), None)
     if aff_name is None:
         raise ValueError(f"Cannot confirm Hunspell encoding: no matching .aff file for {dic_name}")
     raw_aff = zf.read(aff_name)
-    # SET syntax is ASCII; search the raw bytes so later non-ASCII comments
-    # cannot prevent reading the declared encoding.
+    # SET syntax is ASCII; search raw bytes so non-ASCII comments do not interfere.
     match = re.search(rb"(?im)^\\s*SET\\s+([^\\s#]+)", raw_aff[:262144])
     if not match:
-        raise ValueError(f"Cannot confirm Hunspell encoding: no SET line found in {aff_name}")
+        raise ValueError(f"Hunspell .aff file {aff_name} has no SET line; encoding cannot be confirmed")
     declared = match.group(1).decode("ascii", errors="strict").strip()
     try:
         codec = codecs.lookup(declared).name
     except LookupError as exc:
         raise ValueError(f"Unknown Hunspell SET encoding {declared!r} in {aff_name}") from exc
     print(f"ENCODING: Dicollecte/Hunspell | file={dic_name} | matching_aff={aff_name} | SET {declared} | codec={codec}")
-    return declared, codec
+    return declared, codec, aff_name
 
 
 def source_hashes() -> dict:
@@ -137,11 +136,23 @@ def read_dicollecte_words() -> set[str]:
     words: set[str] = set()
     with zipfile.ZipFile(DICO_ZIP) as zf:
         names = zf.namelist()
-        candidates = [n for n in names if n.lower().endswith(".dic")]
-        if not candidates:
+        dictionaries = [n for n in names if n.lower().endswith(".dic")]
+        if not dictionaries:
             raise ValueError("Dicollecte source file hunspell-french-dictionaries-v7.7.zip contains no .dic dictionary")
-        chosen = next((n for n in candidates if "toutesvariantes" in n.lower()), candidates[0])
-        declared, codec = read_hunspell_encoding(zf, chosen)
+        pairs = []
+        for dic_name in dictionaries:
+            stem = dic_name.rsplit(".", 1)[0]
+            aff_name = next((name for name in names
+                             if name.rsplit(".", 1)[0] == stem and name.lower().endswith(".aff")), None)
+            if not aff_name:
+                continue
+            match = re.search(rb"(?im)^\\s*SET\\s+([^\\s#]+)", zf.read(aff_name)[:262144])
+            if match:
+                pairs.append((dic_name, aff_name))
+        if not pairs:
+            raise ValueError("Cannot confirm Dicollecte encoding: no .aff file in the archive declares a SET encoding")
+        chosen, _ = next((pair for pair in pairs if "toutesvariantes" in pair[0].lower()), pairs[0])
+        declared, codec, aff_name = read_hunspell_encoding(zf, chosen)
         try:
             raw = zf.read(chosen).decode(codec, errors="strict")
         except UnicodeError as exc:
@@ -153,8 +164,10 @@ def read_dicollecte_words() -> set[str]:
             token = line.strip().split("/", 1)[0]
             if token and not token.isdigit():
                 words.add(token.casefold())
-        if not all(word in raw.casefold() for word in ("été", "français", "garçon", "où", "noël", "à")):
-            raise ValueError(f"Dicollecte/Hunspell file {chosen} failed required accent-sentinel confirmation")
+        required = ("été", "français", "garçon", "où", "noël", "à")
+        missing = [word for word in required if word not in raw.casefold()]
+        if missing:
+            raise ValueError(f"Dicollecte/Hunspell file {chosen} failed accent-sentinel confirmation; missing {missing}")
     if len(words) < 1000:
         raise ValueError(f"Unexpectedly small Dicollecte dictionary: {len(words)} entries")
     return words
