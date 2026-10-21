@@ -1,0 +1,52 @@
+name: Import and validate 300-entry pilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      print_random:
+        description: Number of random entries to print for review
+        required: true
+        default: "40"
+  push:
+    branches: [main]
+    paths:
+      - "LICENSES.md"
+      - "README.md"
+      - "scripts/import_pilot.py"
+      - ".github/workflows/import-pilot.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import-validate:
+    if: ${{ github.actor != 'github-actions[bot]' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download official source files
+        run: |
+          mkdir -p data/raw data
+          curl --fail --location --retry 3 --output data/raw/Lexique383.tsv https://www.lexique.org/databases/Lexique383/Lexique383.tsv
+          curl --fail --location --retry 3 --output data/raw/hunspell-french-dictionaries-v7.7.zip https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip
+          curl --fail --location --retry 3 --output data/raw/lefff-2.1.txt.gz https://www.labri.fr/perso/clement/lefff/lefff-2.1.txt.gz
+      - name: Build, checksum, and validate 300-entry pilot
+        env:
+          PRINT_RANDOM: ${{ github.event.inputs.print_random || '40' }}
+        run: python scripts/import_pilot.py --print-random "$PRINT_RANDOM"
+      - name: Commit pilot and checksum manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pilot-300.json data/source-checksums.json
+          if git diff --cached --quiet; then
+            echo "Pilot and source checksum manifest are unchanged."
+          else
+            git commit -m "Import validated 300-entry French lexicon pilot"
+            git push
+          fi
