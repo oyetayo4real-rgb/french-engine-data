@@ -176,7 +176,7 @@ def validate_output(rows: list[dict], serialized: str) -> None:
     for marker in FORBIDDEN:
         if marker in serialized: raise ValueError(f"Output contains forbidden marker {marker!r}")
     if rows != sorted(rows, key=lambda x: (-x["frequency"], x["form"].casefold(), x["lemma"].casefold())):
-        raise ValueError("Pilot is not sorted by descending freqfilms")
+        raise ValueError("Pilot is not sorted by descending freqfilms2")
     forms = [r["form"].casefold() for r in rows]
     if len(forms) != len(set(forms)): raise ValueError("Duplicate pilot forms")
     # The seven sentinel spellings must be present and correctly encoded in the
