@@ -21,7 +21,6 @@ permissions:
 
 jobs:
   import-validate:
-    if: ${{ github.actor != 'github-actions[bot]' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
