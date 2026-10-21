@@ -13,6 +13,7 @@ on:
       - "LICENSES.md"
       - "README.md"
       - "scripts/import_pilot.py"
+      - "scripts/diagnostics.py"
       - ".github/workflows/import-pilot.yml"
 
 permissions:
@@ -38,8 +39,8 @@ jobs:
             local url="$2"
             echo "HEAD check: ${source}: ${url}"
             if ! curl --fail --silent --head --location "${url}" >/dev/null; then
-              echo "::error title=Source unreachable::${source} URL is unreachable from this GitHub Actions runner: ${url}"
-              exit 1
+              echo "::warning title=Source unreachable::${source} URL is unreachable from this GitHub Actions runner: ${url}"
+              return 0
             fi
             echo "HEAD OK: ${source}"
           }
@@ -57,18 +58,43 @@ jobs:
           curl --fail --location --show-error --retry 3 --output data/raw/hunspell-french-dictionaries-v7.7.zip "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
           echo "Downloading Lefff 2.1: https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
           curl --fail --location --show-error --retry 3 --output data/raw/lefff-2.1.txt.gz "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
-      - name: Build, checksum, and validate 300-entry pilot
+      - name: Build Lexique-only pilot and optional cross-checks
         env:
           PRINT_RANDOM: ${{ github.event.inputs.print_random || '40' }}
         run: python scripts/import_pilot.py --print-random "$PRINT_RANDOM"
-      - name: Commit pilot and checksum manifest
+      - name: Commit pilot, cross-checks, and checksum manifest
+        if: success()
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/pilot-300.json data/source-checksums.json
+          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json
           if git diff --cached --quiet; then
-            echo "Pilot and source checksum manifest are unchanged."
+            echo "Pilot, cross-checks, and checksum manifest are unchanged."
           else
-            git commit -m "Import validated 300-entry French lexicon pilot"
+            git commit -m "Import Lexique-only pilot and source cross-check evidence"
+            git push
+          fi
+      - name: Write source diagnostics (always)
+        if: always()
+        continue-on-error: true
+        run: python scripts/diagnostics.py
+      - name: Commit last-run diagnostics (always)
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ ! -f diagnostics/last-run.txt ]; then
+            mkdir -p diagnostics
+            printf '%s\n' "Diagnostics generator did not produce diagnostics/last-run.txt; inspect the workflow logs." > diagnostics/last-run.txt
+          fi
+          git add diagnostics/last-run.txt
+          if git diff --cached --quiet; then
+            echo "Diagnostics file is unchanged."
+          else
+            git commit -m "Record source and pilot diagnostics [skip ci]"
             git push
           fi
