@@ -66,6 +66,31 @@ def main() -> int:
                     out.extend("  " + line for line in set_lines) if set_lines else out.append("  no SET line")
         except (OSError, zipfile.BadZipFile) as exc:
             out.append(f"Archive inspection error: {type(exc).__name__}: {exc}")
+    out.append("\n## Encoding decisions from source payload bytes")
+    for label, path, compressed in (
+        ("Lexique 3.83", ROOT / "data/raw/Lexique383.tsv", False),
+        ("Lefff 2.1 decompressed text", ROOT / "data/raw/lefff-2.1.txt.gz", True),
+    ):
+        if not path.is_file():
+            out.append(f"{label}: unavailable; source file missing")
+            continue
+        try:
+            payload = __import__("gzip").decompress(path.read_bytes()) if compressed else path.read_bytes()
+            try:
+                decoded = payload.decode("utf-8-sig", errors="strict")
+                if any(byte >= 0x80 for byte in payload):
+                    out.append(f"{label}: selected UTF-8 (strict UTF-8 succeeds and payload contains non-ASCII bytes)")
+                else:
+                    latin = payload.decode("iso-8859-1", errors="strict")
+                    missing = [s for s in SENTINELS if s.casefold() not in latin.casefold()]
+                    out.append(f"{label}: " + ("selected ISO-8859-1 (UTF-8 is ASCII-only and all sentinels appear in Latin-1)" if not missing else f"unconfirmed (ASCII-only UTF-8; Latin-1 sentinel missing {missing})"))
+            except UnicodeDecodeError as utf_error:
+                latin = payload.decode("iso-8859-1", errors="strict")
+                missing = [s for s in SENTINELS if s.casefold() not in latin.casefold()]
+                out.append(f"{label}: " + ("selected ISO-8859-1 (strict UTF-8 fails; all sentinels appear in Latin-1)" if not missing else f"unconfirmed (strict UTF-8 fails; Latin-1 sentinel missing {missing})"))
+        except (OSError, ValueError) as exc:
+            out.append(f"{label}: unconfirmed; payload inspection failed: {type(exc).__name__}: {exc}")
+    out.append("Dicollecte/Hunspell: encoding is confirmed only by a paired .aff SET declaration; see archive evidence above.")
     out.append("\n## Encoding decision policy")
     out.append("For plain source files: strict UTF-8 + at least one non-ASCII byte => UTF-8; otherwise ISO-8859-1 only if Latin-1 text contains all required sentinels; else unconfirmed.")
     out.append("For Hunspell .dic files, use the paired .aff SET declaration only. If absent, Dicollecte cross-check is unavailable. Hunspell behavior without SET has not been independently confirmed here.")
