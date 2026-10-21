@@ -12,7 +12,8 @@ LEFFF = DATA / "raw/lefff-2.1.txt.gz"
 MANIFEST = DATA / "source-checksums.json"
 OUTPUT = DATA / "pilot-300.json"
 CROSSCHECKS = DATA / "cross-checks-300.json"
-SENTINELS = ("été", "français", "cœur", "garçon", "où", "noël", "à")
+SENTINELS = ("été", "français", "cœur", "garçon", "où", "noël", "à", "œuf")
+ACCENTED = re.compile(r"[éèêàçù]", re.IGNORECASE)
 FORBIDDEN = ("\ufffd", "Ã")
 LICENCE_LEXIQUE = "CC BY-SA 4.0"
 LICENCE_DICO = "MPL-2.0"
@@ -116,6 +117,7 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     print(f"RANKING: lemma-frequency column {lemma_freq_col!r}; forms ranked by {form_freq_col!r}. Lexique README: {LEXIQUE_README}")
     by_lemma: dict[str, list[dict]] = {}
     sentinel_seen = {word: word.casefold() in text.casefold() for word in SENTINELS}
+    print("LEXIQUE SOURCE SENTINELS: " + json.dumps(sentinel_seen, ensure_ascii=False, sort_keys=True))
     for row in reader:
         form = (row.get(form_col) or "").strip()
         lemma = (row.get(lemma_col) or "").strip()
@@ -167,6 +169,9 @@ def read_lexique() -> tuple[list[dict], str, dict]:
         raise ValueError(f"Expected 300 distinct lemmas with at least 3 forms, found {len(rows)}")
     if len({row["lemma"].casefold() for row in rows}) != 300:
         raise ValueError("Pilot does not contain 300 distinct lemmas")
+    accented = [row for row in rows if ACCENTED.search(row["lemma"]) or any(ACCENTED.search(form["form"]) for form in row["top_forms"])]
+    if len(accented) < 20:
+        raise ValueError(f"Expected at least 20 output entries containing French accented characters é, è, ê, à, ç, ù; found {len(accented)}")
     meta = {"source":"Lexique 3.83", "licence":LICENCE_LEXIQUE, "encoding":encoding,
             "lemma_frequency_column":lemma_freq_col, "form_frequency_column":form_freq_col,
             "sentinel_presence_in_source":sentinel_seen,
@@ -292,7 +297,9 @@ def main() -> int:
         if prior != manifest: raise ValueError("Source checksum mismatch; upstream bytes changed. Review manifest before updating.")
     else:
         MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n", encoding="utf-8", errors="strict")
+    accented_count = sum(1 for row in reread if ACCENTED.search(row["lemma"]) or any(ACCENTED.search(form["form"]) for form in row["top_forms"]))
     print(f"VALID: 300 distinct Lexique lemmas; ranked by {lexique_meta['lemma_frequency_column']}; tie-break: descending top-form freqfilms2, lemma casefold ascending, original lemma ascending.")
+    print(f"ACCENTED OUTPUT VALIDATION: {accented_count} of 300 entries contain at least one of é, è, ê, à, ç, ù; no U+FFFD or \"Ã\" found in output.")
     print(f"CROSS-CHECKS: Dicollecte status={dico_detail['status']} matched_forms={dico_detail['matched_count']} mismatches={dico_detail['mismatch_count']} note={dico_detail['note']}")
     print(f"CROSS-CHECKS: Lefff status={lefff_detail['status']} matched_forms={lefff_detail['matched_count']} mismatches={lefff_detail['mismatch_count']} note={lefff_detail['note']}")
     print("TOP 20 RANKED LEMMAS")
