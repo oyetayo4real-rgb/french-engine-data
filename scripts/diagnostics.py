@@ -267,8 +267,10 @@ def main() -> int:
         if not row:
             return False
         visible_forms = row.get("forms", []) + row.get("rare_forms", [])
+        # Any typo-map alias is permitted only when converted by the current generator.
         return all(
-            (allow_lemma_alias and form.get("form", "").casefold() == wrong)
+            (allow_lemma_alias and form.get("form", "").casefold() == wrong and
+             row.get("display_headword", "").casefold() == expected)
             or (expected in form.get("form", "") and wrong not in form.get("form", "").casefold())
             for form in visible_forms
         )
