@@ -399,6 +399,10 @@ def build_review_sheet(rows: list[dict]) -> str:
         note="Confirm Lexique POS" if r["lemma"].casefold() in pos_note_lemmas or r["part_of_speech"].upper() in {"ADJ:IND","ADJ:INT","ONO"} else ""
         forms=", ".join(f["form"] + (" (shared form)" if f.get("shared_form") else "") for f in r.get("forms",r["top_forms"])).replace("|","\\|")
         lines.append(f"| {i} | {head} | {gender} | {r['part_of_speech']} | {note} | {forms} | {r['register']} |  |")
+    missing_notes=sorted(pos_note_lemmas-{r["lemma"].casefold() for r in rows})
+    if missing_notes:
+        lines.extend(["", "## Requested POS checks outside the ranked 300", "These requested checks have no ranked table row; confirm the code against Lexique before use."])
+        lines.extend(f"- {lemma}: POS note — no code inferred because the lemma is outside the ranked 300." for lemma in missing_notes)
     return "\n".join(lines)+"\n"
 
 if __name__ == "__main__":
