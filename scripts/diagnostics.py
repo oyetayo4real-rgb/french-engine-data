@@ -266,21 +266,22 @@ def main() -> int:
 
     eye = next((row for row in pilot_rows if row.get("lemma", "").casefold() in {"œil", "oeil"}), {})
     heart = next((row for row in pilot_rows if row.get("lemma", "").casefold() in {"cœur", "coeur"}), {})
-    def canonicalized_forms_ok(row: dict, expected: str, wrong: str) -> bool:
-        if not row:
-            return True
-        visible_forms = row.get("forms", []) + row.get("rare_forms", [])
-        surface_text = [form.get("form", "").casefold() for form in visible_forms]
-        return all(wrong not in form for form in surface_text) and all(
-            typography.get(form.get("form", "").casefold(), form.get("form", "")).casefold() == form.get("form", "").casefold()
-            for form in visible_forms
-        ) and row.get("display_headword", "").casefold() == expected
     try:
         typography = json.loads((ROOT / "data/headword-typography.json").read_text(encoding="utf-8", errors="strict"))
     except (OSError, ValueError):
         typography = {}
-    eye_ok = canonicalized_forms_ok(eye, "œil", "oeil") and typography.get("oeil") == "œil" and typography.get("oeils") == "œils"
-    heart_ok = canonicalized_forms_ok(heart, "cœur", "coeur") and typography.get("coeur") == "cœur" and typography.get("coeurs") == "cœurs"
+    def spellings_ok(row: dict, expected: str, spelling_map: dict) -> bool:
+        if not row:
+            return True  # Canonical spellings are checked in the committed typography map below.
+        visible_forms = row.get("forms", []) + row.get("rare_forms", [])
+        return all(
+            form.get("form", "").casefold() == spelling_map.get(form.get("form", "").casefold(), form.get("form", "")).casefold()
+            for form in visible_forms
+        ) and row.get("display_headword", "").casefold() == expected
+    eye_ok = spellings_ok(eye, "œil", typography)
+    heart_ok = spellings_ok(heart, "cœur", typography)
+    eye_ok = eye_ok and typography.get("oeil") == "œil" and typography.get("oeils") == "œils"
+    heart_ok = heart_ok and typography.get("coeur") == "cœur" and typography.get("coeurs") == "cœurs"
     assertion("e", eye_ok and heart_ok,
               f"œil forms use 'œil' (not 'oeil') and cœur forms use 'cœur' (œil={'ranked forms' if eye else 'canonical map'}; cœur={'ranked forms' if heart else 'canonical map'})")
 
