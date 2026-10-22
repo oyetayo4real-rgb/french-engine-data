@@ -3,7 +3,7 @@
 Confirm POS for quoi, peu, voilà, bonjour, and entries coded ADJ:ind, ADJ:int, or ONO.
 The review column is intentionally empty.
 
-| # | Headword | Gender | POS (Lexique code) | POS note | Forms | Teacher register | OK/Wrong/Fix |
+| # | Headword | Gender | POS (with Lexique code) | POS note | Forms | Teacher register | OK/Wrong/Fix |
 |---:|---|---|---|---|---|---|---|
 | 1 | de | — | PRE |  | de (shared form), d' | unreviewed |  |
 | 2 | être | — | VER |  | être (shared form), est (shared form), était, sont, es, été (shared form), suis (shared form), êtes (+33 more in data/pilot-300.json) | unreviewed |  |
@@ -134,7 +134,7 @@ The review column is intentionally empty.
 | 127 | notre | — | ADJ:pos |  | notre (shared form) | unreviewed |  |
 | 128 | autre | — | ADJ |  | autre (shared form), autres (shared form) | unreviewed |  |
 | 129 | trop | — | ADV |  | trop | unreviewed |  |
-| 130 | le œil | m | NOM |  | yeux, œil, oeils | unreviewed |  |
+| 130 | le œil | m | NOM |  | yeux, œil, œils | unreviewed |  |
 | 131 | la heure | f | NOM |  | heure, heures | unreviewed |  |
 | 132 | appeler | — | VER |  | appeler, appelle, appelé (shared form), appelait, appelez, appelles, appellent, appelée (+23 more in data/pilot-300.json) | unreviewed |  |
 | 133 | le père | m | NOM |  | père, pères | unreviewed |  |
