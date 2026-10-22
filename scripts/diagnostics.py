@@ -246,6 +246,8 @@ def main() -> int:
     numeric_files = [path for path in (ROOT / "data").glob("*") if path.is_file()
                      and path.name not in {"raw", "review-sheet.csv"}]
     numeric_files.extend([ROOT / "data/review-sheet.md", ROOT / "data/review-sheet.csv"])
+    # Include text output files outside data/ that the workflow generates.
+    numeric_files.extend(path for path in (ROOT / "diagnostics").glob("*") if path.is_file() and path.name != "last-run.txt")
     bad_numbers = []
     number_pattern = __import__("re").compile(r"(?<![A-Za-z0-9_])[-+]?(?:\d+\.\d{3,}|\.\d{3,})(?!\d)")
     for path in numeric_files:
