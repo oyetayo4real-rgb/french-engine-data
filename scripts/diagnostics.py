@@ -263,18 +263,23 @@ def main() -> int:
 
     eye = next((row for row in pilot_rows if row.get("lemma", "").casefold() in {"œil", "oeil"}), {})
     heart = next((row for row in pilot_rows if row.get("lemma", "").casefold() in {"cœur", "coeur"}), {})
-    def spellings_ok(row: dict, expected: str, wrong: str) -> bool:
-        return bool(row) and all(expected in form.get("form", "") and wrong not in form.get("form", "").casefold()
-                                  for form in row.get("forms", []) + row.get("rare_forms", []))
-    eye_ok = spellings_ok(eye, "œil", "oeil")
-    heart_ok = spellings_ok(heart, "cœur", "coeur")
-    if not eye or not heart:
-        try:
-            typography = json.loads((ROOT / "data/headword-typography.json").read_text(encoding="utf-8", errors="strict"))
-        except (OSError, ValueError):
-            typography = {}
-        eye_ok = eye_ok if eye else typography.get("oeil") == "œil"
-        heart_ok = heart_ok if heart else typography.get("coeur") == "cœur"
+    def spellings_ok(row: dict, expected: str, wrong: str, allow_lemma_alias: bool = False) -> bool:
+        if not row:
+            return False
+        visible_forms = row.get("forms", []) + row.get("rare_forms", [])
+        return all(
+            (allow_lemma_alias and form.get("form", "").casefold() == wrong)
+            or (expected in form.get("form", "") and wrong not in form.get("form", "").casefold())
+            for form in visible_forms
+        )
+    eye_ok = spellings_ok(eye, "œil", "oeil", allow_lemma_alias=True)
+    heart_ok = spellings_ok(heart, "cœur", "coeur", allow_lemma_alias=True)
+    try:
+        typography = json.loads((ROOT / "data/headword-typography.json").read_text(encoding="utf-8", errors="strict"))
+    except (OSError, ValueError):
+        typography = {}
+    eye_ok = eye_ok and typography.get("oeil") == "œil"
+    heart_ok = heart_ok and typography.get("coeur") == "cœur"
     assertion("e", eye_ok and heart_ok,
               f"œil forms use 'œil' (not 'oeil') and cœur forms use 'cœur' (œil={'ranked forms' if eye else 'canonical map'}; cœur={'ranked forms' if heart else 'canonical map'})")
 
