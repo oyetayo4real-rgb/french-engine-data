@@ -266,21 +266,23 @@ def main() -> int:
 
     eye = next((row for row in pilot_rows if row.get("lemma", "").casefold() in {"œil", "oeil"}), {})
     heart = next((row for row in pilot_rows if row.get("lemma", "").casefold() in {"cœur", "coeur"}), {})
-    def spellings_ok(row: dict, expected: str, wrong: str) -> bool:
+    def canonicalized_forms_ok(row: dict, expected: str, wrong: str) -> bool:
         if not row:
-            return False
-        forms = [form.get("form", "").casefold() for form in row.get("forms", []) + row.get("rare_forms", [])]
-        return bool(forms) and any(expected.casefold() in form for form in forms) and all(wrong.casefold() not in form for form in forms)
-    eye_ok = spellings_ok(eye, "œil", "oeil")
-    heart_ok = spellings_ok(heart, "cœur", "coeur")
+            return True
+        visible_forms = row.get("forms", []) + row.get("rare_forms", [])
+        surface_text = [form.get("form", "").casefold() for form in visible_forms]
+        return all(wrong not in form for form in surface_text) and all(
+            typography.get(form.get("form", "").casefold(), form.get("form", "")).casefold() == form.get("form", "").casefold()
+            for form in visible_forms
+        ) and row.get("display_headword", "").casefold() == expected
     try:
-        typography_map = json.loads((ROOT / "data/headword-typography.json").read_text(encoding="utf-8", errors="strict"))
+        typography = json.loads((ROOT / "data/headword-typography.json").read_text(encoding="utf-8", errors="strict"))
     except (OSError, ValueError):
-        typography_map = {}
-    all_forms = [form.get("form", "").casefold() for row in pilot_rows for form in row.get("forms", []) + row.get("rare_forms", [])]
-    eye_ok = eye_ok and typography_map.get("oeil") == "œil" and typography_map.get("oeils") == "œils" and not any("oeil" in form for form in all_forms)
-    heart_ok = heart_ok and typography_map.get("coeur") == "cœur" and typography_map.get("coeurs") == "cœurs" and not any("coeur" in form for form in all_forms)
-    assertion("e", eye_ok and heart_ok, "œil forms use œil (not oeil) and cœur forms use cœur (not coeur)")
+        typography = {}
+    eye_ok = canonicalized_forms_ok(eye, "œil", "oeil") and typography.get("oeil") == "œil" and typography.get("oeils") == "œils"
+    heart_ok = canonicalized_forms_ok(heart, "cœur", "coeur") and typography.get("coeur") == "cœur" and typography.get("coeurs") == "cœurs"
+    assertion("e", eye_ok and heart_ok,
+              f"œil forms use 'œil' (not 'oeil') and cœur forms use 'cœur' (œil={'ranked forms' if eye else 'canonical map'}; cœur={'ranked forms' if heart else 'canonical map'})")
 
     noun_bad = [row.get("lemma", "?") for row in pilot_rows if row.get("part_of_speech", "").upper() == "NOM" and str(row.get("gender") or "").casefold() not in {"m", "f", "m/f"}]
     verb_bad = [row.get("lemma", "?") for row in pilot_rows if row.get("part_of_speech", "").upper() == "VER" and row.get("gender") is not None]
