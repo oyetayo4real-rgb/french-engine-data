@@ -252,6 +252,7 @@ def read_lexique() -> tuple[list[dict], str, dict]:
                        "lemma_frequency":round(candidate["combined_frequency"],2),"freqlemfilms2":round(candidate["film_frequency"],2),
                        "freqlemlivres":round(candidate["book_frequency"],2),"ranking_formula":"freqlemfilms2 + freqlemlivres",
                        "top_forms":[form_obj(f) for f in common[:3]],
+                       "forms":[form_obj(f) for f in common],
                        "rare_forms":[form_obj(f) for f in rare],
                        "register":register,"source":{"name":"Lexique 3.83","url":LEXIQUE_URL},
                        "licence":LICENCE_LEXIQUE,"needs_review":register=="unreviewed"})
@@ -341,6 +342,7 @@ def validate_output(rows: list[dict], serialized: str) -> None:
         if row["lemma"].casefold()=="baiser" and row["register"]!="vulgar": raise ValueError("baiser must be vulgar")
         if any(float(f["frequency"])<1.0 for f in row["top_forms"]): raise ValueError("Rare form in top_forms")
         if row["top_forms"]!=sorted(row["top_forms"],key=lambda x:(-x["frequency"],x["form"].casefold(),x["form"])): raise ValueError("Top forms ordering invalid")
+        if "forms" not in row or not set(f["form"] for f in row["top_forms"]).issubset(set(f["form"] for f in row["forms"])): raise ValueError("Complete common-form list missing or top forms not included")
 
 def main() -> int:
     parser=argparse.ArgumentParser()
@@ -348,11 +350,11 @@ def main() -> int:
     args=parser.parse_args()
     DATA.mkdir(parents=True,exist_ok=True)
     rows,encoding,meta=read_lexique()
-    forms=sorted({f["form"] for r in rows for f in r["top_forms"]+r["rare_forms"]},key=lambda x:(x.casefold(),x))
+    forms=sorted({f["form"] for r in rows for f in r.get("forms",r["top_forms"])+r["rare_forms"]},key=lambda x:(x.casefold(),x))
     dico,dico_detail=dicollecte_forms(forms)
     probe={}
     lefff,lefff_detail=lefff_forms(probe)
-    pilot_forms=sorted({f["form"].casefold() for r in rows for f in r["top_forms"]+r["rare_forms"]})
+    pilot_forms=sorted({f["form"].casefold() for r in rows for f in r.get("forms",r["top_forms"])+r["rare_forms"]})
     if lefff is not None:
         missing=sorted(set(pilot_forms)-lefff,key=lambda x:(x.casefold(),x))
         lefff_detail.update(matched_count=len(set(pilot_forms)&lefff),mismatch_count=len(missing),mismatches=missing)
@@ -395,7 +397,7 @@ def build_review_sheet(rows: list[dict]) -> str:
             head=f"{article} {head}"
         gender=r.get("gender") or "—"
         note="Confirm Lexique POS" if r["lemma"].casefold() in pos_note_lemmas or r["part_of_speech"].upper() in {"ADJ:IND","ADJ:INT","ONO"} else ""
-        forms=", ".join(f["form"] for f in r["top_forms"]).replace("|","\\|")
+        forms=", ".join(f["form"] + (" (shared form)" if f.get("shared_form") else "") for f in r.get("forms",r["top_forms"])).replace("|","\\|")
         lines.append(f"| {i} | {head} | {gender} | {r['part_of_speech']} | {note} | {forms} | {r['register']} |  |")
     return "\n".join(lines)+"\n"
 
