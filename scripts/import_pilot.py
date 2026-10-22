@@ -142,71 +142,120 @@ def read_lexique() -> tuple[list[dict], str, dict]:
         rows.append({"lemma":lemma, "form":form, "part_of_speech":pos, "gender":gender,
                      "number":number, "form_frequency":form_freq, "film_lemma_frequency":film_freq,
                      "book_lemma_frequency":book_freq, "combined_frequency":film_freq + book_freq})
+    # Keep elided spellings as forms, never as headwords.
+    elided_targets = {
+        "l'": [("le","ART:def"),("la","ART:def")],
+        "d'": [("de","PRE")], "s'": [("se","PRO:per")], "t'": [("te","PRO:per")],
+        "n'": [("ne","ADV")], "j'": [("je","PRO:per")], "m'": [("me","PRO:per")],
+        "c'": [("ce","PRO:dem")], "qu'": [("que","PRO:rel"),("que","CON")]
+    }
+    elided_rows = []
+    ordinary_rows = []
+    for item in rows:
+        form_key = item["form"].casefold().replace("’", "'")
+        lemma_key = item["lemma"].casefold().replace("’", "'")
+        if form_key in elided_targets:
+            elided_rows.append(item)
+        elif lemma_key in elided_targets:
+            continue
+        else:
+            ordinary_rows.append(item)
+    rows = ordinary_rows
     grouped: dict[tuple[str,str], list[dict]] = {}
     for item in rows:
-        grouped.setdefault((item["lemma"].casefold(), item["part_of_speech"].casefold()), []).append(item)
+        pos_key = item["part_of_speech"].casefold()
+        if pos_key in {"ver","aux"}:
+            pos_key = "ver"
+        grouped.setdefault((item["lemma"].casefold(), pos_key), []).append(item)
     candidates = []
     for key, items in grouped.items():
         lemma = sorted(items, key=lambda x:(x["lemma"].casefold(),x["lemma"]))[0]["lemma"]
+        pos_value = "VER" if key[1] == "ver" else sorted(items,key=lambda x:(x["part_of_speech"].casefold(),x["part_of_speech"]))[0]["part_of_speech"]
         form_map = {}
         for item in items:
             k = item["form"].casefold()
             if k not in form_map or (item["form_frequency"], item["form"]) > (form_map[k]["form_frequency"], form_map[k]["form"]):
                 form_map[k] = item
         all_forms = sorted(form_map.values(), key=lambda x:(-x["form_frequency"],x["form"].casefold(),x["form"]))
-        candidates.append({"lemma":lemma,"part_of_speech":sorted(items,key=lambda x:(x["part_of_speech"].casefold(),x["part_of_speech"]))[0]["part_of_speech"],
+        candidates.append({"lemma":lemma,"part_of_speech":pos_value,
                            "combined_frequency":max(x["combined_frequency"] for x in items),
                            "film_frequency":max(x["film_lemma_frequency"] for x in items),
                            "book_frequency":max(x["book_lemma_frequency"] for x in items),
                            "gender":next((x["gender"] for x in items if x["gender"]),None),
                            "number":next((x["number"] for x in items if x["number"]),None),
                            "forms":all_forms})
-    # A surface spelling may be attached to only one (lemma, POS): choose its
-    # highest-frequency Lexique row, with deterministic lemma/POS tie-breaks.
-    owners: dict[str, dict] = {}
+    # Attach elisions to base lemmas without letting the elided rows change lemma ranking.
+    for alias_row in elided_rows:
+        alias = alias_row["form"].casefold().replace("’", "'")
+        for base_lemma, base_pos in elided_targets.get(alias, []):
+            for candidate in candidates:
+                if candidate["lemma"].casefold() == base_lemma and candidate["part_of_speech"].casefold() == base_pos.casefold():
+                    candidate["forms"].append({**alias_row, "form":alias_row["form"]})
+    mapping_path = DATA / "headword-typography.json"
+    typography = json.loads(mapping_path.read_text(encoding="utf-8",errors="strict"))
+    overrides_path = DATA / "homograph-overrides.json"
+    homograph_overrides = json.loads(overrides_path.read_text(encoding="utf-8",errors="strict"))
+    # Normalize VER/AUX and preserve every shared spelling in each lemma's display list.
     occurrences: dict[str, list[dict]] = {}
     for candidate in candidates:
+        dedup = {}
+        for form in candidate["forms"]:
+            k = form["form"].casefold()
+            if k not in dedup or form["form_frequency"] > dedup[k]["form_frequency"]:
+                dedup[k] = form
+        candidate["forms"] = sorted(dedup.values(),key=lambda x:(-x["form_frequency"],x["form"].casefold(),x["form"]))
         for form in candidate["forms"]:
             occurrences.setdefault(form["form"].casefold(), []).append({"candidate":candidate,"form":form})
     ambiguous = []
     for spelling, options in sorted(occurrences.items()):
         unique = {(o["candidate"]["lemma"].casefold(),o["candidate"]["part_of_speech"].casefold()):o for o in options}
         options = list(unique.values())
-        winner = sorted(options,key=lambda o:(-o["form"]["form_frequency"],o["candidate"]["lemma"].casefold(),
-                                               o["candidate"]["lemma"],o["candidate"]["part_of_speech"].casefold(),
-                                               o["candidate"]["part_of_speech"]))[0]
-        owners[spelling] = winner["candidate"]
-        if len(options) > 1:
+        override = homograph_overrides.get(spelling)
+        override_options = [o for o in options if o["candidate"]["lemma"].casefold() == str(override).casefold()]
+        if override_options:
+            winner = sorted(override_options,key=lambda o:(-o["candidate"]["combined_frequency"],o["candidate"]["lemma"].casefold(),o["candidate"]["part_of_speech"].casefold()))[0]
+            decision = "committed_override"
+        else:
+            winner = sorted(options,key=lambda o:(-o["form"]["form_frequency"],-o["candidate"]["combined_frequency"],o["candidate"]["lemma"].casefold(),o["candidate"]["part_of_speech"].casefold()))[0]
+            decision = "highest_form_frequency_then_lemma_frequency"
+        for option in options:
+            option["form"]["shared_form"] = len(options) > 1
+            option["form"]["frequency_attributed_to"] = winner["candidate"]["lemma"]
+        if len(options) > 1 or override:
             ambiguous.append({"form":winner["form"]["form"],"assigned_lemma":winner["candidate"]["lemma"],
-                              "assigned_pos":winner["candidate"]["part_of_speech"],
-                              "assignment_frequency":winner["form"]["form_frequency"],
+                              "assigned_pos":winner["candidate"]["part_of_speech"],"decision":decision,
+                              "override":override,"assignment_frequency":round(winner["form"]["form_frequency"],2),
                               "candidates":[{"lemma":o["candidate"]["lemma"],"pos":o["candidate"]["part_of_speech"],
-                                             "frequency":o["form"]["form_frequency"]} for o in sorted(options,key=lambda o:(o["candidate"]["lemma"].casefold(),o["candidate"]["part_of_speech"].casefold()))]})
-    mapping_path = DATA / "headword-typography.json"
-    typography = json.loads(mapping_path.read_text(encoding="utf-8",errors="strict"))
+                                             "form_frequency":round(o["form"]["form_frequency"],2),
+                                             "lemma_frequency":round(o["candidate"]["combined_frequency"],2)}
+                                            for o in sorted(options,key=lambda o:(o["candidate"]["lemma"].casefold(),o["candidate"]["part_of_speech"].casefold()))]})
     output = []
     for candidate in candidates:
-        own_forms = [f for f in candidate["forms"] if owners.get(f["form"].casefold()) is candidate]
-        common = [f for f in own_forms if f["form_frequency"] >= 1.0]
-        rare = [f for f in own_forms if f["form_frequency"] < 1.0]
+        common = [f for f in candidate["forms"] if f["form_frequency"] >= 1.0]
+        rare = [f for f in candidate["forms"] if f["form_frequency"] < 1.0]
         common = sorted(common,key=lambda x:(-x["form_frequency"],x["form"].casefold(),x["form"]))
         rare = sorted(rare,key=lambda x:(-x["form_frequency"],x["form"].casefold(),x["form"]))
-        if len(common) < 1:
+        if not common:
             continue
         pos = candidate["part_of_speech"].upper()
         noun_adj = pos in {"NOM","ADJ"}
         lemma_key = candidate["lemma"].casefold()
         display = typography.get(lemma_key, candidate["lemma"])
-        register = "vulgar" if lemma_key == "baiser" else "needs_review"
+        register = "vulgar" if lemma_key == "baiser" else "unreviewed"
+        def form_obj(f):
+            form_text = typography.get(f["form"].casefold(), f["form"])
+            return {"form":form_text,"frequency":round(f["form_frequency"],2),
+                    "shared_form":bool(f.get("shared_form",False)),
+                    "frequency_attributed_to":f.get("frequency_attributed_to",candidate["lemma"])}
         output.append({"lemma":candidate["lemma"],"display_headword":display,"part_of_speech":candidate["part_of_speech"],
                        "gender":candidate["gender"] if noun_adj else None,"number":candidate["number"] if noun_adj else None,
-                       "lemma_frequency":candidate["combined_frequency"],"freqlemfilms2":candidate["film_frequency"],
-                       "freqlemlivres":candidate["book_frequency"],"ranking_formula":"freqlemfilms2 + freqlemlivres",
-                       "top_forms":[{"form":f["form"],"frequency":f["form_frequency"]} for f in common[:3]],
-                       "rare_forms":[{"form":f["form"],"frequency":f["form_frequency"]} for f in rare],
+                       "lemma_frequency":round(candidate["combined_frequency"],2),"freqlemfilms2":round(candidate["film_frequency"],2),
+                       "freqlemlivres":round(candidate["book_frequency"],2),"ranking_formula":"freqlemfilms2 + freqlemlivres",
+                       "top_forms":[form_obj(f) for f in common[:3]],
+                       "rare_forms":[form_obj(f) for f in rare],
                        "register":register,"source":{"name":"Lexique 3.83","url":LEXIQUE_URL},
-                       "licence":LICENCE_LEXIQUE,"needs_review":register=="needs_review"})
-    # Compute old film-only top 300 with the same (lemma, POS) identity for an honest comparison.
+                       "licence":LICENCE_LEXIQUE,"needs_review":register=="unreviewed"})
+    # Rank by lemma+POS identity; VER/AUX already merged. Elided spellings cannot be headwords.
     film_ranked = sorted(output,key=lambda x:(-x["freqlemfilms2"],x["lemma"].casefold(),x["lemma"],x["part_of_speech"].casefold()))
     combined_ranked = sorted(output,key=lambda x:(-x["lemma_frequency"],x["lemma"].casefold(),x["lemma"],x["part_of_speech"].casefold()))
     film_keys = {(r["lemma"].casefold(),r["part_of_speech"].casefold()) for r in film_ranked[:300]}
@@ -214,8 +263,8 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     changed = len(film_keys.symmetric_difference(combined_keys)) // 2
     rows_out = combined_ranked[:300]
     if len(rows_out) != 300:
-        raise ValueError(f"Expected at least 300 (lemma, POS) groups; found {len(rows_out)}")
-    (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")
+        raise ValueError(f"Expected at least 300 lemma/POS entries; found {len(rows_out)}")
+    (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8",errors="strict")
     meta = {"source":"Lexique 3.83","licence":LICENCE_LEXIQUE,"encoding":encoding,
             "film_lemma_frequency_column":film_lemma_col,"book_lemma_frequency_column":book_lemma_col,
             "ranking_formula":"freqlemfilms2 + freqlemlivres","top300_changed_vs_film_only":changed,
@@ -283,11 +332,12 @@ def validate_output(rows: list[dict], serialized: str) -> None:
     if len(rows)!=300: raise ValueError(f"Pilot must contain exactly 300 entries; got {len(rows)}")
     keys=[(r["lemma"].casefold(),r["part_of_speech"].casefold()) for r in rows]
     if len(set(keys))!=300: raise ValueError("Pilot has duplicate (lemma, POS) groups")
+    if any(r["lemma"].casefold() in {"l'","d'","s'","t'","n'","j'","m'","c'","qu'"} for r in rows): raise ValueError("Elided form cannot be a headword")
     if any(marker in serialized for marker in FORBIDDEN): raise ValueError("Output contains forbidden U+FFFD or mojibake marker")
     if rows!=sorted(rows,key=lambda x:(-x["lemma_frequency"],x["lemma"].casefold(),x["lemma"],x["part_of_speech"].casefold())): raise ValueError("Pilot ranking validation failed")
     for row in rows:
         if row["part_of_speech"].upper() not in {"NOM","ADJ"} and (row["gender"] is not None or row["number"] is not None): raise ValueError(f"Non-nominal gender/number must be null: {row['lemma']}")
-        if row["register"] not in {"neutral","informal","vulgar","needs_review"}: raise ValueError("Invalid register")
+        if row["register"] not in {"neutral","informal","vulgar","unreviewed"}: raise ValueError("Invalid register")
         if row["lemma"].casefold()=="baiser" and row["register"]!="vulgar": raise ValueError("baiser must be vulgar")
         if any(float(f["frequency"])<1.0 for f in row["top_forms"]): raise ValueError("Rare form in top_forms")
         if row["top_forms"]!=sorted(row["top_forms"],key=lambda x:(-x["frequency"],x["form"].casefold(),x["form"])): raise ValueError("Top forms ordering invalid")
@@ -336,10 +386,17 @@ def main() -> int:
     return 0
 
 def build_review_sheet(rows: list[dict]) -> str:
-    lines=["# French Engine Data — Teacher Review Sheet","","Mark each entry OK, Wrong, or Fix. The review column is intentionally empty.","","| # | Headword | POS | Forms | Register | OK / Wrong / Fix |","|---:|---|---|---|---|---|"]
+    lines=["# French Engine Data — Teacher Review Sheet","","POS note: confirm the Lexique code for quoi, peu, voilà, bonjour, and entries coded ADJ:ind, ADJ:int, or ONO.","The review column is intentionally empty.","","| # | Headword | Gender | POS (Lexique code) | Forms | Teacher register | OK/Wrong/Fix |","|---:|---|---|---|---|---|---|"]
+    pos_note_lemmas={"quoi","peu","voilà","bonjour"}
     for i,r in enumerate(rows,1):
-        forms=", ".join(f"{f['form']} ({f['frequency']})" for f in r["top_forms"]).replace("|","\\|")
-        lines.append(f"| {i} | {r['display_headword']} | {r['part_of_speech']} | {forms} | {r['register']} |  |")
+        head=r["display_headword"]
+        if r["part_of_speech"].upper()=="NOM":
+            article="la" if (r.get("gender") or "").casefold() in {"f","fem","féminin","feminine"} else "le"
+            head=f"{article} {head}"
+        gender=r.get("gender") or "—"
+        note=" — POS note: confirm" if r["lemma"].casefold() in pos_note_lemmas or r["part_of_speech"].upper() in {"ADJ:IND","ADJ:INT","ONO"} else ""
+        forms=", ".join(f["form"] for f in r["top_forms"]).replace("|","\\|")
+        lines.append(f"| {i} | {head} | {gender} | {r['part_of_speech']}{note} | {forms} | {r['register']} |  |")
     return "\n".join(lines)+"\n"
 
 if __name__ == "__main__":
