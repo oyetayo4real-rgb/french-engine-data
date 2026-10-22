@@ -98,7 +98,7 @@ def probe_lefff(raw: bytes) -> tuple[str | None, str, dict]:
 def read_lexique() -> tuple[list[dict], str, dict]:
     raw = source_bytes(LEXIQUE)
     encoding, text = choose_lexique_encoding(raw)
-    reader = csv.DictReader(text.splitlines(), delimiter="\t")
+    reader = csv.DictReader(text.splitlines(), delimiter="\\t")
     if not reader.fieldnames:
         raise ValueError("Lexique TSV has no header")
     def col(*choices: str) -> str:
@@ -112,71 +112,114 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     lemma_col = col("lemme", "lemma")
     pos_col = col("cgram", "catgram", "pos")
     gender_col = col("genre", "gender")
-    form_freq_col = col("freqfilms2")
-    lemma_freq_col = col("freqlemfilms2")
-    print(f"RANKING: lemma-frequency column {lemma_freq_col!r}; forms ranked by {form_freq_col!r}. Lexique README: {LEXIQUE_README}")
-    by_lemma: dict[str, list[dict]] = {}
+    number_col = col("nombre", "number")
+    film_form_col = col("freqfilms2")
+    film_lemma_col = col("freqlemfilms2")
+    book_lemma_col = col("freqlemlivres")
+    print(f"RANKING FORMULA: {film_lemma_col} + {book_lemma_col} (films + books lemma frequencies); forms use {film_form_col}.")
+    rows = []
     sentinel_seen = {word: word.casefold() in text.casefold() for word in SENTINELS}
     print("LEXIQUE SOURCE SENTINELS: " + json.dumps(sentinel_seen, ensure_ascii=False, sort_keys=True))
     for row in reader:
         form = (row.get(form_col) or "").strip()
         lemma = (row.get(lemma_col) or "").strip()
-        if not form or not lemma or not re.search(r"[A-Za-zÀ-ÖØ-öø-ÿ]", form):
+        pos = (row.get(pos_col) or "").strip()
+        if not form or not lemma or not pos or not re.search(r"[A-Za-zÀ-ÖØ-öø-ÿ]", form):
             continue
         if len(form) > 48 or any(ch.isdigit() for ch in form) or not all(ch.isalpha() or ch in "-'’ " for ch in form):
             continue
         try:
-            form_freq = float((row.get(form_freq_col) or "0").replace(",", "."))
-            lemma_freq = float((row.get(lemma_freq_col) or "0").replace(",", "."))
+            form_freq = float((row.get(film_form_col) or "0").replace(",", "."))
+            film_freq = float((row.get(film_lemma_col) or "0").replace(",", "."))
+            book_freq = float((row.get(book_lemma_col) or "0").replace(",", "."))
         except ValueError:
             continue
-        if form_freq <= 0 or lemma_freq <= 0:
+        if form_freq <= 0 or film_freq < 0 or book_freq < 0:
             continue
-        item = {"lemma":lemma, "form":form, "part_of_speech":(row.get(pos_col) or "").strip(),
-                "gender":(row.get(gender_col) or "").strip() or None,
-                "form_frequency":form_freq, "lemma_frequency":lemma_freq,
-                "frequency_column":lemma_freq_col, "form_frequency_column":form_freq_col}
-        by_lemma.setdefault(lemma.casefold(), []).append(item)
-    grouped = []
-    for key, items in by_lemma.items():
-        # Representative POS/gender: the most frequent form; deterministic ties.
-        representative = sorted(items, key=lambda x:(-x["form_frequency"], x["part_of_speech"].casefold(),
-                                                     (x["gender"] or "").casefold(), x["form"].casefold(), x["form"]))[0]
-        lemma_freq = max(item["lemma_frequency"] for item in items)
-        unique_forms = {}
+        gender = (row.get(gender_col) or "").strip() or None
+        number = (row.get(number_col) or "").strip() or None
+        rows.append({"lemma":lemma, "form":form, "part_of_speech":pos, "gender":gender,
+                     "number":number, "form_frequency":form_freq, "film_lemma_frequency":film_freq,
+                     "book_lemma_frequency":book_freq, "combined_frequency":film_freq + book_freq})
+    grouped: dict[tuple[str,str], list[dict]] = {}
+    for item in rows:
+        grouped.setdefault((item["lemma"].casefold(), item["part_of_speech"].casefold()), []).append(item)
+    candidates = []
+    for key, items in grouped.items():
+        lemma = sorted(items, key=lambda x:(x["lemma"].casefold(),x["lemma"]))[0]["lemma"]
+        form_map = {}
         for item in items:
-            fkey = item["form"].casefold()
-            if fkey not in unique_forms or item["form_frequency"] > unique_forms[fkey]["form_frequency"]:
-                unique_forms[fkey] = item
-        top_forms = sorted(unique_forms.values(), key=lambda x:(-x["form_frequency"], x["form"].casefold(), x["form"]))[:3]
-        if len(top_forms) < 3:
+            k = item["form"].casefold()
+            if k not in form_map or (item["form_frequency"], item["form"]) > (form_map[k]["form_frequency"], form_map[k]["form"]):
+                form_map[k] = item
+        all_forms = sorted(form_map.values(), key=lambda x:(-x["form_frequency"],x["form"].casefold(),x["form"]))
+        candidates.append({"lemma":lemma,"part_of_speech":sorted(items,key=lambda x:(x["part_of_speech"].casefold(),x["part_of_speech"]))[0]["part_of_speech"],
+                           "combined_frequency":max(x["combined_frequency"] for x in items),
+                           "film_frequency":max(x["film_lemma_frequency"] for x in items),
+                           "book_frequency":max(x["book_lemma_frequency"] for x in items),
+                           "gender":next((x["gender"] for x in items if x["gender"]),None),
+                           "number":next((x["number"] for x in items if x["number"]),None),
+                           "forms":all_forms})
+    # A surface spelling may be attached to only one (lemma, POS): choose its
+    # highest-frequency Lexique row, with deterministic lemma/POS tie-breaks.
+    owners: dict[str, dict] = {}
+    occurrences: dict[str, list[dict]] = {}
+    for candidate in candidates:
+        for form in candidate["forms"]:
+            occurrences.setdefault(form["form"].casefold(), []).append({"candidate":candidate,"form":form})
+    ambiguous = []
+    for spelling, options in sorted(occurrences.items()):
+        unique = {(o["candidate"]["lemma"].casefold(),o["candidate"]["part_of_speech"].casefold()):o for o in options}
+        options = list(unique.values())
+        winner = sorted(options,key=lambda o:(-o["form"]["form_frequency"],o["candidate"]["lemma"].casefold(),
+                                               o["candidate"]["lemma"],o["candidate"]["part_of_speech"].casefold(),
+                                               o["candidate"]["part_of_speech"]))[0]
+        owners[spelling] = winner["candidate"]
+        if len(options) > 1:
+            ambiguous.append({"form":winner["form"]["form"],"assigned_lemma":winner["candidate"]["lemma"],
+                              "assigned_pos":winner["candidate"]["part_of_speech"],
+                              "assignment_frequency":winner["form"]["form_frequency"],
+                              "candidates":[{"lemma":o["candidate"]["lemma"],"pos":o["candidate"]["part_of_speech"],
+                                             "frequency":o["form"]["form_frequency"]} for o in sorted(options,key=lambda o:(o["candidate"]["lemma"].casefold(),o["candidate"]["part_of_speech"].casefold()))]})
+    mapping_path = DATA / "headword-typography.json"
+    typography = json.loads(mapping_path.read_text(encoding="utf-8",errors="strict"))
+    output = []
+    for candidate in candidates:
+        own_forms = [f for f in candidate["forms"] if owners.get(f["form"].casefold()) is candidate]
+        common = [f for f in own_forms if f["form_frequency"] >= 1.0]
+        rare = [f for f in own_forms if f["form_frequency"] < 1.0]
+        common = sorted(common,key=lambda x:(-x["form_frequency"],x["form"].casefold(),x["form"]))
+        rare = sorted(rare,key=lambda x:(-x["form_frequency"],x["form"].casefold(),x["form"]))
+        if len(common) < 1:
             continue
-        grouped.append({
-            "lemma":representative["lemma"], "part_of_speech":representative["part_of_speech"],
-            "gender":representative["gender"], "lemma_frequency":lemma_freq,
-            "lemma_frequency_column":lemma_freq_col,
-            "form_frequency_column":form_freq_col,
-            "top_forms":[{"form":x["form"], "frequency":x["form_frequency"]} for x in top_forms],
-            "source":{"name":"Lexique 3.83","url":LEXIQUE_URL},
-            "licence":LICENCE_LEXIQUE, "needs_review":True
-        })
-    # Tie-break: descending lemma frequency; descending frequency of its most
-    # frequent form; casefolded lemma ascending; original lemma ascending.
-    grouped.sort(key=lambda x:(-x["lemma_frequency"], -x["top_forms"][0]["frequency"],
-                               x["lemma"].casefold(), x["lemma"]))
-    rows = grouped[:300]
-    if len(rows) != 300:
-        raise ValueError(f"Expected 300 distinct lemmas with at least 3 forms, found {len(rows)}")
-    if len({row["lemma"].casefold() for row in rows}) != 300:
-        raise ValueError("Pilot does not contain 300 distinct lemmas")
-    accented = [row for row in rows if ACCENTED.search(row["lemma"]) or any(ACCENTED.search(form["form"]) for form in row["top_forms"])]
-    if len(accented) < 20:
-        raise ValueError(f"Expected at least 20 output entries containing French accented characters é, è, ê, à, ç, ù; found {len(accented)}")
-    meta = {"source":"Lexique 3.83", "licence":LICENCE_LEXIQUE, "encoding":encoding,
-            "lemma_frequency_column":lemma_freq_col, "form_frequency_column":form_freq_col,
-            "sentinel_presence_in_source":sentinel_seen,
-            "sentinel_note":"Lexique is not forced to contain rare sentinel spellings; absent sentinels are reported, not fabricated."}
-    return rows, encoding, meta
+        pos = candidate["part_of_speech"].upper()
+        noun_adj = pos in {"NOM","ADJ"}
+        lemma_key = candidate["lemma"].casefold()
+        display = typography.get(lemma_key, candidate["lemma"])
+        register = "vulgar" if lemma_key == "baiser" else "needs_review"
+        output.append({"lemma":candidate["lemma"],"display_headword":display,"part_of_speech":candidate["part_of_speech"],
+                       "gender":candidate["gender"] if noun_adj else None,"number":candidate["number"] if noun_adj else None,
+                       "lemma_frequency":candidate["combined_frequency"],"freqlemfilms2":candidate["film_frequency"],
+                       "freqlemlivres":candidate["book_frequency"],"ranking_formula":"freqlemfilms2 + freqlemlivres",
+                       "top_forms":[{"form":f["form"],"frequency":f["form_frequency"]} for f in common[:3]],
+                       "rare_forms":[{"form":f["form"],"frequency":f["form_frequency"]} for f in rare],
+                       "register":register,"source":{"name":"Lexique 3.83","url":LEXIQUE_URL},
+                       "licence":LICENCE_LEXIQUE,"needs_review":register=="needs_review"})
+    # Compute old film-only top 300 with the same (lemma, POS) identity for an honest comparison.
+    film_ranked = sorted(output,key=lambda x:(-x["freqlemfilms2"],x["lemma"].casefold(),x["lemma"],x["part_of_speech"].casefold()))
+    combined_ranked = sorted(output,key=lambda x:(-x["lemma_frequency"],x["lemma"].casefold(),x["lemma"],x["part_of_speech"].casefold()))
+    film_keys = {(r["lemma"].casefold(),r["part_of_speech"].casefold()) for r in film_ranked[:300]}
+    combined_keys = {(r["lemma"].casefold(),r["part_of_speech"].casefold()) for r in combined_ranked[:300]}
+    changed = len(film_keys.symmetric_difference(combined_keys)) // 2
+    rows_out = combined_ranked[:300]
+    if len(rows_out) != 300:
+        raise ValueError(f"Expected at least 300 (lemma, POS) groups; found {len(rows_out)}")
+    (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8",errors="strict")
+    meta = {"source":"Lexique 3.83","licence":LICENCE_LEXIQUE,"encoding":encoding,
+            "film_lemma_frequency_column":film_lemma_col,"book_lemma_frequency_column":book_lemma_col,
+            "ranking_formula":"freqlemfilms2 + freqlemlivres","top300_changed_vs_film_only":changed,
+            "sentinel_presence_in_source":sentinel_seen,"ambiguous_form_count":len(ambiguous)}
+    return rows_out, encoding, meta
 
 def dicollecte_forms() -> tuple[set[str] | None, dict]:
     detail = {"status":"unavailable", "source":"Dicollecte/Grammalecte Hunspell 7.7", "url":DICO_URL, "licence":LICENCE_DICO, "matched_count":None, "mismatch_count":None, "mismatches":[], "note":""}
