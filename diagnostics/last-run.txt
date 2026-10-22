@@ -90,92 +90,87 @@ Dicollecte/Hunspell encoding: each paired .aff file declares SET UTF-8; dictiona
 Lefff decision requires one unique codec candidate preserving both cœur and œuf and matching the corresponding characteristic byte sequences. ISO-8859-1's missing œ is expected.
 
 ## Pilot and cross-check result
-Pilot output: present; distinct lemmas=300; entries=300
-Ranking column: freqlemfilms2 (lemma frequency in films); tie-break: descending top-form freqfilms2, lemma casefold ascending, original lemma ascending.
-Accented output entries (at least one of é, è, ê, à, ç, ù): 124; minimum required: 20; check: PASS
+Pilot output: present; distinct lemmas=296; entries=300
+Ranking formula: freqlemfilms2 + freqlemlivres (films + books lemma frequency); deterministic tie-break: lemma casefold ascending, original lemma ascending, POS casefold ascending.
+Accented output entries (at least one of é, è, ê, à, ç, ù): 51; minimum required: 20; check: PASS
 
 ## First 20 ranked lemmas
-1. être | lemma_frequency=32236.5 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=est(19417.69), était(2356.65), es(1849.07)
-2. ne | lemma_frequency=22287.83 | column=freqlemfilms2 | POS=ADV | gender=None | top_forms=ne(13357.03), n'(8860.45), n(70.36)
-3. avoir | lemma_frequency=18559.22 | column=freqlemfilms2 | POS=AUX | gender=None | top_forms=a(6350.91), ai(4902.1), as(2144.15)
-4. tu | lemma_frequency=14661.76 | column=freqlemfilms2 | POS=PRO:per | gender=None | top_forms=tu(14661.76), tue(7.19), tues(0.75)
-5. aller | lemma_frequency=9992.77 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=va(3382.55), vais(1644.99), allez(1414.85)
-6. faire | lemma_frequency=8813.48 | column=freqlemfilms2 | POS=VER | gender=m | top_forms=fait(2751.99), faire(2735.96), fais(1390.92)
-7. dire | lemma_frequency=5946.15 | column=freqlemfilms2 | POS=VER | gender=m | top_forms=dit(2146.01), dire(1564.52), dis(1025.78)
-8. pouvoir | lemma_frequency=5524.47 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=peux(1743.78), peut(1209.64), pu(366.22)
-9. vouloir | lemma_frequency=5249.3 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=veux(2486.93), veut(701.19), voulez(553.4)
-10. savoir | lemma_frequency=4516.71 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=sais(2492.92), savoir(421.1), savez(407.94)
-11. voir | lemma_frequency=4119.43 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=voir(1401.1), vu(905.21), vois(689.75)
-12. devoir | lemma_frequency=3232.57 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=dois(894.69), doit(654.84), dû(363.68)
-13. tout | lemma_frequency=2948.75 | column=freqlemfilms2 | POS=PRO:ind | gender=m | top_forms=tout(1366.45), tous(910.39), toute(441.79)
-14. venir | lemma_frequency=2763.82 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=viens(944.81), venir(367.13), vient(352.24)
-15. sur | lemma_frequency=2520.11 | column=freqlemfilms2 | POS=PRE | gender=None | top_forms=sur(2520.11), sure(12.38), surs(1.11)
-16. suivre | lemma_frequency=2090.54 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=suis(1819.44), suivre(73.92), suivez(57.03)
-17. parler | lemma_frequency=1970.55 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=parler(728.02), parle(451.68), parlé(248.94)
-18. prendre | lemma_frequency=1913.83 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=prendre(465.77), prends(431.5), pris(374.6)
-19. croire | lemma_frequency=1711.99 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=crois(904.45), croire(193.37), croyais(162.56)
-20. aimer | lemma_frequency=1655.07 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=aime(751.29), aimerais(227.66), aimes(170.38)
+1. de | lemma_frequency=64149.78 | column=None | POS=PRE | gender=None | top_forms=de(64149.78)
+2. être | lemma_frequency=47321.97 | column=None | POS=VER | gender=None | top_forms=est(25749.449999999997), était(6045.639999999999), sont(2162.21)
+3. la | lemma_frequency=38580.399999999994 | column=None | POS=ART:def | gender=None | top_forms=la(38580.399999999994)
+4. je | lemma_frequency=36845.97 | column=None | POS=PRO:per | gender=None | top_forms=je(36845.97)
+5. ne | lemma_frequency=36129.72 | column=None | POS=ADV | gender=None | top_forms=ne(21109.120000000003), n'(14944.57), n(76.03999999999999)
+6. et | lemma_frequency=33788.81 | column=None | POS=CON | gender=None | top_forms=et(33788.81)
+7. le | lemma_frequency=31963.71 | column=None | POS=ART:def | gender=None | top_forms=le(31963.71)
+8. à | lemma_frequency=31399.449999999997 | column=None | POS=PRE | gender=None | top_forms=à(31399.449999999997)
+9. avoir | lemma_frequency=31360.03 | column=None | POS=AUX | gender=None | top_forms=a(9277.6), ai(7021.22), avait(3512.13)
+10. il | lemma_frequency=29055.02 | column=None | POS=PRO:per | gender=None | top_forms=il(29055.02)
+11. pas | lemma_frequency=26983.29 | column=None | POS=ADV | gender=None | top_forms=pas(26983.29)
+12. un | lemma_frequency=25638.300000000003 | column=None | POS=ART:ind | gender=None | top_forms=un(25638.300000000003)
+13. les | lemma_frequency=23382.68 | column=None | POS=ART:def | gender=None | top_forms=les(23382.68)
+14. l' | lemma_frequency=20876.17 | column=None | POS=ART:def | gender=None | top_forms=l'(20876.17)
+15. avoir | lemma_frequency=19998.89 | column=None | POS=VER | gender=None | top_forms=eu(1105.15), aura(262.7), eut(259.23)
+16. d' | lemma_frequency=19101.09 | column=None | POS=PRE | gender=None | top_forms=d'(19101.09)
+17. une | lemma_frequency=17495.82 | column=None | POS=ART:ind | gender=None | top_forms=une(17495.82)
+18. tu | lemma_frequency=17198.79 | column=None | POS=PRO:per | gender=None | top_forms=tu(17198.79)
+19. vous | lemma_frequency=17096.86 | column=None | POS=PRO:per | gender=None | top_forms=vous(17096.86)
+20. des | lemma_frequency=16680.64 | column=None | POS=ART:ind | gender=None | top_forms=des(16680.64)
 
 ## Random pilot review sample (40 lemmas)
-content | lemma_frequency=178.94 | POS=ADJ | gender=m | top_forms=content(114.75), contente(50.76), contents(11.96) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-attendre | lemma_frequency=1351.46 | POS=VER | gender=None | top_forms=attends(478.32), attendez(230.66), attendre(177.44) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-attraper | lemma_frequency=112.52 | POS=VER | gender=None | top_forms=attraper(35.32), attrape(24.29), attrapé(19.2) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-trouver | lemma_frequency=1335.49 | POS=VER | gender=m | top_forms=trouvé(339.29), trouver(324.94), trouve(284.45) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-baiser | lemma_frequency=112.82 | POS=VER | gender=None | top_forms=baiser(42.25), baise(22.02), baisé(17.65) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-épouser | lemma_frequency=118.78 | POS=VER | gender=None | top_forms=épouser(57.87), épousé(18.09), épouse(15.97) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-sauver | lemma_frequency=246.54 | POS=VER | gender=None | top_forms=sauver(103.1), sauvé(61.62), sauve(24.34) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-soldat | lemma_frequency=107.92 | POS=NOM | gender=m | top_forms=soldats(54.96), soldat(52.78), soldate(0.18) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-calmer | lemma_frequency=168.54 | POS=VER | gender=None | top_forms=calme(94.16), calmez(34.63), calmer(22.89) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-toucher | lemma_frequency=270.27 | POS=VER | gender=None | top_forms=touche(91.91), touché(50.97), toucher(49.43) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-oeil | lemma_frequency=413.04 | POS=NOM | gender=m | top_forms=yeux(315.89), oeil(97.13), oeils(0.01) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-cacher | lemma_frequency=204.13 | POS=VER | gender=None | top_forms=cacher(61.06), cache(44.82), caché(32.13) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-approcher | lemma_frequency=117.65 | POS=VER | gender=None | top_forms=approche(44.17), approchez(27.75), approcher(19.62) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-marier | lemma_frequency=220.51 | POS=VER | gender=None | top_forms=marier(63.88), marié(35.76), mariée(30.55) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-protéger | lemma_frequency=130.71 | POS=VER | gender=None | top_forms=protéger(62.53), protège(27.45), protégé(7.76) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-secret | lemma_frequency=103.49 | POS=NOM | gender=m | top_forms=secret(81.34), secrets(22.15), secrète(14.43) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-tu | lemma_frequency=14661.76 | POS=PRO:per | gender=None | top_forms=tu(14661.76), tue(7.19), tues(0.75) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-boire | lemma_frequency=339.05 | POS=VER | gender=None | top_forms=boire(142.15), bu(53.1), bois(37.63) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-courant | lemma_frequency=111.58 | POS=NOM | gender=m | top_forms=courant(108.69), courants(2.89), courante(1.83) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-arrêter | lemma_frequency=993.79 | POS=VER | gender=None | top_forms=arrête(456.59), arrêter(178.62), arrêtez(174.12) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-déranger | lemma_frequency=126.95 | POS=VER | gender=None | top_forms=dérange(63.69), déranger(31.38), dérangé(7.98) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-colonel | lemma_frequency=103.7 | POS=NOM | gender=m | top_forms=colonel(102.86), colonels(0.71), colonelle(0.14) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-promettre | lemma_frequency=185.26 | POS=VER | gender=m | top_forms=promis(82.83), promets(68.81), promettre(10.05) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-traiter | lemma_frequency=104.04 | POS=VER | gender=None | top_forms=traiter(25.23), traite(24.08), traité(15.51) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-blesser | lemma_frequency=103.74 | POS=VER | gender=m | top_forms=blessé(49.12), blesser(19.93), blessée(13.0) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-docteur | lemma_frequency=233.86 | POS=NOM | gender=m | top_forms=docteur(223.48), docteurs(9.72), doctoresse(0.66) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-venir | lemma_frequency=2763.82 | POS=VER | gender=None | top_forms=viens(944.81), venir(367.13), vient(352.24) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-lieu | lemma_frequency=182.0 | POS=NOM | gender=m | top_forms=lieu(153.12), lieux(28.73), lieus(0.15) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-reposer | lemma_frequency=95.2 | POS=VER | gender=None | top_forms=reposer(39.81), repose(33.27), reposez(7.81) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-mettre | lemma_frequency=1004.83 | POS=VER | gender=None | top_forms=mettre(271.05), mis(228.57), mets(151.83) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-répondre | lemma_frequency=251.57 | POS=VER | gender=None | top_forms=réponds(63.59), répondre(57.76), répondu(34.9) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-tourner | lemma_frequency=204.15 | POS=VER | gender=None | top_forms=tourne(80.72), tourner(51.05), tourné(24.84) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-tuer | lemma_frequency=928.06 | POS=VER | gender=None | top_forms=tuer(346.18), tué(259.79), tue(116.46) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-aider | lemma_frequency=688.71 | POS=VER | gender=None | top_forms=aider(362.77), aide(119.69), aidez(64.36) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-mentir | lemma_frequency=185.16 | POS=VER | gender=m | top_forms=menti(47.32), mens(42.12), mentir(37.01) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-tomber | lemma_frequency=407.82 | POS=VER | gender=None | top_forms=tomber(180.25), tombe(66.39), tombé(62.89) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-mal | lemma_frequency=453.95 | POS=ADV | gender=None | top_forms=mal(453.95), maux(8.31), male(0.44) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-crier | lemma_frequency=116.94 | POS=VER | gender=None | top_forms=crie(35.65), crier(31.49), crié(13.0) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-humain | lemma_frequency=107.1 | POS=ADJ | gender=m | top_forms=humain(50.53), humaine(32.37), humains(18.15) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-reconnaître | lemma_frequency=140.73 | POS=VER | gender=None | top_forms=reconnais(37.36), reconnu(25.93), reconnaître(25.24) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+non | lemma_frequency=5175.99 | POS=ADV | gender=None | top_forms=non(5175.99) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+les | lemma_frequency=23382.68 | POS=ART:def | gender=None | top_forms=les(23382.68) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+enfant | lemma_frequency=1461.27 | POS=NOM | gender=m | top_forms=enfants(792.05), enfant(669.22) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+heure | lemma_frequency=1633.84 | POS=NOM | gender=f | top_forms=heure(855.26), heures(778.5799999999999) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+demander | lemma_frequency=1894.23 | POS=VER | gender=None | top_forms=demande(497.52), demandé(341.80999999999995), demander(333.52) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+quand | lemma_frequency=3307.99 | POS=CON | gender=None | top_forms=quand(3307.99) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+tout | lemma_frequency=6120.1 | POS=ADJ | gender=m | top_forms=tous(1826.94), toute(1044.63), toutes(893.6800000000001) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+travail | lemma_frequency=653.28 | POS=NOM | gender=m | top_forms=travail(591.4200000000001), travaux(61.86) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+que | lemma_frequency=7416.849999999999 | POS=PRO:rel | gender=None | top_forms=que(6306.22) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+commencer | lemma_frequency=858.72 | POS=VER | gender=None | top_forms=commence(226.01), commencé(176.61), commencer(135.01) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+une | lemma_frequency=17495.82 | POS=ART:ind | gender=None | top_forms=une(17495.82) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+d' | lemma_frequency=19101.09 | POS=PRE | gender=None | top_forms=d'(19101.09) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+lui | lemma_frequency=6533.88 | POS=PRO:per | gender=None | top_forms=lui(6533.88) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+ton | lemma_frequency=2033.79 | POS=ADJ:pos | gender=None | top_forms=ton(2033.79) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+quoi | lemma_frequency=1769.1 | POS=ADJ | gender=m | top_forms=quoi(1769.1) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+voiture | lemma_frequency=712.51 | POS=NOM | gender=f | top_forms=voiture(610.02), voitures(102.49000000000001) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+l' | lemma_frequency=20876.17 | POS=ART:def | gender=None | top_forms=l'(20876.17) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+apprendre | lemma_frequency=635.1600000000001 | POS=VER | gender=None | top_forms=appris(218.68), apprendre(172.98000000000002), apprend(44.269999999999996) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+même | lemma_frequency=2266.34 | POS=ADV | gender=None | top_forms=même(2266.34) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+jeune | lemma_frequency=866.2 | POS=ADJ | gender=None | top_forms=jeune(667.54), jeunes(198.67000000000002) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+arriver | lemma_frequency=1975.46 | POS=VER | gender=None | top_forms=arrive(689.22), arrivé(300.97), arriver(277.88) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+juste | lemma_frequency=810.31 | POS=ADJ | gender=None | top_forms=juste(801.26), justes(9.04) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+mère | lemma_frequency=1448.07 | POS=NOM | gender=f | top_forms=mère(1409.0900000000001), mères(38.980000000000004) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+je | lemma_frequency=36845.97 | POS=PRO:per | gender=None | top_forms=je(36845.97) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+alors | lemma_frequency=2811.4300000000003 | POS=ADV | gender=None | top_forms=alors(2811.4300000000003) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+nos | lemma_frequency=1103.8200000000002 | POS=ADJ:pos | gender=None | top_forms=nos(1103.8200000000002) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+ici | lemma_frequency=2894.79 | POS=ADV | gender=None | top_forms=ici(2894.79) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+fois | lemma_frequency=2039.25 | POS=NOM | gender=f | top_forms=fois(2039.25) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+revenir | lemma_frequency=1109.16 | POS=VER | gender=None | top_forms=reviens(185.55), revenir(181.74), revient(114.66) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+merci | lemma_frequency=978.37 | POS=ONO | gender=None | top_forms=merci(978.37) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+savoir | lemma_frequency=6520.29 | POS=VER | gender=None | top_forms=sais(3108.19), savoir(671.1), sait(646.46) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+donc | lemma_frequency=1058.3899999999999 | POS=CON | gender=None | top_forms=donc(1058.3899999999999) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+tuer | lemma_frequency=1099.21 | POS=VER | gender=None | top_forms=tuer(411.72), tué(306.61), tue(133.42) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+chez | lemma_frequency=1522.7199999999998 | POS=PRE | gender=None | top_forms=chez(1522.7199999999998) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+faire | lemma_frequency=14142.47 | POS=VER | gender=None | top_forms=faire(4291.1), fait(4211.25), fais(1615.18) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+porter | lemma_frequency=794.9100000000001 | POS=VER | gender=None | top_forms=porter(158.97000000000003), portait(139.6), porté(59.209999999999994) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+seulement | lemma_frequency=677.22 | POS=ADV | gender=None | top_forms=seulement(677.22) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+où | lemma_frequency=4245.360000000001 | POS=PRO:rel | gender=None | top_forms=où(3313.67) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+cet | lemma_frequency=997.4100000000001 | POS=ADJ:dem | gender=None | top_forms=cet(997.4100000000001) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+sur | lemma_frequency=7840.58 | POS=PRE | gender=None | top_forms=sur(7840.58) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 
 ## Sentinel output validation
 été: not in ranked pilot (not fabricated)
 français: not in ranked pilot (not fabricated)
 cœur: not in ranked pilot (not fabricated)
 garçon: not in ranked pilot (not fabricated)
-où: not in ranked pilot (not fabricated)
+où: present exactly
 noël: not in ranked pilot (not fabricated)
-à: not in ranked pilot (not fabricated)
-Cross-check output: present; summary={"Dicollecte_matched_forms": 395, "Dicollecte_mismatches": 495, "Lefff_matched_forms": null, "Lefff_mismatches": null, "pilot_distinct_forms": 890, "pilot_lemmas": 300}
-Cross-check Dicollecte: status=available; matched_forms=395; mismatches=495; encoding=.aff SET UTF-8 (utf-8); note=mismatches are distinct pilot surface forms absent from the cross-check source
-  first mismatch: abandonne
-  first mismatch: abandonné
-  first mismatch: accepte
-  first mismatch: accepté
-  first mismatch: acheté
-  first mismatch: adore
-  first mismatch: agente
-  first mismatch: agents
-  first mismatch: agi
-  first mismatch: agit
+à: present exactly
+Cross-check output: present; summary={"Dicollecte_matched_forms": 978, "Dicollecte_unknown_forms": 5, "Lefff_matched_forms": null, "Lefff_mismatches": null, "pilot_distinct_forms": 983, "pilot_entries": 300}
+Cross-check Dicollecte: status=available; matched_forms=978; mismatches=5; encoding=None; note=unknown forms generated by hunspell -d fr-toutesvariantes -l
+  first mismatch: coeur
+  first mismatch: coeurs
+  first mismatch: marchées
+  first mismatch: oeil
+  first mismatch: oeils
 Cross-check Lefff: status=unavailable; matched_forms=None; mismatches=None; encoding=None; note=Lefff download unavailable: % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 0 0 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:01 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:02 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:03 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:04 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:05 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:06 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:07 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:08 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:09 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:10 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:11 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:12 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:13 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:14 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:15 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:16 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:17 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:18 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:19 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:20 --:--:-- 0 curl: (28) Failed to connect to www.labri.fr port 443 after 20002 ms: Timeout was reached Warning: Problem : timeout. Will retry in 1 seconds. 2 retries left. 0 0 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:01 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:02 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:03 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:04 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:05 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:06 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:07 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:08 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:09 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:10 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:11 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:12 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:13 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:14 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:15 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:16 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:17 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:18 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:19 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:20 --:--:-- 0 curl: (28) Failed to connect to www.labri.fr port 443 after 20002 ms: Timeout was reached Warning: Problem : timeout. Will retry in 2 seconds. 1 retries left. 0 0 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:01 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:02 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:03 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:04 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:05 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:06 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:07 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:08 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:09 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:10 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:11 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:12 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:13 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:14 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:15 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:16 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:17 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:18 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:19 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:20 --:--:-- 0 curl: (28) Failed to connect to www.labri.fr port 443 after 20002 ms: Timeout was reached
