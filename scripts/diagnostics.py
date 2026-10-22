@@ -156,14 +156,14 @@ def main() -> int:
             if any(marker in serialized for marker in ("\ufffd", "Ã")):
                 out.append("ERROR: pilot output contains forbidden U+FFFD or mojibake marker")
             out.append(f"Pilot output: present; distinct lemmas={len({r.get('lemma','').casefold() for r in rows})}; entries={len(rows)}")
-            out.append("Ranking column: freqlemfilms2 (lemma frequency in films); tie-break: descending top-form freqfilms2, lemma casefold ascending, original lemma ascending.")
+            out.append("Ranking formula: freqlemfilms2 + freqlemlivres (films + books lemma frequency); deterministic tie-break: lemma casefold ascending, original lemma ascending, POS casefold ascending.")
             accented_count = sum(1 for row in rows if __import__("re").search(r"[éèêàçù]", row.get("lemma", ""), __import__("re").I) or any(__import__("re").search(r"[éèêàçù]", form.get("form", ""), __import__("re").I) for form in row.get("top_forms", [])))
             out.append(f"Accented output entries (at least one of é, è, ê, à, ç, ù): {accented_count}; minimum required: 20; check: {'PASS' if accented_count >= 20 else 'FAIL'}")
             out.append("\n## First 20 ranked lemmas")
             for i, row in enumerate(rows[:20], 1):
                 forms = ", ".join(f"{x.get('form')}({x.get('frequency')})" for x in row.get("top_forms", []))
                 out.append(f"{i}. {row.get('lemma')} | lemma_frequency={row.get('lemma_frequency')} | column={row.get('lemma_frequency_column')} | POS={row.get('part_of_speech')} | gender={row.get('gender')} | top_forms={forms}")
-            sample = random.SystemRandom().sample(rows, min(40, len(rows)))
+            sample = random.Random(42).sample(rows, min(40, len(rows)))
             out.append(f"\n## Random pilot review sample ({len(sample)} lemmas)")
             for row in sample:
                 forms = ", ".join(f"{x.get('form')}({x.get('frequency')})" for x in row.get("top_forms", []))
