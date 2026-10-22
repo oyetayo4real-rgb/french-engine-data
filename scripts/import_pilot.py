@@ -214,7 +214,7 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     rows_out = combined_ranked[:300]
     if len(rows_out) != 300:
         raise ValueError(f"Expected at least 300 (lemma, POS) groups; found {len(rows_out)}")
-    (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8",errors="strict")
+    (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")
     meta = {"source":"Lexique 3.83","licence":LICENCE_LEXIQUE,"encoding":encoding,
             "film_lemma_frequency_column":film_lemma_col,"book_lemma_frequency_column":book_lemma_col,
             "ranking_formula":"freqlemfilms2 + freqlemlivres","top300_changed_vs_film_only":changed,
@@ -234,7 +234,7 @@ def dicollecte_forms(forms: list[str]) -> tuple[set[str] | None, dict]:
         return None,detail
     try:
         with tempfile.NamedTemporaryFile("w",encoding="utf-8",errors="strict",delete=False) as handle:
-            handle.write("\\n".join(forms)+"\\n"); input_path=Path(handle.name)
+            handle.write("\n".join(forms)+"\n"); input_path=Path(handle.name)
         try:
             proc=subprocess.run([hunspell,"-d",str(dictionary),"-l",str(input_path)],capture_output=True,text=True,encoding="utf-8",errors="strict",check=False,timeout=90)
         finally: input_path.unlink(missing_ok=True)
@@ -308,8 +308,8 @@ def main() -> int:
     cross={"pilot_source":"Lexique 3.83","pilot_licence":LICENCE_LEXIQUE,"ranking_formula":meta["ranking_formula"],"top300_changed_vs_film_only":meta["top300_changed_vs_film_only"],
            "sources":{"Dicollecte":dico_detail,"Lefff":lefff_detail},"lefff_encoding_probe":probe,
            "summary":{"pilot_entries":len(rows),"pilot_distinct_forms":len(pilot_forms),"Dicollecte_matched_forms":dico_detail["matched_count"],"Dicollecte_unknown_forms":dico_detail["mismatch_count"],"Lefff_matched_forms":lefff_detail["matched_count"],"Lefff_mismatches":lefff_detail["mismatch_count"]}}
-    CROSSCHECKS.write_text(json.dumps(cross,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8",errors="strict")
-    output_text=json.dumps(rows,ensure_ascii=False,indent=2)+"\\n"
+    CROSSCHECKS.write_text(json.dumps(cross,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")
+    output_text=json.dumps(rows,ensure_ascii=False,indent=2)+"\n"
     validate_output(rows,output_text)
     OUTPUT.write_text(output_text,encoding="utf-8",errors="strict")
     validate_output(json.loads(OUTPUT.read_text(encoding="utf-8",errors="strict")),output_text)
@@ -324,7 +324,7 @@ def main() -> int:
         prior=json.loads(MANIFEST.read_text(encoding="utf-8",errors="strict"))
         for name,value in manifest_files.items():
             if prior.get("files",{}).get(name)!=value: raise ValueError(f"Source checksum mismatch for {name}; review before updating.")
-    else: MANIFEST.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8",errors="strict")
+    else: MANIFEST.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")
     sample=random.Random(42).sample(rows,min(max(0,args.print_random),len(rows)))
     print(f"VALID: entries={len(rows)}; formula={meta['ranking_formula']}; top300_changed_vs_film_only={meta['top300_changed_vs_film_only']}; ambiguous_forms={meta['ambiguous_form_count']}")
     print(f"DICOLLECTE HUNSPELL: status={dico_detail['status']} matched={dico_detail['matched_count']} unknown={dico_detail['mismatch_count']}")
@@ -339,7 +339,7 @@ def build_review_sheet(rows: list[dict]) -> str:
     for i,r in enumerate(rows,1):
         forms=", ".join(f"{f['form']} ({f['frequency']})" for f in r["top_forms"]).replace("|","\\|")
         lines.append(f"| {i} | {r['display_headword']} | {r['part_of_speech']} | {forms} | {r['register']} |  |")
-    return "\\n".join(lines)+"\\n"
+    return "\n".join(lines)+"\n"
 
 if __name__ == "__main__":
     try: raise SystemExit(main())
