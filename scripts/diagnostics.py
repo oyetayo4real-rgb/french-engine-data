@@ -243,9 +243,9 @@ def main() -> int:
     assertion("c", etre_suis and bool(suivre_suis) and bool(suivre_suis.get("shared_form")),
               f"'suis' in être forms and flagged (shared form) under suivre (être={etre_suis}; suivre_shared={bool(suivre_suis.get('shared_form'))})")
 
-    numeric_files = [ROOT / "data/pilot-300.json", ROOT / "data/cross-checks-300.json",
-                     ROOT / "data/ambiguous-forms.json", ROOT / "data/source-checksums.json",
-                     ROOT / "data/review-sheet.md", ROOT / "data/review-sheet.csv"]
+    numeric_files = [path for path in (ROOT / "data").glob("*") if path.is_file()
+                     and path.name not in {"raw", "review-sheet.csv"}]
+    numeric_files.extend([ROOT / "data/review-sheet.md", ROOT / "data/review-sheet.csv"])
     bad_numbers = []
     number_pattern = __import__("re").compile(r"(?<![A-Za-z0-9_])[-+]?(?:\d+\.\d{3,}|\.\d{3,})(?!\d)")
     for path in numeric_files:
