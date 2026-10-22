@@ -408,26 +408,6 @@ def _review_forms(row: dict) -> list[dict]:
         form.get("form", ""),
     ))
 
-def _review_forms(row: dict) -> list[dict]:
-    """Deduplicate review forms, put verb infinitives first, then order by frequency."""
-    forms = list(row.get("forms", row.get("top_forms", []))) + list(row.get("rare_forms", []))
-    by_form = {}
-    for form in forms:
-        key = form.get("form", "").casefold()
-        if not key:
-            continue
-        prior = by_form.get(key)
-        if prior is None or float(form.get("frequency") or 0) > float(prior.get("frequency") or 0):
-            by_form[key] = form
-    lemma = row.get("lemma", "").casefold()
-    pos = row.get("part_of_speech", "").upper()
-    return sorted(by_form.values(), key=lambda form: (
-        0 if pos == "VER" and form.get("form", "").casefold() == lemma else 1,
-        -float(form.get("frequency") or 0),
-        form.get("form", "").casefold(),
-        form.get("form", ""),
-    ))
-
 def _review_cells(index: int, row: dict) -> list[str]:
     head = row["display_headword"]
     if row["part_of_speech"].upper() == "NOM":
