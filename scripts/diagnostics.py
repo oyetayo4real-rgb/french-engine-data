@@ -167,7 +167,7 @@ def main() -> int:
             out.append(f"\n## Random pilot review sample ({len(sample)} lemmas)")
             for row in sample:
                 forms = ", ".join(f"{x.get('form')}({float(x.get('frequency') or 0):.2f})" for x in row.get("top_forms", []))
-                out.append(f"{row.get('lemma')} | lemma_frequency={row.get('lemma_frequency')} | POS={row.get('part_of_speech')} | gender={row.get('gender')} | top_forms={forms} | source=Lexique 3.83 | licence=CC BY-SA 4.0")
+                out.append(f"{row.get('lemma')} | lemma_frequency={float(row.get('lemma_frequency') or 0):.2f} | POS={row.get('part_of_speech')} | gender={row.get('gender')} | top_forms={forms} | source=Lexique 3.83 | licence=CC BY-SA 4.0")
             out.append("\n## Sentinel output validation")
             for word in ("été", "français", "cœur", "garçon", "où", "noël", "à"):
                 found = any(word.casefold() == r.get("lemma", "").casefold() or any(word.casefold() == form.get("form", "").casefold() for form in r.get("top_forms", [])) for r in rows)
