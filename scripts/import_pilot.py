@@ -98,7 +98,7 @@ def probe_lefff(raw: bytes) -> tuple[str | None, str, dict]:
 def read_lexique() -> tuple[list[dict], str, dict]:
     raw = source_bytes(LEXIQUE)
     encoding, text = choose_lexique_encoding(raw)
-    reader = csv.DictReader(text.splitlines(), delimiter="\\t")
+    reader = csv.DictReader(text.splitlines(), delimiter="\t")
     if not reader.fieldnames:
         raise ValueError("Lexique TSV has no header")
     def col(*choices: str) -> str:
