@@ -192,7 +192,7 @@ def main() -> int:
     else:
         out.append("Cross-check output: absent.")
     # Pilot v3 acceptance evidence: full Dicollecte unknown list and first 30 homograph decisions.
-    out.append("\\n## Pilot v3 — Dicollecte unknown forms (full list)")
+    out.append("\n## Pilot v3 — Dicollecte unknown forms (full list)")
     if checks.is_file():
         try:
             result = json.loads(checks.read_text(encoding="utf-8", errors="strict"))
@@ -203,7 +203,7 @@ def main() -> int:
         except (OSError, ValueError, TypeError) as exc:
             out.append(f"Dicollecte unknown forms unavailable: {type(exc).__name__}: {exc}")
     ambiguous_path = ROOT / "data/ambiguous-forms.json"
-    out.append("\\n## Pilot v3 — ambiguous-form decisions")
+    out.append("\n## Pilot v3 — ambiguous-form decisions")
     if ambiguous_path.is_file():
         try:
             decisions = json.loads(ambiguous_path.read_text(encoding="utf-8", errors="strict"))
