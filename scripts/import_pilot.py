@@ -264,7 +264,7 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     rows_out = combined_ranked[:300]
     if len(rows_out) != 300:
         raise ValueError(f"Expected at least 300 lemma/POS entries; found {len(rows_out)}")
-    (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8",errors="strict")
+    (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")
     meta = {"source":"Lexique 3.83","licence":LICENCE_LEXIQUE,"encoding":encoding,
             "film_lemma_frequency_column":film_lemma_col,"book_lemma_frequency_column":book_lemma_col,
             "ranking_formula":"freqlemfilms2 + freqlemlivres","top300_changed_vs_film_only":changed,
@@ -386,7 +386,7 @@ def main() -> int:
     return 0
 
 def build_review_sheet(rows: list[dict]) -> str:
-    lines=["# French Engine Data — Teacher Review Sheet","","POS note: confirm the Lexique code for quoi, peu, voilà, bonjour, and entries coded ADJ:ind, ADJ:int, or ONO.","The review column is intentionally empty.","","| # | Headword | Gender | POS (Lexique code) | Forms | Teacher register | OK/Wrong/Fix |","|---:|---|---|---|---|---|---|"]
+    lines=["# French Engine Data — Teacher Review Sheet","","Confirm POS for quoi, peu, voilà, bonjour, and entries coded ADJ:ind, ADJ:int, or ONO.","The review column is intentionally empty.","","| # | Headword | Gender | POS (Lexique code) | POS note | Forms | Teacher register | OK/Wrong/Fix |","|---:|---|---|---|---|---|---|---|"]
     pos_note_lemmas={"quoi","peu","voilà","bonjour"}
     for i,r in enumerate(rows,1):
         head=r["display_headword"]
@@ -394,9 +394,9 @@ def build_review_sheet(rows: list[dict]) -> str:
             article="la" if (r.get("gender") or "").casefold() in {"f","fem","féminin","feminine"} else "le"
             head=f"{article} {head}"
         gender=r.get("gender") or "—"
-        note=" — POS note: confirm" if r["lemma"].casefold() in pos_note_lemmas or r["part_of_speech"].upper() in {"ADJ:IND","ADJ:INT","ONO"} else ""
+        note="Confirm Lexique POS" if r["lemma"].casefold() in pos_note_lemmas or r["part_of_speech"].upper() in {"ADJ:IND","ADJ:INT","ONO"} else ""
         forms=", ".join(f["form"] for f in r["top_forms"]).replace("|","\\|")
-        lines.append(f"| {i} | {head} | {gender} | {r['part_of_speech']}{note} | {forms} | {r['register']} |  |")
+        lines.append(f"| {i} | {head} | {gender} | {r['part_of_speech']} | {note} | {forms} | {r['register']} |  |")
     return "\n".join(lines)+"\n"
 
 if __name__ == "__main__":
