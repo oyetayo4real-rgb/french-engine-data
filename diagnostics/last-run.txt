@@ -214,7 +214,7 @@ ASSERT a: PASS — no headword among l', d', s', t', n', j', m', c', qu'
 ASSERT b: PASS — exactly one row each for être and avoir (être=1; avoir=1)
 ASSERT c: PASS — 'suis' in être forms and flagged (shared form) under suivre (être=True; suivre_shared=True)
 ASSERT d: PASS — no number with more than 2 decimals in any output file
-ASSERT e: FAIL — œil forms use 'œil' (not 'oeil') and cœur forms use 'cœur' (œil=ranked forms; cœur=canonical map)
+ASSERT e: FAIL — œil forms use œil (not oeil) and cœur forms use cœur (not coeur)
 ASSERT f: PASS — every NOM row has gender m/f/m-f; every VER row has em dash in teacher sheet (bad NOM=0; bad VER JSON gender=0; bad VER sheet=0)
 ASSERT g: PASS — no duplicate form inside one lemma's list
 ASSERT h: PASS — noun fait lists fait/faits; adjective tout lists tout/tous/toute/toutes; adjective même lists même/mêmes
