@@ -239,7 +239,11 @@ def lefff_forms(probe_out: dict) -> tuple[set[str] | None, dict]:
         detail.update(status="available", encoding=encoding, parsed_forms=len(forms))
         return forms, detail
     except (OSError, UnicodeError, ValueError) as exc:
-        detail["note"] = f"unavailable: {type(exc).__name__}: {exc}"
+        status_file = DATA / "raw/lefff-download-status.txt"
+        if not LEFFF.is_file() and status_file.is_file():
+            detail["note"] = status_file.read_text(encoding="utf-8", errors="strict").strip()
+        else:
+            detail["note"] = f"unavailable: {type(exc).__name__}: {exc}"
         return None, detail
 
 def validate_output(rows: list[dict], serialized: str) -> None:
@@ -288,13 +292,24 @@ def main() -> int:
     reread_text = OUTPUT.read_text(encoding="utf-8", errors="strict")
     reread = json.loads(reread_text)
     validate_output(reread, reread_text)
-    manifest = {"algorithm":"SHA-256","files":{
+    manifest_files = {
         "Lexique383.tsv":{"sha256":sha256_file(LEXIQUE),"url":LEXIQUE_URL},
-        "hunspell-french-dictionaries-v7.7.zip":{"sha256":sha256_file(DICO_ZIP),"url":DICO_URL},
-        "lefff-2.1.txt.gz":{"sha256":sha256_file(LEFFF),"url":LEFFF_URL}}}
+        "hunspell-french-dictionaries-v7.7.zip":{"sha256":sha256_file(DICO_ZIP),"url":DICO_URL}
+    }
+    if LEFFF.is_file():
+        manifest_files["lefff-2.1.txt.gz"] = {"sha256":sha256_file(LEFFF),"url":LEFFF_URL}
+    elif MANIFEST.exists():
+        # Preserve the last known Lefff checksum while the optional source is unavailable.
+        prior_manifest = json.loads(MANIFEST.read_text(encoding="utf-8", errors="strict"))
+        prior_lefff = prior_manifest.get("files", {}).get("lefff-2.1.txt.gz")
+        if prior_lefff:
+            manifest_files["lefff-2.1.txt.gz"] = prior_lefff
+    manifest = {"algorithm":"SHA-256","files":manifest_files}
     if MANIFEST.exists():
         prior = json.loads(MANIFEST.read_text(encoding="utf-8", errors="strict"))
-        if prior != manifest: raise ValueError("Source checksum mismatch; upstream bytes changed. Review manifest before updating.")
+        for name, current in manifest_files.items():
+            if prior.get("files", {}).get(name) != current:
+                raise ValueError(f"Source checksum mismatch for {name}; upstream bytes changed. Review manifest before updating.")
     else:
         MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n", encoding="utf-8", errors="strict")
     accented_count = sum(1 for row in reread if ACCENTED.search(row["lemma"]) or any(ACCENTED.search(form["form"]) for form in row["top_forms"]))
