@@ -21,6 +21,11 @@ on:
 permissions:
   contents: write
 
+# Keep only the newest Pilot v3 validation run active for this branch.
+concurrency:
+  group: pilot-v3-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   import-validate:
     runs-on: ubuntu-latest
