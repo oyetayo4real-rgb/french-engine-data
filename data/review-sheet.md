@@ -305,3 +305,7 @@ The review column is intentionally empty.
 | 298 | écrire | — | VER |  | écrit (shared form), écrire, écris, écrivait, écrivais, écrivez, écrite (shared form), écrivit, écrirai, écrivent, écrits (shared form), écrivant, écrites (shared form), écrive, écrivis, écrira, écrirait, écriras, écrirais, écrivaient, écriviez, écrivons, écrives | unreviewed |  |
 | 299 | presque | — | ADV |  | presque | unreviewed |  |
 | 300 | la affaire | f | NOM |  | affaire (shared form), affaires (shared form) | unreviewed |  |
+
+## Requested POS checks outside the ranked 300
+These requested checks have no ranked table row; confirm the code against Lexique before use.
+- bonjour: POS note — no code inferred because the lemma is outside the ranked 300.
