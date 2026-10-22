@@ -106,7 +106,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull --rebase --autostash origin main
-          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json data/ambiguous-forms.json data/review-sheet.md data/review-sheet.csv
+          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json data/ambiguous-forms.json data/review-sheet.md data/review-sheet.csv data/review-sheet.csv
           if git diff --cached --quiet; then
             echo "Pilot, cross-checks, and checksum manifest are unchanged."
           else
