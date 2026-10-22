@@ -106,7 +106,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull --rebase --autostash origin main
-          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json data/ambiguous-forms.json data/review-sheet.md
+          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json data/ambiguous-forms.json data/review-sheet.md data/review-sheet.csv
           if git diff --cached --quiet; then
             echo "Pilot, cross-checks, and checksum manifest are unchanged."
           else
@@ -117,6 +117,32 @@ jobs:
         if: always()
         continue-on-error: true
         run: python scripts/diagnostics.py
+      - name: Fail the job when Pilot v3.1 assertions fail
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import sys
+          path = Path("diagnostics/last-run.txt")
+          if not path.exists():
+              print("Assertion gate failed: diagnostics/last-run.txt missing")
+              sys.exit(1)
+          text = path.read_text(encoding="utf-8", errors="strict")
+          lines = [line for line in text.splitlines() if line.startswith("ASSERT ")]
+          if len(lines) != 8 or any(not any(line.startswith(f"ASSERT {letter}: ") for line in lines) for letter in "abcdefgh"):
+              print("Assertion gate failed: eight assertion lines are not present")
+              sys.exit(1)
+          failed = [line for line in lines if ": FAIL" in line]
+          if failed:
+              print("\n".join(failed))
+              sys.exit(1)
+          if any(": PASS" not in line for line in lines):
+              print("Assertion gate failed: unexpected assertion status")
+              sys.exit(1)
+          print("Pilot v3.1 assertion gate: PASS (8/8)")
+          PY
       - name: Commit last-run diagnostics (always)
         if: always()
         shell: bash
