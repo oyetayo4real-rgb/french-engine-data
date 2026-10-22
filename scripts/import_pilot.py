@@ -114,9 +114,10 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     gender_col = col("genre", "gender")
     number_col = col("nombre", "number")
     film_form_col = col("freqfilms2")
+    book_form_col = col("freqlivres")
     film_lemma_col = col("freqlemfilms2")
     book_lemma_col = col("freqlemlivres")
-    print(f"RANKING FORMULA: {film_lemma_col} + {book_lemma_col} (films + books lemma frequencies); forms use {film_form_col}.")
+    print(f"RANKING FORMULA: {film_lemma_col} + {book_lemma_col} (films + books lemma frequencies); form frequency formula: {film_form_col} + {book_form_col}.")
     rows = []
     sentinel_seen = {word: word.casefold() in text.casefold() for word in SENTINELS}
     print("LEXIQUE SOURCE SENTINELS: " + json.dumps(sentinel_seen, ensure_ascii=False, sort_keys=True))
@@ -129,7 +130,7 @@ def read_lexique() -> tuple[list[dict], str, dict]:
         if len(form) > 48 or any(ch.isdigit() for ch in form) or not all(ch.isalpha() or ch in "-'’ " for ch in form):
             continue
         try:
-            form_freq = float((row.get(film_form_col) or "0").replace(",", "."))
+            form_freq = float((row.get(film_form_col) or "0").replace(",", ".")) + float((row.get(book_form_col) or "0").replace(",", "."))
             film_freq = float((row.get(film_lemma_col) or "0").replace(",", "."))
             book_freq = float((row.get(book_lemma_col) or "0").replace(",", "."))
         except ValueError:
