@@ -24,12 +24,7 @@ Container bytes are not text-decoded; compressed/archive payloads are inspected 
 
 ## Source: Lefff 2.1 gzip
 Path: data/raw/lefff-2.1.txt.gz
-Size bytes: 3291401
-SHA-256: 5691730cf8d42f97dba2bac2b1d8ada9fe5e438a1159cd63ba0ebb6845dda363
-Starts with UTF-8 BOM: no
-First 120 bytes hex: 1f 8b 08 08 be a4 e2 45 00 03 6c 65 66 66 66 2d 32 2e 31 2e 74 78 74 00 c4 5c 59 73 1b 47 92 7e a6 7e 45 99 de 59 91 63 10 b6 64 cf ec ae 64 79 0c 92 a0 84 18 0a a4 01 50 b2 c2 e1 70 14 ba 0b 40 4b 7d 60 ba ba 09 61 63 7e ec bc 6a 1f f6 37 ec 97 99 55 7d 10 87 28 5b 11 cb b0 69 36 ba 2a 2b ef b3 e0 2f bf fc fd 3f 0f be 54 97 fd 8b 8b 0b 75 6b 72 1b 65 a9 7a
-Bytes >= 0x80: 1644564
-Container bytes are not text-decoded; compressed/archive payloads are inspected separately below.
+STATUS: unavailable (file was not downloaded)
 
 ## Hunspell archive inventory and .aff evidence
 FILE fr-classique.aff | size=199870
@@ -87,14 +82,7 @@ Lexique 3.83: UTF-8 confirmed by strict decoding plus non-ASCII bytes
 Lexique exact sentinel presence: {"cœur": false, "français": true, "garçon": true, "noël": true, "où": true, "à": true, "été": true, "œuf": false}
 Lexique note: sentinel presence is informational only; no requirement that cœur or any other rare sentinel occur.
 Lexique source forbidden-marker check: no U+FFFD or "Ã" found
-Lefff strict decoding / sentinel results:
-  utf-8: strict_decode_succeeds=False; cœur_intact=False; œuf_intact=False; error='utf-8' codec can't decode byte 0xe9 in position 313: invalid continuation byte
-  iso-8859-1: strict_decode_succeeds=True; cœur_intact=False; œuf_intact=False
-  iso-8859-15: strict_decode_succeeds=True; cœur_intact=False; œuf_intact=False
-  cp1252: strict_decode_succeeds=True; cœur_intact=False; œuf_intact=False
-Lefff byte evidence for œ encodings: {"ISO-8859-15 cœur": 0, "ISO-8859-15 œuf": 0, "UTF-8 cœur": 0, "UTF-8 œuf": 0, "cp1252 cœur": 0, "cp1252 œuf": 0}
-Expected limitation: ISO-8859-1 cannot represent œ; failure to preserve œ in cœur/œuf under Latin-1 is expected, not a codec error.
-Lefff evidence-based decision: unavailable; decisive candidates=[]
+Lefff encoding probes unavailable: source file missing.
 Dicollecte/Hunspell encoding: each paired .aff file declares SET UTF-8; dictionary decoding uses that declared codec.
 
 ## Encoding policy
@@ -128,46 +116,46 @@ Accented output entries (at least one of é, è, ê, à, ç, ù): 124; minimum r
 20. aimer | lemma_frequency=1655.07 | column=freqlemfilms2 | POS=VER | gender=None | top_forms=aime(751.29), aimerais(227.66), aimes(170.38)
 
 ## Random pilot review sample (40 lemmas)
-comprendre | lemma_frequency=893.51 | POS=VER | gender=None | top_forms=comprends(368.53), compris(198.16), comprendre(135.24) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-gamin | lemma_frequency=92.22 | POS=NOM | gender=m | top_forms=gamin(55.94), gamins(22.15), gamine(12.0) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-amener | lemma_frequency=190.32 | POS=VER | gender=None | top_forms=amène(59.8), amené(38.14), amener(35.6) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-risquer | lemma_frequency=100.4 | POS=VER | gender=None | top_forms=risque(42.32), risquer(13.06), risqué(10.77) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-dernier | lemma_frequency=431.08 | POS=ADJ | gender=f | top_forms=dernière(224.41), dernier(138.57), derniers(41.81) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-reconnaître | lemma_frequency=140.73 | POS=VER | gender=None | top_forms=reconnais(37.36), reconnu(25.93), reconnaître(25.24) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-manger | lemma_frequency=467.82 | POS=VER | gender=None | top_forms=manger(207.63), mange(103.81), mangé(60.43) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-colonel | lemma_frequency=103.7 | POS=NOM | gender=m | top_forms=colonel(102.86), colonels(0.71), colonelle(0.14) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-client | lemma_frequency=112.12 | POS=NOM | gender=m | top_forms=client(53.63), clients(47.03), cliente(9.22) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-porter | lemma_frequency=319.98 | POS=VER | gender=None | top_forms=porte(93.05), porter(79.04), portait(25.75) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-fou | lemma_frequency=321.31 | POS=ADJ | gender=m | top_forms=fou(181.51), folle(84.38), fous(48.96) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-sortir | lemma_frequency=884.26 | POS=VER | gender=None | top_forms=sortir(285.45), sors(156.13), sortez(87.79) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-préparer | lemma_frequency=174.33 | POS=VER | gender=None | top_forms=préparer(46.71), prépare(45.54), préparez(26.72) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-manquer | lemma_frequency=253.94 | POS=VER | gender=None | top_forms=manque(98.77), manqué(38.94), manquer(30.61) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-joli | lemma_frequency=226.45 | POS=ADJ | gender=f | top_forms=jolie(101.54), joli(94.55), jolies(20.99) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+sérieux | lemma_frequency=110.48 | POS=ADJ | gender=m | top_forms=sérieux(80.99), sérieuse(23.64), sérieuses(5.85) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+montrer | lemma_frequency=327.33 | POS=VER | gender=None | top_forms=montrer(136.2), montre(85.44), montré(29.65) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+croire | lemma_frequency=1711.99 | POS=VER | gender=None | top_forms=crois(904.45), croire(193.37), croyais(162.56) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+boire | lemma_frequency=339.05 | POS=VER | gender=None | top_forms=boire(142.15), bu(53.1), bois(37.63) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 marcher | lemma_frequency=364.37 | POS=VER | gender=None | top_forms=marche(154.71), marcher(85.34), marché(44.87) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-rester | lemma_frequency=1003.56 | POS=VER | gender=None | top_forms=reste(320.44), rester(310.38), restez(105.52) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-arrêter | lemma_frequency=993.79 | POS=VER | gender=None | top_forms=arrête(456.59), arrêter(178.62), arrêtez(174.12) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-réussir | lemma_frequency=131.88 | POS=VER | gender=m | top_forms=réussi(78.63), réussir(20.99), réussit(9.7) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-faire | lemma_frequency=8813.48 | POS=VER | gender=m | top_forms=fait(2751.99), faire(2735.96), fais(1390.92) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-échapper | lemma_frequency=95.07 | POS=VER | gender=None | top_forms=échapper(39.72), échappé(19.84), échappe(16.76) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-vendre | lemma_frequency=206.95 | POS=VER | gender=None | top_forms=vendre(73.62), vendu(37.62), vends(23.35) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-ressembler | lemma_frequency=148.62 | POS=VER | gender=None | top_forms=ressemble(83.47), ressemblait(13.41), ressembles(11.93) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-suffire | lemma_frequency=232.08 | POS=VER | gender=None | top_forms=suffit(188.1), suffira(13.85), suffisait(6.56) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-humain | lemma_frequency=107.1 | POS=ADJ | gender=m | top_forms=humain(50.53), humaine(32.37), humains(18.15) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-seul | lemma_frequency=891.45 | POS=ADJ | gender=m | top_forms=seul(461.2), seule(349.74), seuls(63.29) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-voler | lemma_frequency=238.82 | POS=VER | gender=m | top_forms=volé(79.01), voler(67.88), vole(35.31) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-arranger | lemma_frequency=116.14 | POS=VER | gender=None | top_forms=arranger(48.51), arrange(22.14), arrangé(18.24) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-décider | lemma_frequency=207.76 | POS=VER | gender=m | top_forms=décidé(92.08), décider(42.27), décide(31.25) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-dépêcher | lemma_frequency=111.44 | POS=VER | gender=None | top_forms=dépêche(55.9), dépêchez(35.35), dépêchons(10.21) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-promettre | lemma_frequency=185.26 | POS=VER | gender=m | top_forms=promis(82.83), promets(68.81), promettre(10.05) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-plaire | lemma_frequency=607.21 | POS=VER | gender=None | top_forms=plaît(499.91), plais(21.48), plaire(19.0) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-gros | lemma_frequency=266.95 | POS=ADJ | gender=m | top_forms=gros(180.91), grosse(70.63), grosses(15.41) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-recevoir | lemma_frequency=192.73 | POS=VER | gender=m | top_forms=reçu(76.46), recevoir(37.2), reçois(17.48) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-permettre | lemma_frequency=172.86 | POS=VER | gender=None | top_forms=permettez(48.28), permis(28.04), permettre(26.32) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+acheter | lemma_frequency=290.7 | POS=VER | gender=None | top_forms=acheter(115.27), acheté(72.38), achète(39.82) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+tromper | lemma_frequency=149.09 | POS=VER | gender=m | top_forms=trompé(29.98), trompe(27.72), tromper(27.42) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+sujet | lemma_frequency=120.42 | POS=NOM | gender=m | top_forms=sujet(107.92), sujets(12.51), sujette(0.7) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+crier | lemma_frequency=116.94 | POS=VER | gender=None | top_forms=crie(35.65), crier(31.49), crié(13.0) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+descendre | lemma_frequency=235.97 | POS=VER | gender=None | top_forms=descendre(65.28), descends(62.31), descend(26.09) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+amener | lemma_frequency=190.32 | POS=VER | gender=None | top_forms=amène(59.8), amené(38.14), amener(35.6) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+cher | lemma_frequency=205.75 | POS=ADJ | gender=m | top_forms=cher(130.7), chère(40.8), chers(28.61) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+sembler | lemma_frequency=229.25 | POS=VER | gender=None | top_forms=semble(128.91), semblait(26.84), semblent(14.09) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+mauvais | lemma_frequency=252.69 | POS=ADJ | gender=m | top_forms=mauvais(138.04), mauvaise(88.33), mauvaises(26.32) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+dormir | lemma_frequency=392.09 | POS=VER | gender=None | top_forms=dormir(160.77), dort(55.05), dors(55.03) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+blanc | lemma_frequency=118.74 | POS=ADJ | gender=m | top_forms=blanc(53.93), blanche(35.92), blancs(19.31) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+long | lemma_frequency=164.02 | POS=ADJ | gender=m | top_forms=long(79.18), longue(54.12), longs(17.65) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 enlever | lemma_frequency=172.47 | POS=VER | gender=None | top_forms=enlève(55.59), enlever(46.74), enlevé(20.88) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-coucher | lemma_frequency=181.96 | POS=VER | gender=None | top_forms=coucher(82.63), couché(35.71), couche(29.5) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-désolé | lemma_frequency=276.66 | POS=ADJ | gender=m | top_forms=désolé(193.51), désolée(81.19), désolés(1.59) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-rêver | lemma_frequency=122.95 | POS=VER | gender=None | top_forms=rêve(34.32), rêvé(32.08), rêver(20.8) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-demander | lemma_frequency=909.77 | POS=VER | gender=None | top_forms=demande(289.34), demandé(212.89), demander(188.86) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+poser | lemma_frequency=217.2 | POS=VER | gender=None | top_forms=poser(73.73), pose(57.41), posé(28.09) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+appeler | lemma_frequency=1165.48 | POS=VER | gender=None | top_forms=appelle(485.77), appeler(192.69), appelé(144.29) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+reposer | lemma_frequency=95.2 | POS=VER | gender=None | top_forms=reposer(39.81), repose(33.27), reposez(7.81) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+marier | lemma_frequency=220.51 | POS=VER | gender=None | top_forms=marier(63.88), marié(35.76), mariée(30.55) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+arranger | lemma_frequency=116.14 | POS=VER | gender=None | top_forms=arranger(48.51), arrange(22.14), arrangé(18.24) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+avocat | lemma_frequency=112.69 | POS=NOM | gender=m | top_forms=avocat(89.28), avocats(15.76), avocate(7.56) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+excuser | lemma_frequency=399.19 | POS=VER | gender=None | top_forms=excusez(230.25), excuse(111.82), excuser(43.01) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+mourir | lemma_frequency=916.4 | POS=VER | gender=m | top_forms=mort(318.84), mourir(234.74), morte(112.36) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+partir | lemma_frequency=1111.97 | POS=VER | gender=None | top_forms=partir(388.25), parti(162.93), pars(109.45) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+dur | lemma_frequency=187.84 | POS=ADJ | gender=m | top_forms=dur(145.55), dure(26.16), durs(12.08) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+filer | lemma_frequency=100.97 | POS=VER | gender=None | top_forms=file(36.47), filer(25.86), filé(15.18) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+retourner | lemma_frequency=245.35 | POS=VER | gender=None | top_forms=retourne(77.27), retourner(76.96), retournez(23.55) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+désoler | lemma_frequency=297.27 | POS=VER | gender=m | top_forms=désolé(193.29), désolée(98.22), désolés(2.71) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+grand | lemma_frequency=638.72 | POS=ADJ | gender=m | top_forms=grand(338.27), grande(198.25), grands(59.52) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+penser | lemma_frequency=1485.47 | POS=VER | gender=None | top_forms=pense(517.64), pensais(199.51), penses(186.9) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+valoir | lemma_frequency=236.07 | POS=VER | gender=None | top_forms=vaut(161.53), valait(15.82), vaudrait(14.23) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+génial | lemma_frequency=134.47 | POS=ADJ | gender=m | top_forms=génial(115.27), géniale(15.86), géniaux(1.72) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+rejoindre | lemma_frequency=96.98 | POS=VER | gender=None | top_forms=rejoindre(41.59), rejoins(20.16), rejoint(11.16) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+dépêcher | lemma_frequency=111.44 | POS=VER | gender=None | top_forms=dépêche(55.9), dépêchez(35.35), dépêchons(10.21) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+devenir | lemma_frequency=438.57 | POS=VER | gender=None | top_forms=devenir(108.83), devenu(92.42), devient(69.59) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+venir | lemma_frequency=2763.82 | POS=VER | gender=None | top_forms=viens(944.81), venir(367.13), vient(352.24) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+maintenir | lemma_frequency=121.32 | POS=VER | gender=None | top_forms=maintenant(95.61), maintenir(10.27), maintenez(4.28) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 
 ## Sentinel output validation
 été: not in ranked pilot (not fabricated)
