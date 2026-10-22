@@ -428,7 +428,7 @@ def build_review_sheet(rows: list[dict]) -> str:
         "# French Engine Data — Teacher Review Sheet", "",
         "Confirm POS for quoi, peu, voilà, bonjour, and entries coded ADJ:ind, ADJ:int, or ONO.",
         "The review column is intentionally empty.", "",
-        "| # | Headword | Gender | POS (Lexique code) | POS note | Forms | Teacher register | OK/Wrong/Fix |",
+        "| # | Headword | Gender | POS (with Lexique code) | POS note | Forms | Teacher register | OK/Wrong/Fix |",
         "|---:|---|---|---|---|---|---|---|",
     ]
     for i, row in enumerate(rows, 1):

@@ -21,9 +21,9 @@ on:
 permissions:
   contents: write
 
-# Keep only the newest Pilot v3 validation run active for this branch.
+# Keep only the newest Pilot v3.1 validation run active for this branch.
 concurrency:
-  group: pilot-v3-${{ github.workflow }}-${{ github.ref }}
+  group: pilot-v3.1-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
