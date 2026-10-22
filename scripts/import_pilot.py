@@ -242,6 +242,11 @@ def read_lexique() -> tuple[list[dict], str, dict]:
         lemma_key = candidate["lemma"].casefold()
         display = typography.get(lemma_key, candidate["lemma"])
         register = "vulgar" if lemma_key == "baiser" else "unreviewed"
+        # Canonicalize all common and rare paradigms before writing the JSON.
+        for form in common + rare:
+            form["form"] = typography.get(form["form"].casefold(), form["form"])
+        common = sorted(common, key=lambda item:(-item["form_frequency"], item["form"].casefold(), item["form"]))
+        rare = sorted(rare, key=lambda item:(-item["form_frequency"], item["form"].casefold(), item["form"]))
         def form_obj(f):
             form_text = typography.get(f["form"].casefold(), f["form"])
             return {"form":form_text,"frequency":round(f["form_frequency"],2),
