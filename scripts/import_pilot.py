@@ -248,7 +248,7 @@ def read_lexique() -> tuple[list[dict], str, dict]:
                     "shared_form":bool(f.get("shared_form",False)),
                     "frequency_attributed_to":f.get("frequency_attributed_to",candidate["lemma"])}
         output.append({"lemma":candidate["lemma"],"display_headword":display,"part_of_speech":candidate["part_of_speech"],
-                       "gender":candidate["gender"] if noun_adj else None,"number":candidate["number"] if noun_adj else None,
+                       "gender":("m/f" if candidate["part_of_speech"].upper()=="NOM" and not candidate["gender"] else candidate["gender"]) if noun_adj else None,"number":candidate["number"] if noun_adj else None,
                        "lemma_frequency":round(candidate["combined_frequency"],2),"freqlemfilms2":round(candidate["film_frequency"],2),
                        "freqlemlivres":round(candidate["book_frequency"],2),"ranking_formula":"freqlemfilms2 + freqlemlivres",
                        "top_forms":[form_obj(f) for f in common[:3]],
