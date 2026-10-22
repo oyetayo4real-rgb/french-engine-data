@@ -40,6 +40,9 @@ def main() -> int:
     raw_files = {}
     for label, path in FILES:
         raw_files[label] = inspect(path, label, out)
+    lefff_status_file = ROOT / "data/raw/lefff-download-status.txt"
+    if lefff_status_file.is_file():
+        out.append(lefff_status_file.read_text(encoding="utf-8", errors="strict").strip())
     zip_path = ROOT / "data/raw/hunspell-french-dictionaries-v7.7.zip"
     out.append("\n## Hunspell archive inventory and .aff evidence")
     if raw_files.get("Dicollecte/Grammalecte Hunspell archive") is None:
