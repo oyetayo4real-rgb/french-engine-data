@@ -52,18 +52,18 @@ jobs:
             fi
             echo "HEAD OK: ${source}"
           }
-          check_url "Lexique 3.83" "https://www.lexique.org/databases/Lexique383/Lexique383.tsv" --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5
-          check_url "Dicollecte/Grammalecte 7.7" "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip" --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5
-          check_url "Lefff 2.1" "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz" --connect-timeout 20 --max-time 120 --retry 2
+          check_url "Lexique 3.83" "https://www.lexique.org/databases/Lexique383/Lexique383.tsv" --connect-timeout 10 --max-time 25
+          check_url "Dicollecte/Grammalecte 7.7" "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip" --connect-timeout 10 --max-time 25
+          check_url "Lefff 2.1" "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz" --connect-timeout 10 --max-time 25
       - name: Download official source files
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p data/raw data
           echo "Downloading Lexique 3.83: https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
-          curl --fail --location --show-error --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5 --output data/raw/Lexique383.tsv "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+          curl --fail --location --show-error --connect-timeout 10 --max-time 25 --output data/raw/Lexique383.tsv "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
           echo "Downloading Dicollecte/Grammalecte 7.7: https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
-          curl --fail --location --show-error --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5 --output data/raw/hunspell-french-dictionaries-v7.7.zip "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
+          curl --fail --location --show-error --connect-timeout 10 --max-time 25 --output data/raw/hunspell-french-dictionaries-v7.7.zip "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
       - name: Install Hunspell and extract Dicollecte dictionary
         shell: bash
         run: |
