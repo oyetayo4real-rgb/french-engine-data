@@ -408,21 +408,6 @@ def _review_forms(row: dict) -> list[dict]:
         form.get("form", ""),
     ))
 
-def _review_cells(index: int, row: dict) -> list[str]:
-    head = row["display_headword"]
-    if row["part_of_speech"].upper() == "NOM":
-        article = "la" if (row.get("gender") or "").casefold() in {"f", "fem", "féminin", "feminine"} else "le"
-        head = f"{article} {head}"
-    gender = row.get("gender") or "—"
-    pos_note_lemmas = {"quoi", "peu", "voilà", "bonjour"}
-    note = "Confirm Lexique POS" if row["lemma"].casefold() in pos_note_lemmas or row["part_of_speech"].upper() in {"ADJ:IND", "ADJ:INT", "ONO"} else ""
-    complete_forms = _review_forms(row)
-    shown = complete_forms[:8]
-    forms = ", ".join(f["form"] + (" (shared form)" if f.get("shared_form") else "") for f in shown)
-    if len(complete_forms) > 8:
-        forms += f" (+{len(complete_forms) - 8} more in data/pilot-300.json)"
-    return [str(index), head, gender, row["part_of_speech"], note, forms, row["register"], ""]
-
 def _review_forms(row: dict) -> list[dict]:
     """Deduplicate review forms, put verb infinitives first, then order by frequency."""
     forms = list(row.get("forms", row.get("top_forms", []))) + list(row.get("rare_forms", []))
