@@ -24,6 +24,7 @@ permissions:
 jobs:
   import-validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,27 +39,48 @@ jobs:
           check_url() {
             local source="$1"
             local url="$2"
+            shift 2
             echo "HEAD check: ${source}: ${url}"
-            if ! curl --fail --silent --head --location "${url}" >/dev/null; then
+            if ! curl --fail --silent --head --location "$@" "${url}" >/dev/null; then
               echo "::warning title=Source unreachable::${source} URL is unreachable from this GitHub Actions runner: ${url}"
               return 0
             fi
             echo "HEAD OK: ${source}"
           }
-          check_url "Lexique 3.83" "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
-          check_url "Dicollecte/Grammalecte 7.7" "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
-          check_url "Lefff 2.1" "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
+          check_url "Lexique 3.83" "https://www.lexique.org/databases/Lexique383/Lexique383.tsv" --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5
+          check_url "Dicollecte/Grammalecte 7.7" "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip" --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5
+          check_url "Lefff 2.1" "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz" --connect-timeout 20 --max-time 120 --retry 2
       - name: Download official source files
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p data/raw data
           echo "Downloading Lexique 3.83: https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
-          curl --fail --location --show-error --retry 3 --output data/raw/Lexique383.tsv "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+          curl --fail --location --show-error --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5 --output data/raw/Lexique383.tsv "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
           echo "Downloading Dicollecte/Grammalecte 7.7: https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
-          curl --fail --location --show-error --retry 3 --output data/raw/hunspell-french-dictionaries-v7.7.zip "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
+          curl --fail --location --show-error --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5 --output data/raw/hunspell-french-dictionaries-v7.7.zip "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
           echo "Downloading Lefff 2.1: https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
           curl --fail --location --show-error --retry 3 --output data/raw/lefff-2.1.txt.gz "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
+      - name: Download optional Lefff cross-check
+        id: download-lefff
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -uo pipefail
+          mkdir -p data/raw
+          rm -f data/raw/lefff-2.1.txt.gz data/raw/lefff-download-error.txt
+          echo "Downloading optional Lefff 2.1 cross-check: https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz"
+          if curl --fail --location --show-error --connect-timeout 20 --max-time 120 --retry 2 --output data/raw/lefff-2.1.txt.gz "https://www.labri.fr/perso/clement/lefff/public/data/lefff-2.1.txt.gz" 2>data/raw/lefff-download-error.txt; then
+            rm -f data/raw/lefff-download-error.txt
+            echo "Lefff download available."
+          else
+            status=$?
+            rm -f data/raw/lefff-2.1.txt.gz
+            error="$(tr '\n' ' ' < data/raw/lefff-download-error.txt | sed 's/[[:space:]]\+/ /g; s/^ //; s/ $//')"
+            printf 'Lefff download unavailable: %s\n' "${error:-curl exited with status ${status}}" > data/raw/lefff-download-status.txt
+            echo "::warning title=Lefff unavailable::$(cat data/raw/lefff-download-status.txt)"
+            exit "$status"
+          fi
       - name: Build Lexique-only pilot and optional cross-checks
         env:
           PRINT_RANDOM: ${{ github.event.inputs.print_random || '40' }}
