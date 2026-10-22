@@ -248,7 +248,8 @@ def read_lexique() -> tuple[list[dict], str, dict]:
         common = sorted(common, key=lambda item:(-item["form_frequency"], item["form"].casefold(), item["form"]))
         rare = sorted(rare, key=lambda item:(-item["form_frequency"], item["form"].casefold(), item["form"]))
         def form_obj(f):
-            form_text = typography.get(f["form"].casefold(), f["form"])
+            raw_form = f["form"]
+            form_text = typography.get(raw_form.casefold(), raw_form)
             return {"form":form_text,"frequency":round(f["form_frequency"],2),
                     "shared_form":bool(f.get("shared_form",False)),
                     "frequency_attributed_to":f.get("frequency_attributed_to",candidate["lemma"])}
