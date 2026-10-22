@@ -214,11 +214,109 @@ def main() -> int:
             out.append(f"Ambiguous-form decisions unavailable: {type(exc).__name__}: {exc}")
     else:
         out.append("Ambiguous-form decisions unavailable: generated file is missing.")
+    # Pilot v3.1 acceptance assertions: each line is copied verbatim into last-run diagnostics.
+    assertion_lines = []
+    failures = []
+    def assertion(label: str, ok: bool, detail: str) -> None:
+        line = f"ASSERT {label}: {'PASS' if ok else 'FAIL'} — {detail}"
+        assertion_lines.append(line)
+        if not ok:
+            failures.append(line)
+
+    pilot_path = ROOT / "data/pilot-300.json"
+    review_path = ROOT / "data/review-sheet.md"
+    pilot_rows = []
+    try:
+        pilot_rows = json.loads(pilot_path.read_text(encoding="utf-8", errors="strict"))
+    except (OSError, ValueError, TypeError):
+        pass
+    forbidden_heads = {"l'", "d'", "s'", "t'", "n'", "j'", "m'", "c'", "qu'"}
+    assertion("a", bool(pilot_rows) and not any(row.get("lemma", "").casefold().replace("’", "'") in forbidden_heads for row in pilot_rows),
+              "no headword among l', d', s', t', n', j', m', c', qu'")
+    counts = {lemma: sum(row.get("lemma", "").casefold() == lemma for row in pilot_rows) for lemma in ("être", "avoir")}
+    assertion("b", bool(pilot_rows) and counts == {"être": 1, "avoir": 1},
+              f"exactly one row each for être and avoir (être={counts['être']}; avoir={counts['avoir']})")
+    etre = next((row for row in pilot_rows if row.get("lemma", "").casefold() == "être"), {})
+    suivre = next((row for row in pilot_rows if row.get("lemma", "").casefold() == "suivre"), {})
+    etre_suis = any(form.get("form") == "suis" for form in etre.get("forms", []))
+    suivre_suis = next((form for form in suivre.get("forms", []) if form.get("form") == "suis"), {})
+    assertion("c", etre_suis and bool(suivre_suis) and bool(suivre_suis.get("shared_form")),
+              f"'suis' in être forms and flagged (shared form) under suivre (être={etre_suis}; suivre_shared={bool(suivre_suis.get('shared_form'))})")
+
+    numeric_files = [ROOT / "data/pilot-300.json", ROOT / "data/cross-checks-300.json",
+                     ROOT / "data/ambiguous-forms.json", ROOT / "data/source-checksums.json",
+                     ROOT / "data/review-sheet.md", ROOT / "data/review-sheet.csv"]
+    bad_numbers = []
+    number_pattern = __import__("re").compile(r"(?<![A-Za-z0-9_])[-+]?(?:\d+\.\d{3,}|\.\d{3,})(?!\d)")
+    for path in numeric_files:
+        if path.is_file():
+            try:
+                content = path.read_text(encoding="utf-8-sig", errors="strict")
+            except (OSError, UnicodeError):
+                bad_numbers.append(path.relative_to(ROOT).as_posix() + " (unreadable)")
+                continue
+            if number_pattern.search(content):
+                bad_numbers.append(path.relative_to(ROOT).as_posix())
+    assertion("d", not bad_numbers, "no number with more than 2 decimals in any output file" + (f" (found: {', '.join(bad_numbers)})" if bad_numbers else ""))
+
+    eye = next((row for row in pilot_rows if row.get("lemma", "").casefold() in {"œil", "oeil"}), {})
+    heart = next((row for row in pilot_rows if row.get("lemma", "").casefold() in {"cœur", "coeur"}), {})
+    def spellings_ok(row: dict, expected: str, wrong: str) -> bool:
+        return bool(row) and all(expected in form.get("form", "") and wrong not in form.get("form", "").casefold()
+                                  for form in row.get("forms", []) + row.get("rare_forms", []))
+    eye_ok = spellings_ok(eye, "œil", "oeil")
+    heart_ok = spellings_ok(heart, "cœur", "coeur")
+    if not eye or not heart:
+        try:
+            typography = json.loads((ROOT / "data/headword-typography.json").read_text(encoding="utf-8", errors="strict"))
+        except (OSError, ValueError):
+            typography = {}
+        eye_ok = eye_ok if eye else typography.get("oeil") == "œil"
+        heart_ok = heart_ok if heart else typography.get("coeur") == "cœur"
+    assertion("e", eye_ok and heart_ok,
+              f"œil forms use 'œil' (not 'oeil') and cœur forms use 'cœur' (œil={'ranked forms' if eye else 'canonical map'}; cœur={'ranked forms' if heart else 'canonical map'})")
+
+    noun_bad = [row.get("lemma", "?") for row in pilot_rows if row.get("part_of_speech", "").upper() == "NOM" and str(row.get("gender") or "").casefold() not in {"m", "f", "m/f"}]
+    verb_bad = [row.get("lemma", "?") for row in pilot_rows if row.get("part_of_speech", "").upper() == "VER" and row.get("gender") is not None]
+    try:
+        review_text = review_path.read_text(encoding="utf-8", errors="strict")
+        verb_sheet_bad = []
+        for row in pilot_rows:
+            if row.get("part_of_speech", "").upper() == "VER":
+                escaped = row.get("display_headword", row.get("lemma", "")).replace("|", "\\|")
+                if not any(line.startswith("| ") and f"| {escaped} | — | VER |" in line for line in review_text.splitlines()):
+                    verb_sheet_bad.append(row.get("lemma", "?"))
+    except OSError:
+        verb_sheet_bad = ["review-sheet.md missing/unreadable"]
+    assertion("f", not noun_bad and not verb_bad and not verb_sheet_bad,
+              f"every NOM row has gender m/f/m-f; every VER row has em dash in teacher sheet (bad NOM={len(noun_bad)}; bad VER JSON gender={len(verb_bad)}; bad VER sheet={len(verb_sheet_bad)})")
+
+    duplicate_forms = []
+    for row in pilot_rows:
+        for list_name in ("forms", "rare_forms", "top_forms"):
+            forms = [form.get("form", "").casefold() for form in row.get(list_name, [])]
+            if len(forms) != len(set(forms)):
+                duplicate_forms.append(f"{row.get('lemma')}:{list_name}")
+    assertion("g", not duplicate_forms, "no duplicate form inside one lemma's list" + (f" (found: {', '.join(duplicate_forms[:10])})" if duplicate_forms else ""))
+
+    def row_has_forms(lemma: str, pos: str, required: set[str]) -> bool:
+        row = next((item for item in pilot_rows if item.get("lemma", "").casefold() == lemma and item.get("part_of_speech", "").upper() == pos), {})
+        actual = {form.get("form", "").casefold() for form in row.get("forms", [])}
+        return bool(row) and required.issubset(actual)
+    h_ok = (row_has_forms("fait", "NOM", {"fait", "faits"})
+            and row_has_forms("tout", "ADJ", {"tout", "tous", "toute", "toutes"})
+            and row_has_forms("même", "ADJ", {"même", "mêmes"}))
+    assertion("h", h_ok, "noun fait lists fait/faits; adjective tout lists tout/tous/toute/toutes; adjective même lists même/mêmes")
+
+    out.append("\n## Pilot v3.1 automated assertions")
+    out.extend(assertion_lines)
+    out.append(f"Assertion gate: {'FAIL (' + str(len(failures)) + ' failed)' if failures else 'PASS (8/8 assertions passed)'}")
+
     dest = ROOT / "diagnostics/last-run.txt"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text("\n".join(out) + "\n", encoding="utf-8", errors="strict")
     print(dest.read_text(encoding="utf-8", errors="strict"))
-    return 0
+    return 1 if failures else 0
 
 if __name__ == "__main__":
     try:
