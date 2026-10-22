@@ -59,6 +59,16 @@ jobs:
           curl --fail --location --show-error --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5 --output data/raw/Lexique383.tsv "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
           echo "Downloading Dicollecte/Grammalecte 7.7: https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
           curl --fail --location --show-error --connect-timeout 20 --max-time 180 --retry 3 --retry-delay 5 --output data/raw/hunspell-french-dictionaries-v7.7.zip "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip"
+      - name: Install Hunspell and extract Dicollecte dictionary
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install --yes hunspell unzip
+          mkdir -p data/raw/dicollecte
+          unzip -oq data/raw/hunspell-french-dictionaries-v7.7.zip -d data/raw/dicollecte
+          test -f data/raw/dicollecte/fr-toutesvariantes.dic
+          test -f data/raw/dicollecte/fr-toutesvariantes.aff
       - name: Download optional Lefff cross-check
         id: download-lefff
         continue-on-error: true
@@ -90,7 +100,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json
+          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json data/ambiguous-forms.json data/review-sheet.md
           if git diff --cached --quiet; then
             echo "Pilot, cross-checks, and checksum manifest are unchanged."
           else
