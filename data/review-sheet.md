@@ -206,7 +206,7 @@ The review column is intentionally empty.
 | 199 | le besoin | m | NOM |  | besoin, besoins | unreviewed |  |
 | 200 | depuis | — | PRE |  | depuis (shared form) | unreviewed |  |
 | 201 | elles | — | PRO:per |  | elles | unreviewed |  |
-| 202 | le gens | — | NOM |  | gens | unreviewed |  |
+| 202 | le gens | m/f | NOM |  | gens | unreviewed |  |
 | 203 | cet | — | ADJ:dem |  | cet | unreviewed |  |
 | 204 | merci | — | ONO | Confirm Lexique POS | merci (shared form) | unreviewed |  |
 | 205 | rendre | — | VER |  | rendre, rend, rends, rendu (shared form), rendait, rendez, rendit, rendent, rendue (shared form), rendra, rendaient, rende, rendrai, rendais, rendrait, rendant (shared form), rendus (shared form), rendis, rendons, rendirent, rendras, rendrez, rendrais, rendront, rendues (shared form), rendes, rendît, rendiez, rendions, rendrons | unreviewed |  |
