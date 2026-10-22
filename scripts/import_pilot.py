@@ -367,6 +367,7 @@ def main() -> int:
     OUTPUT.write_text(output_text,encoding="utf-8",errors="strict")
     validate_output(json.loads(OUTPUT.read_text(encoding="utf-8",errors="strict")),output_text)
     (DATA/"review-sheet.md").write_text(build_review_sheet(rows),encoding="utf-8",errors="strict")
+    write_review_csv(rows)
     manifest_files={"Lexique383.tsv":{"sha256":sha256_file(LEXIQUE),"url":LEXIQUE_URL},"hunspell-french-dictionaries-v7.7.zip":{"sha256":sha256_file(DICO_ZIP),"url":DICO_URL}}
     if LEFFF.is_file(): manifest_files["lefff-2.1.txt.gz"]={"sha256":sha256_file(LEFFF),"url":LEFFF_URL}
     elif MANIFEST.exists():
@@ -387,23 +388,75 @@ def main() -> int:
     for r in sample: print(f"{r['display_headword']} | POS={r['part_of_speech']} | register={r['register']} | top_forms={json.dumps(r['top_forms'],ensure_ascii=False)}")
     return 0
 
+def _review_forms(row: dict) -> list[dict]:
+    """Deduplicate review forms, put verb infinitives first, then order by frequency."""
+    forms = list(row.get("forms", row.get("top_forms", []))) + list(row.get("rare_forms", []))
+    by_form = {}
+    for form in forms:
+        key = form.get("form", "").casefold()
+        if not key:
+            continue
+        prior = by_form.get(key)
+        if prior is None or float(form.get("frequency") or 0) > float(prior.get("frequency") or 0):
+            by_form[key] = form
+    lemma = row.get("lemma", "").casefold()
+    pos = row.get("part_of_speech", "").upper()
+    return sorted(by_form.values(), key=lambda form: (
+        0 if pos == "VER" and form.get("form", "").casefold() == lemma else 1,
+        -float(form.get("frequency") or 0),
+        form.get("form", "").casefold(),
+        form.get("form", ""),
+    ))
+
+def _review_cells(index: int, row: dict) -> list[str]:
+    head = row["display_headword"]
+    if row["part_of_speech"].upper() == "NOM":
+        article = "la" if (row.get("gender") or "").casefold() in {"f", "fem", "féminin", "feminine"} else "le"
+        head = f"{article} {head}"
+    gender = row.get("gender") or "—"
+    pos_note_lemmas = {"quoi", "peu", "voilà", "bonjour"}
+    note = "Confirm Lexique POS" if row["lemma"].casefold() in pos_note_lemmas or row["part_of_speech"].upper() in {"ADJ:IND", "ADJ:INT", "ONO"} else ""
+    complete_forms = _review_forms(row)
+    shown = complete_forms[:8]
+    forms = ", ".join(f["form"] + (" (shared form)" if f.get("shared_form") else "") for f in shown)
+    if len(complete_forms) > 8:
+        forms += f" (+{len(complete_forms) - 8} more in data/pilot-300.json)"
+    return [str(index), head, gender, row["part_of_speech"], note, forms, row["register"], ""]
+
 def build_review_sheet(rows: list[dict]) -> str:
-    lines=["# French Engine Data — Teacher Review Sheet","","Confirm POS for quoi, peu, voilà, bonjour, and entries coded ADJ:ind, ADJ:int, or ONO.","The review column is intentionally empty.","","| # | Headword | Gender | POS (Lexique code) | POS note | Forms | Teacher register | OK/Wrong/Fix |","|---:|---|---|---|---|---|---|---|"]
-    pos_note_lemmas={"quoi","peu","voilà","bonjour"}
-    for i,r in enumerate(rows,1):
-        head=r["display_headword"]
-        if r["part_of_speech"].upper()=="NOM":
-            article="la" if (r.get("gender") or "").casefold() in {"f","fem","féminin","feminine"} else "le"
-            head=f"{article} {head}"
-        gender=r.get("gender") or "—"
-        note="Confirm Lexique POS" if r["lemma"].casefold() in pos_note_lemmas or r["part_of_speech"].upper() in {"ADJ:IND","ADJ:INT","ONO"} else ""
-        forms=", ".join(f["form"] + (" (shared form)" if f.get("shared_form") else "") for f in r.get("forms",r["top_forms"])).replace("|","\\|")
-        lines.append(f"| {i} | {head} | {gender} | {r['part_of_speech']} | {note} | {forms} | {r['register']} |  |")
-    missing_notes=sorted(pos_note_lemmas-{r["lemma"].casefold() for r in rows})
+    lines = [
+        "# French Engine Data — Teacher Review Sheet", "",
+        "Confirm POS for quoi, peu, voilà, bonjour, and entries coded ADJ:ind, ADJ:int, or ONO.",
+        "The review column is intentionally empty.", "",
+        "| # | Headword | Gender | POS (Lexique code) | POS note | Forms | Teacher register | OK/Wrong/Fix |",
+        "|---:|---|---|---|---|---|---|---|",
+    ]
+    for i, row in enumerate(rows, 1):
+        cells = _review_cells(i, row)
+        cells[5] = cells[5].replace("|", "\\|")
+        lines.append("| " + " | ".join(cells) + " |")
+    pos_note_lemmas = {"quoi", "peu", "voilà", "bonjour"}
+    missing_notes = sorted(pos_note_lemmas - {row["lemma"].casefold() for row in rows})
     if missing_notes:
         lines.extend(["", "## Requested POS checks outside the ranked 300", "These requested checks have no ranked table row; confirm the code against Lexique before use."])
         lines.extend(f"- {lemma}: POS note — no code inferred because the lemma is outside the ranked 300." for lemma in missing_notes)
-    return "\n".join(lines)+"\n"
+    return "\n".join(lines) + "\n"
+
+def write_review_csv(rows: list[dict]) -> None:
+    """Write teacher review data as UTF-8 with BOM for spreadsheet compatibility."""
+    headers = ["#", "Headword", "Gender", "POS (with Lexique code)", "POS note", "Forms", "Teacher register", "OK/Wrong/Fix"]
+    with (DATA / "review-sheet.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(headers)
+        for i, row in enumerate(rows, 1):
+            writer.writerow(_review_cells(i, row))
+        pos_note_lemmas = {"quoi", "peu", "voilà", "bonjour"}
+        missing_notes = sorted(pos_note_lemmas - {row["lemma"].casefold() for row in rows})
+        if missing_notes:
+            writer.writerow([])
+            writer.writerow(["Requested POS checks outside the ranked 300"])
+            for lemma in missing_notes:
+                writer.writerow([f"{lemma}: POS note — no code inferred because the lemma is outside the ranked 300"])
 
 if __name__ == "__main__":
     try: raise SystemExit(main())
