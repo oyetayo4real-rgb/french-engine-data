@@ -259,7 +259,7 @@ def main() -> int:
                 continue
             if number_pattern.search(content):
                 bad_numbers.append(path.relative_to(ROOT).as_posix())
-    diagnostics_text = "\\n".join(out)
+    diagnostics_text = "\n".join(out)
     if number_pattern.search(diagnostics_text):
         bad_numbers.append("diagnostics/last-run.txt")
     assertion("d", not bad_numbers, "no number with more than 2 decimals in any output file" + (f" (found: {', '.join(bad_numbers)})" if bad_numbers else ""))
