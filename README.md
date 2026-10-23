@@ -11,3 +11,14 @@ Source-controlled pilot for auditable French lexical data imports. This reposito
 - Nothing in this repository is automatically imported into French Academy.
 
 Run the workflow manually from **Actions → Import and validate 300-entry pilot → Run workflow**. The workflow also runs when importer/licence/workflow documentation changes on `main`, then commits only the generated pilot and source checksum manifest.
+
+
+## Data provenance, licence, and permitted scope
+
+`data/pilot-300.json` and the teacher review sheet are derived from Lexique 3.83 by Boris New and Christophe Pallier ([lexique.org](https://www.lexique.org/)). They retain the source data's CC BY-SA 4.0 licence and must be distributed with attribution and under the same licence. See [LICENSE-DATA.md](LICENSE-DATA.md) and [CREDITS.md](CREDITS.md).
+
+These two files are restricted to Lexique-derived lexical data and the documented transformations of that data. **Do not mix in other content**—including definitions or meanings, example sentences, audio, or grammar rules—into `data/pilot-300.json` or the review sheet. Keep such content in separate, appropriately sourced and licensed files.
+
+### Modified from Lexique
+
+The Lexique-derived data was modified by selecting 300 lemmas, grouping compatible lexical rows/forms, and applying spelling and typography fixes. These changes do not replace the source attribution or CC BY-SA 4.0 obligations.
