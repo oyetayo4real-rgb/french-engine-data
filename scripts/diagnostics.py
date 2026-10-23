@@ -244,7 +244,7 @@ def main() -> int:
               f"'suis' in être forms and flagged (shared form) under suivre (être={etre_suis}; suivre_shared={bool(suivre_suis.get('shared_form'))})")
 
     numeric_files = [path for path in (ROOT / "data").glob("*") if path.is_file()
-                     and path.name not in {"raw", "review-sheet.csv"}]
+                     and path.name not in {"raw", "review-sheet.csv", "review-sheet.xlsx"}]
     numeric_files.extend([ROOT / "data/review-sheet.md", ROOT / "data/review-sheet.csv"])
     # Include text output files outside data/ that the workflow generates.
     numeric_files.extend(path for path in (ROOT / "diagnostics").glob("*") if path.is_file() and path.name != "last-run.txt")

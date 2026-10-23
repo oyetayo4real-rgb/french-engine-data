@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -79,7 +80,7 @@ def read_rows() -> list[dict[str, str]]:
                 if generic is None:
                     raise ValueError("Lexique POS code has no French label: " + code)
                 category = generic
-            forms = (row.get("Forms") or "").replace("(shared form)", "(forme partagée)")
+            forms = re.sub(r"\(\+(\d+) more in data/pilot-300\.json\)", r"(+\1 autres formes)", (row.get("Forms") or "").replace("(shared form)", "(forme partagée)"))
             raw_register = (row.get("Teacher register") or "unreviewed").strip().casefold()
             register = REGISTER_NAMES.get(raw_register, "courant")
             rows.append({
