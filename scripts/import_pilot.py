@@ -270,11 +270,11 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     changed = len(film_keys.symmetric_difference(combined_keys)) // 2
     # Documented teacher-review stage: apply data/teacher-overrides.json to the full ranked
     # Lexique candidate set before selecting 300, so deletions/merges refill from next ranks.
-    original_top_keys = {(r["lemma"].casefold(), r["part_of_speech"].casefold()) for r in combined_ranked[:300]}
+    original_top_ids = {id(r) for r in combined_ranked[:300]}
     combined_ranked = apply_teacher_overrides(combined_ranked)
     rows_out = combined_ranked[:300]
     TEACHER_REFILL_LEMMAS[:] = [f'{r["lemma"]}|{r["part_of_speech"]}' for r in rows_out
-                                if (r["lemma"].casefold(), r["part_of_speech"].casefold()) not in original_top_keys]
+                                if id(r) not in original_top_ids]
     if len(rows_out) != 300:
         raise ValueError(f"Expected at least 300 lemma/POS entries after teacher overrides; found {len(rows_out)}")
     (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")

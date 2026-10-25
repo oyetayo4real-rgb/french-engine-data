@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Evidence-only source diagnostics; never performs lossy decoding."""
 from __future__ import annotations
-import hashlib, json, random, sys, zipfile
+import hashlib, json, random, re, sys, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
