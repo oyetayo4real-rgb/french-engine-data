@@ -268,15 +268,138 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     film_keys = {(r["lemma"].casefold(),r["part_of_speech"].casefold()) for r in film_ranked[:300]}
     combined_keys = {(r["lemma"].casefold(),r["part_of_speech"].casefold()) for r in combined_ranked[:300]}
     changed = len(film_keys.symmetric_difference(combined_keys)) // 2
+    # Documented teacher-review stage: apply data/teacher-overrides.json to the full ranked
+    # Lexique candidate set before selecting 300, so deletions/merges refill from next ranks.
+    combined_ranked = apply_teacher_overrides(combined_ranked)
     rows_out = combined_ranked[:300]
     if len(rows_out) != 300:
-        raise ValueError(f"Expected at least 300 lemma/POS entries; found {len(rows_out)}")
+        raise ValueError(f"Expected at least 300 lemma/POS entries after teacher overrides; found {len(rows_out)}")
     (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")
     meta = {"source":"Lexique 3.83","licence":LICENCE_LEXIQUE,"encoding":encoding,
             "film_lemma_frequency_column":film_lemma_col,"book_lemma_frequency_column":book_lemma_col,
             "ranking_formula":"freqlemfilms2 + freqlemlivres","top300_changed_vs_film_only":changed,
             "sentinel_presence_in_source":sentinel_seen,"ambiguous_form_count":len(ambiguous)}
     return rows_out, encoding, meta
+
+
+
+
+# Teacher correction audit is emitted by the later validation stage.
+APPLIED_TEACHER_OPS: list[dict] = []
+UNMATCHED_TEACHER_OPS: list[str] = []
+TEACHER_REFILL_LEMMAS: list[str] = []
+
+def apply_teacher_overrides(ranked_rows: list[dict]) -> list[dict]:
+    """Apply the owner's immutable teacher ops to ranked Lexique rows before the 300-row cut.
+
+    Matching is exact case-folded lemma + Lexique POS code. New teacher-supplied forms
+    get frequency 0.0 rather than fabricated corpus frequencies; top_forms only contains
+    forms with measured frequency >= 1.0. The generated JSON is always written by main().
+    """
+    override_path = DATA / "teacher-overrides.json"
+    overrides = json.loads(override_path.read_text(encoding="utf-8", errors="strict"))
+    ops = overrides.get("ops", [])
+    rows = list(ranked_rows)
+    APPLIED_TEACHER_OPS.clear()
+    UNMATCHED_TEACHER_OPS.clear()
+    TEACHER_REFILL_LEMMAS.clear()
+
+    def identity(row: dict) -> tuple[str, str]:
+        return (str(row.get("lemma", "")).casefold(), str(row.get("part_of_speech", "")).casefold())
+
+    def form_obj(value: str, row: dict) -> dict:
+        prior = next((f for name in ("forms", "rare_forms", "top_forms") for f in row.get(name, [])
+                      if str(f.get("form", "")).casefold() == value.casefold()), None)
+        if prior:
+            return dict(prior)
+        return {"form": value, "frequency": 0.0, "shared_form": False,
+                "frequency_attributed_to": row.get("lemma", "")}
+
+    def sync_forms(row: dict, forms: list[dict]) -> None:
+        dedup = {}
+        for form in forms:
+            key = str(form.get("form", "")).casefold()
+            if key and key not in dedup:
+                dedup[key] = form
+        ordered = sorted(dedup.values(), key=lambda f:(-float(f.get("frequency", 0)), str(f.get("form", "")).casefold(), str(f.get("form", ""))))
+        row["forms"] = ordered
+        row["rare_forms"] = [f for f in row.get("rare_forms", []) if str(f.get("form", "")).casefold() in dedup and float(f.get("frequency", 0)) < 1.0]
+        row["top_forms"] = [f for f in ordered if float(f.get("frequency", 0)) >= 1.0][:3]
+
+    def op_label(index: int, op: dict) -> str:
+        if op.get("op") == "merge":
+            return f"{index}:merge:" + ",".join(f"{x.get('lemma')}|{x.get('pos')}" for x in op.get("from", [])) + "->" + str(op.get("into", {}).get("lemma")) + "|" + str(op.get("into", {}).get("pos"))
+        return f"{index}:{op.get('op', 'update')}:{op.get('lemma')}|{op.get('pos')}"
+
+    for index, op in enumerate(ops, 1):
+        label = op_label(index, op)
+        if op.get("op") == "merge":
+            source_specs = op.get("from", [])
+            target_spec = op.get("into", {})
+            target_key = (str(target_spec.get("lemma", "")).casefold(), str(target_spec.get("pos", "")).casefold())
+            target = next((r for r in rows if identity(r) == target_key), None)
+            sources = [next((r for r in rows if identity(r) == (str(spec.get("lemma", "")).casefold(), str(spec.get("pos", "")).casefold())), None) for spec in source_specs]
+            if target is None or any(row is None for row in sources):
+                UNMATCHED_TEACHER_OPS.append(label)
+                continue
+            merged_forms = list(target.get("forms", [])) + list(target.get("rare_forms", []))
+            for source in sources:
+                if source is not target:
+                    merged_forms += list(source.get("forms", [])) + list(source.get("rare_forms", []))
+                    if source in rows:
+                        rows.remove(source)
+            target["lemma"] = str(target_spec.get("lemma", target["lemma"]))
+            target["part_of_speech"] = str(target_spec.get("pos", target["part_of_speech"]))
+            if "forms" in target_spec:
+                merged_forms = [form_obj(str(value), target) for value in target_spec["forms"]]
+            sync_forms(target, merged_forms)
+            APPLIED_TEACHER_OPS.append({"index": index, "label": label, "operation": op, "status": "applied"})
+            continue
+
+        key = (str(op.get("lemma", "")).casefold(), str(op.get("pos", "")).casefold())
+        matches = [r for r in rows if identity(r) == key]
+        if not matches:
+            UNMATCHED_TEACHER_OPS.append(label)
+            continue
+        row = matches[0]
+        if op.get("op") == "delete":
+            rows.remove(row)
+        else:
+            forms = list(row.get("forms", []))
+            if "set_forms" in op:
+                forms = [form_obj(str(value), row) for value in op["set_forms"]]
+            if "add_forms" in op:
+                forms.extend(form_obj(str(value), row) for value in op["add_forms"])
+            if "keep_forms" in op:
+                allowed = {str(value).casefold() for value in op["keep_forms"]}
+                forms = [f for f in forms if str(f.get("form", "")).casefold() in allowed]
+            if "remove_forms" in op:
+                removed = {str(value).casefold() for value in op["remove_forms"]}
+                forms = [f for f in forms if str(f.get("form", "")).casefold() not in removed]
+                row["rare_forms"] = [f for f in row.get("rare_forms", []) if str(f.get("form", "")).casefold() not in removed]
+            if any(name in op for name in ("set_forms", "add_forms", "keep_forms", "remove_forms")):
+                sync_forms(row, forms)
+            if "set_pos" in op:
+                row["part_of_speech"] = str(op["set_pos"])
+            if "display_headword" in op:
+                row["display_headword"] = str(op["display_headword"])
+            if "gender" in op:
+                row["gender"] = op["gender"]
+            if op.get("note"):
+                old_note = str(row.get("note", "")).strip()
+                row["note"] = (old_note + ("; " if old_note else "") + str(op["note"])).strip()
+        APPLIED_TEACHER_OPS.append({"index": index, "label": label, "operation": op, "status": "applied"})
+
+    # Distinct ranked lemma/POS identities only; preserve frequency order for refill.
+    unique = []
+    seen = set()
+    for row in sorted(rows, key=lambda x:(-x["lemma_frequency"], x["lemma"].casefold(), x["lemma"], x["part_of_speech"].casefold())):
+        key = identity(row)
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(row)
+    return unique
 
 def dicollecte_forms(forms: list[str]) -> tuple[set[str] | None, dict]:
     detail = {"status":"unavailable","source":"Dicollecte/Grammalecte Hunspell 7.7","url":DICO_URL,"licence":LICENCE_DICO,"matched_count":None,"mismatch_count":None,"mismatches":[],"unknown_forms":[],"note":""}
