@@ -12,7 +12,8 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
 ROOT = Path(__file__).resolve().parents[1]
-CSV_PATH = ROOT / "data" / "review-sheet.csv"
+DATA = ROOT / "data"
+CSV_PATH = DATA / "review-sheet.csv"
 XLSX_PATH = ROOT / "data" / "review-sheet.xlsx"
 
 CATEGORY_NAMES = {
