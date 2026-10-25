@@ -224,5 +224,5 @@ ASSERT j: PASS — no article followed by another article/determiner; teacher di
 ASSERT k: PASS — no duplicate (headword, POS) pairs (found: [])
 ASSERT l: PASS — no exact 'n' form under ne (forms=['ne', "n'", 'ne', "n'"])
 ASSERT m: PASS — exactly 300 entries (found=300)
-ASSERT n: FAIL — CSV BOM=True; rows=301/301 with 8 columns=True; no outside-ranked rows=True; workbook sheets Changes/Notes/À revérifier=True/False/False
-Assertion gate: FAIL (1 failed)
+ASSERT n: PASS — CSV BOM=True; rows=301/301 with 8 columns=True; no outside-ranked rows=True; workbook sheets Changes/Notes/À revérifier=True/True/True
+Assertion gate: PASS (14/14 assertions passed)
