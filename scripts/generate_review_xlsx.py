@@ -210,7 +210,10 @@ def build_workbook(rows: list[dict[str, str]]) -> None:
     for item in requested_checks:
         lemma = item.split(" ", 1)[0].casefold()
         pos = item.split(" ", 1)[1] if " " in item else ""
-        present = any(str(row.get("lemma", "")).casefold() == lemma and (not pos or str(row.get("part_of_speech", "")).casefold() == pos.casefold()) for row in pilot)
+        if item == "le peu":
+            present = any(str(row.get("display_headword", "")).casefold() == "le peu" for row in pilot)
+        else:
+            present = any(str(row.get("lemma", "")).casefold() == lemma and (not pos or str(row.get("part_of_speech", "")).casefold() == pos.casefold()) for row in pilot)
         if not present:
             notes.append([item, "Confirmé par l'enseignante"])
     notes.append(["bonjour", "Note POS : code à confirmer ; entrée hors des 300 mots classés."])

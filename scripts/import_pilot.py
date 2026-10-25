@@ -592,7 +592,6 @@ def _review_cells(index: int, row: dict) -> list[str]:
         if note.casefold() in {"confirm lexique pos", "interrogative adverb; keep the relative pro:rel row", "interrogative locution"}:
             note = ""
     complete_forms = _review_forms(row)
-    complete_forms = _review_forms(row)
     shown = complete_forms[:8]
     forms = ", ".join(f["form"] + (" (shared form)" if f.get("shared_form") else "") for f in shown)
     if len(complete_forms) > 8:
@@ -602,7 +601,7 @@ def _review_cells(index: int, row: dict) -> list[str]:
 def build_review_sheet(rows: list[dict]) -> str:
     lines = [
         "# French Engine Data — Teacher Review Sheet", "",
-        "Confirm POS for quoi, peu, voilà, bonjour, and entries coded ADJ:ind, ADJ:int, or ONO.",
+        "Les vérifications POS hors classement sont indiquées dans l’onglet Notes du classeur.",
         "The review column is intentionally empty.", "",
         "| # | Headword | Gender | POS (with Lexique code) | POS note | Forms | Teacher register | OK/Wrong/Fix |",
         "|---:|---|---|---|---|---|---|---|",

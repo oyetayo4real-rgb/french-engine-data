@@ -349,8 +349,12 @@ def main() -> int:
     bad_doubled_heads = [row.get("display_headword", row.get("lemma", "?")) for row in pilot_rows
                          if doubled_determiner.match(str(row.get("display_headword", row.get("lemma", ""))).strip())]
     exact_headword_errors = []
+    csv_doubled_heads = []
     try:
         override_doc = json.loads((ROOT / "data/teacher-overrides.json").read_text(encoding="utf-8", errors="strict"))
+        with (ROOT / "data/review-sheet.csv").open("r", encoding="utf-8-sig", newline="") as handle:
+            review_rows = list(csv.DictReader(handle))
+        csv_heads = [str(r.get("Headword", "")) for r in review_rows]
         for op in override_doc.get("ops", []):
             if "display_headword" not in op:
                 continue
@@ -359,11 +363,15 @@ def main() -> int:
                         and r.get("part_of_speech", "").casefold() == final_pos), None)
             if row is not None and row.get("display_headword") != op["display_headword"]:
                 exact_headword_errors.append((op.get("lemma"), op["display_headword"], row.get("display_headword")))
-    except (OSError, ValueError, TypeError) as exc:
+            if op["display_headword"] not in csv_heads:
+                exact_headword_errors.append(("CSV headword not exact", op.get("lemma"), op["display_headword"]))
+        csv_doubled_heads = [head for head in csv_heads if doubled_determiner.match(head.strip())]
+    except (OSError, ValueError, TypeError, csv.Error) as exc:
         exact_headword_errors.append(str(exc))
-    assertion("j", not bad_noun_heads and not bad_doubled_heads and not exact_headword_errors,
+    assertion("j", not bad_noun_heads and not bad_doubled_heads and not csv_doubled_heads and not exact_headword_errors,
               "no article followed by another article/determiner; teacher display_headword preserved exactly "
-              + repr({"vowel_heads": bad_noun_heads, "doubled_determiners": bad_doubled_heads, "display_mismatches": exact_headword_errors}))
+              + repr({"vowel_heads": bad_noun_heads, "doubled_determiners": bad_doubled_heads,
+                      "csv_doubled_determiners": csv_doubled_heads, "display_mismatches": exact_headword_errors}))
 
     headword_pos = [(str(row.get("display_headword", row.get("lemma", ""))).casefold(),
                      str(row.get("part_of_speech", "")).casefold()) for row in pilot_rows]
