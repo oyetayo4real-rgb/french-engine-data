@@ -22,3 +22,8 @@ These two files are restricted to Lexique-derived lexical data and the documente
 ### Modified from Lexique
 
 The Lexique-derived data was modified by selecting 300 lemmas, grouping compatible lexical rows/forms, and applying spelling and typography fixes. These changes do not replace the source attribution or CC BY-SA 4.0 obligations.
+
+
+## Teacher corrections and reproducible review
+
+The importer applies the owner-maintained `data/teacher-overrides.json` after Lexique ranking and before selecting the 300-entry pilot. Ops match by case-folded lemma plus Lexique POS code; form changes, POS changes, display headwords, gender, notes, deletions, and merges are recorded in generated `data/teacher-override-results.json`. Removed or merged entries are replaced by the next-ranked distinct lemma/POS entries. Never edit generated pilot or review outputs by hand; rerun the importer. The workbook's `Changes` sheet records each applied operation. `LOC:int` is the Lexique-code label for an interrogative locution.

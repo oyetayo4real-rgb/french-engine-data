@@ -317,9 +317,65 @@ def main() -> int:
             and row_has_forms("même", "ADJ", {"même", "mêmes"}))
     assertion("h", h_ok, "noun fait lists fait/faits; adjective tout lists tout/tous/toute/toutes; adjective même lists même/mêmes")
 
+
+    # Teacher correction acceptance gate — each line is persisted in last-run.txt.
+    override_path = ROOT / "data/teacher-overrides.json"
+    result_path = ROOT / "data/teacher-override-results.json"
+    try:
+        teacher_ops = json.loads(override_path.read_text(encoding="utf-8", errors="strict")).get("ops", [])
+        teacher_result = json.loads(result_path.read_text(encoding="utf-8", errors="strict"))
+        applied_ops = teacher_result.get("ops_applied", [])
+        unmatched_ops = teacher_result.get("unmatched_ops", [])
+        op_ok = (teacher_result.get("ops_total") == len(teacher_ops)
+                 and len(applied_ops) == len(teacher_ops)
+                 and not unmatched_ops
+                 and all(item.get("status") == "applied" for item in applied_ops))
+        op_detail = f"applied={len(applied_ops)}/{len(teacher_ops)}; unmatched={unmatched_ops!r}"
+        refill_detail = f"refill_added_count={teacher_result.get('refill_added_count')}; refill_added={teacher_result.get('refill_added')!r}"
+    except (OSError, ValueError, TypeError) as exc:
+        teacher_ops, teacher_result, applied_ops, unmatched_ops = [], {}, [], ["results unavailable"]
+        op_ok = False
+        op_detail = f"{type(exc).__name__}: {exc}"
+        refill_detail = "refill list unavailable"
+    assertion("i", op_ok, "every teacher op applied; " + op_detail)
+    if teacher_result:
+        out.append("Teacher refill lemmas added after deletes/merges: " + refill_detail)
+
+    vowel_or_h = re.compile(r"^(?:le|la)\s+[aeiouyàâäéèêëîïôöùûüÿœh]", re.IGNORECASE)
+    bad_noun_heads = [row.get("display_headword", row.get("lemma", "?")) for row in pilot_rows
+                      if row.get("part_of_speech", "").upper() == "NOM"
+                      and vowel_or_h.match(str(row.get("display_headword", row.get("lemma", ""))).strip())]
+    assertion("j", not bad_noun_heads, "no noun headword begins with le/la + vowel or h (found: " + repr(bad_noun_heads) + ")")
+
+    headword_pos = [(str(row.get("display_headword", row.get("lemma", ""))).casefold(),
+                     str(row.get("part_of_speech", "")).casefold()) for row in pilot_rows]
+    duplicate_headword_pos = sorted({key for key in headword_pos if headword_pos.count(key) > 1})
+    assertion("k", not duplicate_headword_pos, "no duplicate (headword, POS) pairs (found: " + repr(duplicate_headword_pos) + ")")
+
+    ne_row = next((row for row in pilot_rows if row.get("lemma", "").casefold() == "ne" and row.get("part_of_speech", "").upper() == "ADV"), {})
+    ne_forms = [form.get("form", "").casefold() for name in ("forms", "rare_forms", "top_forms") for form in ne_row.get(name, [])]
+    assertion("l", "n" not in ne_forms, "no exact 'n' form under ne (forms=" + repr(ne_forms) + ")")
+
+    assertion("m", len(pilot_rows) == 300, f"exactly 300 entries (found={len(pilot_rows)})")
+
+    csv_path = ROOT / "data/review-sheet.csv"
+    xlsx_path = ROOT / "data/review-sheet.xlsx"
+    try:
+        csv_bom_ok = csv_path.read_bytes().startswith(bytes.fromhex("efbbbf"))
+    except OSError:
+        csv_bom_ok = False
+    try:
+        with zipfile.ZipFile(xlsx_path) as archive:
+            workbook_xml = archive.read("xl/workbook.xml").decode("utf-8", errors="strict")
+        changes_sheet_ok = 'name="Changes"' in workbook_xml
+    except (OSError, KeyError, zipfile.BadZipFile, UnicodeError):
+        changes_sheet_ok = False
+    assertion("n", csv_bom_ok and changes_sheet_ok,
+              f"review CSV has UTF-8 BOM={csv_bom_ok}; workbook has Changes sheet={changes_sheet_ok}")
+
     out.append("\n## Pilot v3.1 automated assertions")
     out.extend(assertion_lines)
-    out.append(f"Assertion gate: {'FAIL (' + str(len(failures)) + ' failed)' if failures else 'PASS (8/8 assertions passed)'}")
+    out.append(f"Assertion gate: {'FAIL (' + str(len(failures)) + ' failed)' if failures else 'PASS (' + str(len(assertion_lines)) + '/' + str(len(assertion_lines)) + ' assertions passed)'}")
 
     dest = ROOT / "diagnostics/last-run.txt"
     dest.parent.mkdir(parents=True, exist_ok=True)

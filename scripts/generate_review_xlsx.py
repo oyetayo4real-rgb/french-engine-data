@@ -36,6 +36,8 @@ CATEGORY_NAMES = {
     "ADJ:int": "adjectif interrogatif",
     "ADJ": "adjectif",
     "ONO": "onomatopée",
+    "LOC:int": "locution interrogative",
+    "LOC:int": "locution interrogative",
 }
 REGISTER_NAMES = {
     "unreviewed": "courant",
@@ -167,14 +169,43 @@ def build_workbook(rows: list[dict[str, str]]) -> None:
     wb.properties.title = "Relecture du vocabulaire français"
     wb.properties.subject = "Fiche pédagogique de validation des 300 mots"
     wb.properties.creator = "French Engine Data"
+    # Audit sheet mirrors the exact operations consumed by the importer; overrides remain read-only.
+    changes = wb.create_sheet("Changes")
+    changes.append(["Op #", "Operation", "Lemma / POS", "Status", "Details"])
+    for cell in changes[1]:
+        cell.font = Font(bold=True, color="FFFFFF")
+        cell.fill = PatternFill("solid", fgColor="17365D")
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    result_path = ROOT / "data" / "teacher-override-results.json"
+    result = __import__("json").loads(result_path.read_text(encoding="utf-8", errors="strict"))
+    for item in result.get("ops_applied", []):
+        op = item.get("operation", {})
+        if op.get("op") == "merge":
+            identity = ", ".join(str(entry.get("lemma")) + " [" + str(entry.get("pos")) + "]" for entry in op.get("from", [])) + " → " + str(op.get("into", {}).get("lemma")) + " [" + str(op.get("into", {}).get("pos")) + "]"
+        else:
+            identity = str(op.get("lemma", "")) + " [" + str(op.get("pos", "")) + "]"
+        changes.append([item.get("index"), op.get("op", "update"), identity, item.get("status"), __import__("json").dumps(op, ensure_ascii=False, sort_keys=True)])
+    for label in result.get("unmatched_ops", []):
+        changes.append([None, "unmatched", label, "FAIL", "No row matched lemma + POS"])
+    changes.freeze_panes = "A2"
+    changes.auto_filter.ref = changes.dimensions
+    changes.sheet_view.showGridLines = False
+    for col, width in {"A": 9, "B": 16, "C": 48, "D": 14, "E": 100}.items():
+        changes.column_dimensions[col].width = width
+    for row in changes.iter_rows(min_row=2):
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
     wb.save(XLSX_PATH)
 
 
 def validate_workbook() -> None:
     wb = load_workbook(XLSX_PATH, read_only=False, data_only=True)
     try:
-        if wb.sheetnames != ["Instructions", "Mots"]:
+        if wb.sheetnames != ["Instructions", "Mots", "Changes"]:
             raise AssertionError("Workbook sheets must be Instructions and Mots")
+        changes = wb["Changes"]
+        if changes.max_row < 2 or changes["A1"].value != "Op #":
+            raise AssertionError("Changes sheet must list applied teacher operations")
         ws = wb["Mots"]
         data_rows = ws.max_row - 1
         if data_rows != 300:

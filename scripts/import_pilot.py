@@ -270,8 +270,11 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     changed = len(film_keys.symmetric_difference(combined_keys)) // 2
     # Documented teacher-review stage: apply data/teacher-overrides.json to the full ranked
     # Lexique candidate set before selecting 300, so deletions/merges refill from next ranks.
+    original_top_keys = {(r["lemma"].casefold(), r["part_of_speech"].casefold()) for r in combined_ranked[:300]}
     combined_ranked = apply_teacher_overrides(combined_ranked)
     rows_out = combined_ranked[:300]
+    TEACHER_REFILL_LEMMAS[:] = [f'{r["lemma"]}|{r["part_of_speech"]}' for r in rows_out
+                                if (r["lemma"].casefold(), r["part_of_speech"].casefold()) not in original_top_keys]
     if len(rows_out) != 300:
         raise ValueError(f"Expected at least 300 lemma/POS entries after teacher overrides; found {len(rows_out)}")
     (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")
@@ -479,6 +482,16 @@ def main() -> int:
     args=parser.parse_args()
     DATA.mkdir(parents=True,exist_ok=True)
     rows,encoding,meta=read_lexique()
+    override_doc = json.loads((DATA / "teacher-overrides.json").read_text(encoding="utf-8", errors="strict"))
+    override_result = {
+        "source": "data/teacher-overrides.json (owner-maintained; read-only)",
+        "ops_total": len(override_doc.get("ops", [])),
+        "ops_applied": APPLIED_TEACHER_OPS,
+        "unmatched_ops": UNMATCHED_TEACHER_OPS,
+        "refill_added": TEACHER_REFILL_LEMMAS,
+        "refill_added_count": len(TEACHER_REFILL_LEMMAS),
+    }
+    (DATA / "teacher-override-results.json").write_text(json.dumps(override_result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", errors="strict")
     forms=sorted({f["form"] for r in rows for f in r.get("forms",r["top_forms"])+r["rare_forms"]},key=lambda x:(x.casefold(),x))
     dico,dico_detail=dicollecte_forms(forms)
     probe={}
@@ -539,12 +552,14 @@ def _review_forms(row: dict) -> list[dict]:
 
 def _review_cells(index: int, row: dict) -> list[str]:
     head = row["display_headword"]
-    if row["part_of_speech"].upper() == "NOM":
+    if row["part_of_speech"].upper() == "NOM" and not re.match(r"^l['’]", str(head), re.IGNORECASE):
         article = "la" if (row.get("gender") or "").casefold() in {"f", "fem", "féminin", "feminine"} else "le"
         head = f"{article} {head}"
     gender = row.get("gender") or "—"
     pos_note_lemmas = {"quoi", "peu", "voilà", "bonjour"}
-    note = "Confirm Lexique POS" if row["lemma"].casefold() in pos_note_lemmas or row["part_of_speech"].upper() in {"ADJ:IND", "ADJ:INT", "ONO"} else ""
+    note = str(row.get("note", "")).strip()
+    if not note and (row["lemma"].casefold() in pos_note_lemmas or row["part_of_speech"].upper() in {"ADJ:IND", "ADJ:INT", "ONO"}):
+        note = "Confirm Lexique POS"
     complete_forms = _review_forms(row)
     shown = complete_forms[:8]
     forms = ", ".join(f["form"] + (" (shared form)" if f.get("shared_form") else "") for f in shown)
