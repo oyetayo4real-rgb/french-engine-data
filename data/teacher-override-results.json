@@ -1,0 +1,534 @@
+{
+  "source": "data/teacher-overrides.json (owner-maintained; read-only)",
+  "ops_total": 42,
+  "ops_applied": [
+    {
+      "index": 1,
+      "label": "1:update:je|PRO:per",
+      "operation": {
+        "lemma": "je",
+        "pos": "PRO:per",
+        "add_forms": [
+          "j'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 2,
+      "label": "2:update:ne|ADV",
+      "operation": {
+        "lemma": "ne",
+        "pos": "ADV",
+        "remove_forms": [
+          "n"
+        ],
+        "keep_forms": [
+          "ne",
+          "n'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 3,
+      "label": "3:update:me|PRO:per",
+      "operation": {
+        "lemma": "me",
+        "pos": "PRO:per",
+        "add_forms": [
+          "m'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 4,
+      "label": "4:update:ce|PRO:dem",
+      "operation": {
+        "lemma": "ce",
+        "pos": "PRO:dem",
+        "add_forms": [
+          "c'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 5,
+      "label": "5:update:que|PRO:int",
+      "operation": {
+        "lemma": "que",
+        "pos": "PRO:int",
+        "add_forms": [
+          "qu'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 6,
+      "label": "6:update:que|PRO:rel",
+      "operation": {
+        "lemma": "que",
+        "pos": "PRO:rel",
+        "add_forms": [
+          "qu'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 7,
+      "label": "7:merge:tout|ADJ,tout|ADJ:ind->tout|ADJ:ind",
+      "operation": {
+        "op": "merge",
+        "from": [
+          {
+            "lemma": "tout",
+            "pos": "ADJ"
+          },
+          {
+            "lemma": "tout",
+            "pos": "ADJ:ind"
+          }
+        ],
+        "into": {
+          "lemma": "tout",
+          "pos": "ADJ:ind",
+          "forms": [
+            "tout",
+            "tous",
+            "toute",
+            "toutes"
+          ]
+        }
+      },
+      "status": "applied"
+    },
+    {
+      "index": 8,
+      "label": "8:update:tout|PRO:ind",
+      "operation": {
+        "lemma": "tout",
+        "pos": "PRO:ind",
+        "add_forms": [
+          "tous"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 9,
+      "label": "9:update:le|PRO:per",
+      "operation": {
+        "lemma": "le",
+        "pos": "PRO:per",
+        "add_forms": [
+          "l'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 10,
+      "label": "10:update:la|PRO:per",
+      "operation": {
+        "lemma": "la",
+        "pos": "PRO:per",
+        "add_forms": [
+          "l'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 11,
+      "label": "11:update:où|PRO:int",
+      "operation": {
+        "lemma": "où",
+        "pos": "PRO:int",
+        "set_pos": "ADV",
+        "note": "interrogative adverb; keep the relative PRO:rel row"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 12,
+      "label": "12:update:falloir|VER",
+      "operation": {
+        "lemma": "falloir",
+        "pos": "VER",
+        "add_forms": [
+          "faille"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 13,
+      "label": "13:update:si|CON",
+      "operation": {
+        "lemma": "si",
+        "pos": "CON",
+        "add_forms": [
+          "s'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 14,
+      "label": "14:delete:quoi|ADJ",
+      "operation": {
+        "op": "delete",
+        "lemma": "quoi",
+        "pos": "ADJ",
+        "reason": "quoi is not an adjective; keep PRO:int and PRO:rel"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 15,
+      "label": "15:delete:dont|PRO:int",
+      "operation": {
+        "op": "delete",
+        "lemma": "dont",
+        "pos": "PRO:int",
+        "reason": "dont is only relative; keep the relative row"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 16,
+      "label": "16:delete:comment|CON",
+      "operation": {
+        "op": "delete",
+        "lemma": "comment",
+        "pos": "CON",
+        "reason": "comment is an adverb; duplicate of the ADV row"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 17,
+      "label": "17:update:est-ce que|ADV",
+      "operation": {
+        "lemma": "est-ce que",
+        "pos": "ADV",
+        "set_pos": "LOC:int",
+        "add_forms": [
+          "est-ce qu'"
+        ],
+        "note": "interrogative locution"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 18,
+      "label": "18:update:beau|ADJ",
+      "operation": {
+        "lemma": "beau",
+        "pos": "ADJ",
+        "add_forms": [
+          "bel"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 19,
+      "label": "19:update:autre|PRO:ind",
+      "operation": {
+        "lemma": "autre",
+        "pos": "PRO:ind",
+        "add_forms": [
+          "autres"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 20,
+      "label": "20:update:leurs|ADJ:pos",
+      "operation": {
+        "lemma": "leurs",
+        "pos": "ADJ:pos",
+        "display_headword": "leur / leurs",
+        "add_forms": [
+          "leur"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 21,
+      "label": "21:update:leur|PRO:pos",
+      "operation": {
+        "lemma": "leur",
+        "pos": "PRO:pos",
+        "add_forms": [
+          "leurs"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 22,
+      "label": "22:update:quel|ADJ:int",
+      "operation": {
+        "lemma": "quel",
+        "pos": "ADJ:int",
+        "add_forms": [
+          "quels",
+          "quelles"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 23,
+      "label": "23:update:un|PRO:ind",
+      "operation": {
+        "lemma": "un",
+        "pos": "PRO:ind",
+        "add_forms": [
+          "une",
+          "uns",
+          "unes"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 24,
+      "label": "24:update:parce que|CON",
+      "operation": {
+        "lemma": "parce que",
+        "pos": "CON",
+        "add_forms": [
+          "parce qu'"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 25,
+      "label": "25:update:vieux|ADJ",
+      "operation": {
+        "lemma": "vieux",
+        "pos": "ADJ",
+        "gender": "m",
+        "set_forms": [
+          "vieux",
+          "vieil",
+          "vieille",
+          "vieilles"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 26,
+      "label": "26:update:mort|NOM",
+      "operation": {
+        "lemma": "mort",
+        "pos": "NOM",
+        "set_forms": [
+          "mort",
+          "morts"
+        ],
+        "note": "morte/mortes belong to the adjective/noun le mort, la morte"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 27,
+      "label": "27:update:oeil|NOM",
+      "operation": {
+        "lemma": "oeil",
+        "pos": "NOM",
+        "display_headword": "l'œil",
+        "gender": "m",
+        "set_forms": [
+          "œil",
+          "yeux"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 28,
+      "label": "28:update:homme|NOM",
+      "operation": {
+        "lemma": "homme",
+        "pos": "NOM",
+        "display_headword": "l'homme"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 29,
+      "label": "29:update:heure|NOM",
+      "operation": {
+        "lemma": "heure",
+        "pos": "NOM",
+        "display_headword": "l'heure"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 30,
+      "label": "30:update:an|NOM",
+      "operation": {
+        "lemma": "an",
+        "pos": "NOM",
+        "display_headword": "l'an"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 31,
+      "label": "31:update:enfant|NOM",
+      "operation": {
+        "lemma": "enfant",
+        "pos": "NOM",
+        "display_headword": "l'enfant",
+        "gender": "m/f"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 32,
+      "label": "32:update:air|NOM",
+      "operation": {
+        "lemma": "air",
+        "pos": "NOM",
+        "display_headword": "l'air"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 33,
+      "label": "33:update:ami|NOM",
+      "operation": {
+        "lemma": "ami",
+        "pos": "NOM",
+        "display_headword": "l'ami(e)",
+        "gender": "m/f",
+        "set_forms": [
+          "ami",
+          "amie",
+          "amis",
+          "amies"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 34,
+      "label": "34:update:gens|NOM",
+      "operation": {
+        "lemma": "gens",
+        "pos": "NOM",
+        "display_headword": "les gens",
+        "gender": "m",
+        "note": "plural only; feminine for a preceding adjective: les vieilles gens"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 35,
+      "label": "35:update:accord|NOM",
+      "operation": {
+        "lemma": "accord",
+        "pos": "NOM",
+        "display_headword": "l'accord"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 36,
+      "label": "36:update:amour|NOM",
+      "operation": {
+        "lemma": "amour",
+        "pos": "NOM",
+        "display_headword": "l'amour"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 37,
+      "label": "37:update:eau|NOM",
+      "operation": {
+        "lemma": "eau",
+        "pos": "NOM",
+        "display_headword": "l'eau"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 38,
+      "label": "38:update:histoire|NOM",
+      "operation": {
+        "lemma": "histoire",
+        "pos": "NOM",
+        "display_headword": "l'histoire"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 39,
+      "label": "39:update:idée|NOM",
+      "operation": {
+        "lemma": "idée",
+        "pos": "NOM",
+        "display_headword": "l'idée"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 40,
+      "label": "40:update:argent|NOM",
+      "operation": {
+        "lemma": "argent",
+        "pos": "NOM",
+        "display_headword": "l'argent",
+        "set_forms": [
+          "argent"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "index": 41,
+      "label": "41:update:année|NOM",
+      "operation": {
+        "lemma": "année",
+        "pos": "NOM",
+        "display_headword": "l'année"
+      },
+      "status": "applied"
+    },
+    {
+      "index": 42,
+      "label": "42:update:affaire|NOM",
+      "operation": {
+        "lemma": "affaire",
+        "pos": "NOM",
+        "display_headword": "l'affaire"
+      },
+      "status": "applied"
+    }
+  ],
+  "unmatched_ops": [],
+  "refill_added": [
+    "où|ADV",
+    "est-ce que|LOC:int",
+    "coeur|NOM",
+    "bras|NOM",
+    "apprendre|VER",
+    "bon|ONO"
+  ],
+  "refill_added_count": 6
+}

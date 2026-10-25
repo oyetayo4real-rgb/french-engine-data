@@ -405,6 +405,12 @@
         "frequency": 36845.97,
         "shared_form": true,
         "frequency_attributed_to": "je"
+      },
+      {
+        "form": "j'",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "je"
       }
     ],
     "rare_forms": [],
@@ -438,12 +444,6 @@
         "frequency": 14944.57,
         "shared_form": false,
         "frequency_attributed_to": "ne"
-      },
-      {
-        "form": "n",
-        "frequency": 76.04,
-        "shared_form": true,
-        "frequency_attributed_to": "ne"
       }
     ],
     "forms": [
@@ -457,12 +457,6 @@
         "form": "n'",
         "frequency": 14944.57,
         "shared_form": false,
-        "frequency_attributed_to": "ne"
-      },
-      {
-        "form": "n",
-        "frequency": 76.04,
-        "shared_form": true,
         "frequency_attributed_to": "ne"
       }
     ],
@@ -2403,6 +2397,12 @@
         "frequency": 9193.76,
         "shared_form": true,
         "frequency_attributed_to": "me"
+      },
+      {
+        "form": "m'",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "me"
       }
     ],
     "rare_forms": [],
@@ -2831,6 +2831,12 @@
         "frequency": 8177.68,
         "shared_form": true,
         "frequency_attributed_to": "ce"
+      },
+      {
+        "form": "c'",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "ce"
       }
     ],
     "rare_forms": [],
@@ -2971,6 +2977,12 @@
         "frequency": 1110.63,
         "shared_form": true,
         "frequency_attributed_to": "que"
+      },
+      {
+        "form": "qu'",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "que"
       }
     ],
     "rare_forms": [],
@@ -3005,6 +3017,12 @@
         "form": "que",
         "frequency": 6306.22,
         "shared_form": true,
+        "frequency_attributed_to": "que"
+      },
+      {
+        "form": "qu'",
+        "frequency": 0.0,
+        "shared_form": false,
         "frequency_attributed_to": "que"
       }
     ],
@@ -3952,71 +3970,6 @@
   {
     "lemma": "tout",
     "display_headword": "tout",
-    "part_of_speech": "ADJ",
-    "gender": "m",
-    "number": "p",
-    "lemma_frequency": 6120.1,
-    "freqlemfilms2": 2948.75,
-    "freqlemlivres": 3171.35,
-    "ranking_formula": "freqlemfilms2 + freqlemlivres",
-    "top_forms": [
-      {
-        "form": "tous",
-        "frequency": 1826.94,
-        "shared_form": true,
-        "frequency_attributed_to": "tout"
-      },
-      {
-        "form": "tout",
-        "frequency": 1478.02,
-        "shared_form": true,
-        "frequency_attributed_to": "tout"
-      },
-      {
-        "form": "toute",
-        "frequency": 1044.63,
-        "shared_form": true,
-        "frequency_attributed_to": "tout"
-      }
-    ],
-    "forms": [
-      {
-        "form": "tous",
-        "frequency": 1826.94,
-        "shared_form": true,
-        "frequency_attributed_to": "tout"
-      },
-      {
-        "form": "tout",
-        "frequency": 1478.02,
-        "shared_form": true,
-        "frequency_attributed_to": "tout"
-      },
-      {
-        "form": "toute",
-        "frequency": 1044.63,
-        "shared_form": true,
-        "frequency_attributed_to": "tout"
-      },
-      {
-        "form": "toutes",
-        "frequency": 893.68,
-        "shared_form": true,
-        "frequency_attributed_to": "tout"
-      }
-    ],
-    "rare_forms": [],
-    "register": "unreviewed",
-    "source": {
-      "name": "Lexique 3.83",
-      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
-    },
-    "licence": "CC BY-SA 4.0",
-    "needs_review": true
-  },
-  {
-    "lemma": "tout",
-    "display_headword": "tout",
     "part_of_speech": "ADJ:ind",
     "gender": null,
     "number": null,
@@ -4037,6 +3990,24 @@
         "form": "tout",
         "frequency": 876.84,
         "shared_form": true,
+        "frequency_attributed_to": "tout"
+      },
+      {
+        "form": "tous",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "tout"
+      },
+      {
+        "form": "toute",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "tout"
+      },
+      {
+        "form": "toutes",
+        "frequency": 0.0,
+        "shared_form": false,
         "frequency_attributed_to": "tout"
       }
     ],
@@ -4177,6 +4148,12 @@
         "form": "le",
         "frequency": 5724.93,
         "shared_form": true,
+        "frequency_attributed_to": "le"
+      },
+      {
+        "form": "l'",
+        "frequency": 0.0,
+        "shared_form": false,
         "frequency_attributed_to": "le"
       }
     ],
@@ -4936,7 +4913,7 @@
   {
     "lemma": "où",
     "display_headword": "où",
-    "part_of_speech": "PRO:int",
+    "part_of_speech": "ADV",
     "gender": null,
     "number": null,
     "lemma_frequency": 4245.36,
@@ -4966,7 +4943,8 @@
       "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
     },
     "licence": "CC BY-SA 4.0",
-    "needs_review": true
+    "needs_review": true,
+    "note": "interrogative adverb; keep the relative PRO:rel row"
   },
   {
     "lemma": "où",
@@ -6216,16 +6194,15 @@
         "frequency": 28.24,
         "shared_form": false,
         "frequency_attributed_to": "falloir"
-      }
-    ],
-    "rare_forms": [
+      },
       {
-        "form": "fallût",
-        "frequency": 0.28,
+        "form": "faille",
+        "frequency": 0.0,
         "shared_form": false,
         "frequency_attributed_to": "falloir"
       }
     ],
+    "rare_forms": [],
     "register": "unreviewed",
     "source": {
       "name": "Lexique 3.83",
@@ -7202,7 +7179,7 @@
   },
   {
     "lemma": "homme",
-    "display_headword": "homme",
+    "display_headword": "l'homme",
     "part_of_speech": "NOM",
     "gender": "m",
     "number": "s",
@@ -7945,6 +7922,12 @@
         "frequency": 2320.62,
         "shared_form": true,
         "frequency_attributed_to": "la"
+      },
+      {
+        "form": "l'",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "la"
       }
     ],
     "rare_forms": [],
@@ -8014,6 +7997,12 @@
         "form": "si",
         "frequency": 2308.42,
         "shared_form": true,
+        "frequency_attributed_to": "si"
+      },
+      {
+        "form": "s'",
+        "frequency": 0.0,
+        "shared_form": false,
         "frequency_attributed_to": "si"
       }
     ],
@@ -8336,6 +8325,12 @@
         "form": "tout",
         "frequency": 2204.49,
         "shared_form": true,
+        "frequency_attributed_to": "tout"
+      },
+      {
+        "form": "tous",
+        "frequency": 0.0,
+        "shared_form": false,
         "frequency_attributed_to": "tout"
       }
     ],
@@ -10698,41 +10693,6 @@
     "needs_review": true
   },
   {
-    "lemma": "quoi",
-    "display_headword": "quoi",
-    "part_of_speech": "ADJ",
-    "gender": "m",
-    "number": "s",
-    "lemma_frequency": 1769.1,
-    "freqlemfilms2": 1558.22,
-    "freqlemlivres": 210.88,
-    "ranking_formula": "freqlemfilms2 + freqlemlivres",
-    "top_forms": [
-      {
-        "form": "quoi",
-        "frequency": 1769.1,
-        "shared_form": true,
-        "frequency_attributed_to": "quoi"
-      }
-    ],
-    "forms": [
-      {
-        "form": "quoi",
-        "frequency": 1769.1,
-        "shared_form": true,
-        "frequency_attributed_to": "quoi"
-      }
-    ],
-    "rare_forms": [],
-    "register": "unreviewed",
-    "source": {
-      "name": "Lexique 3.83",
-      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
-    },
-    "licence": "CC BY-SA 4.0",
-    "needs_review": true
-  },
-  {
     "lemma": "main",
     "display_headword": "main",
     "part_of_speech": "NOM",
@@ -10898,7 +10858,7 @@
   },
   {
     "lemma": "oeil",
-    "display_headword": "œil",
+    "display_headword": "l'œil",
     "part_of_speech": "NOM",
     "gender": "m",
     "number": "s",
@@ -10934,14 +10894,7 @@
         "frequency_attributed_to": "oeil"
       }
     ],
-    "rare_forms": [
-      {
-        "form": "œils",
-        "frequency": 0.42,
-        "shared_form": false,
-        "frequency_attributed_to": "oeil"
-      }
-    ],
+    "rare_forms": [],
     "register": "unreviewed",
     "source": {
       "name": "Lexique 3.83",
@@ -10952,7 +10905,7 @@
   },
   {
     "lemma": "heure",
-    "display_headword": "heure",
+    "display_headword": "l'heure",
     "part_of_speech": "NOM",
     "gender": "f",
     "number": "s",
@@ -11866,7 +11819,7 @@
   },
   {
     "lemma": "an",
-    "display_headword": "an",
+    "display_headword": "l'an",
     "part_of_speech": "NOM",
     "gender": "m",
     "number": "s",
@@ -12534,7 +12487,7 @@
   {
     "lemma": "est-ce que",
     "display_headword": "est-ce que",
-    "part_of_speech": "ADV",
+    "part_of_speech": "LOC:int",
     "gender": null,
     "number": null,
     "lemma_frequency": 1481.64,
@@ -12555,6 +12508,12 @@
         "frequency": 1481.64,
         "shared_form": false,
         "frequency_attributed_to": "est-ce que"
+      },
+      {
+        "form": "est-ce qu'",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "est-ce que"
       }
     ],
     "rare_forms": [],
@@ -12564,13 +12523,14 @@
       "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
     },
     "licence": "CC BY-SA 4.0",
-    "needs_review": true
+    "needs_review": true,
+    "note": "interrogative locution"
   },
   {
     "lemma": "enfant",
-    "display_headword": "enfant",
+    "display_headword": "l'enfant",
     "part_of_speech": "NOM",
-    "gender": "m",
+    "gender": "m/f",
     "number": "s",
     "lemma_frequency": 1461.27,
     "freqlemfilms2": 735.59,
@@ -13974,6 +13934,12 @@
         "frequency": 111.92,
         "shared_form": true,
         "frequency_attributed_to": "beau"
+      },
+      {
+        "form": "bel",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "beau"
       }
     ],
     "rare_forms": [],
@@ -14767,41 +14733,6 @@
   {
     "lemma": "dont",
     "display_headword": "dont",
-    "part_of_speech": "PRO:int",
-    "gender": null,
-    "number": null,
-    "lemma_frequency": 1183.75,
-    "freqlemfilms2": 223.41,
-    "freqlemlivres": 960.34,
-    "ranking_formula": "freqlemfilms2 + freqlemlivres",
-    "top_forms": [
-      {
-        "form": "dont",
-        "frequency": 38.13,
-        "shared_form": true,
-        "frequency_attributed_to": "dont"
-      }
-    ],
-    "forms": [
-      {
-        "form": "dont",
-        "frequency": 38.13,
-        "shared_form": true,
-        "frequency_attributed_to": "dont"
-      }
-    ],
-    "rare_forms": [],
-    "register": "unreviewed",
-    "source": {
-      "name": "Lexique 3.83",
-      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
-    },
-    "licence": "CC BY-SA 4.0",
-    "needs_review": true
-  },
-  {
-    "lemma": "dont",
-    "display_headword": "dont",
     "part_of_speech": "PRO:rel",
     "gender": null,
     "number": null,
@@ -14883,7 +14814,7 @@
   },
   {
     "lemma": "air",
-    "display_headword": "air",
+    "display_headword": "l'air",
     "part_of_speech": "NOM",
     "gender": "m",
     "number": "s",
@@ -15239,6 +15170,12 @@
         "frequency": 1135.15,
         "shared_form": true,
         "frequency_attributed_to": "autre"
+      },
+      {
+        "form": "autres",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "autre"
       }
     ],
     "rare_forms": [],
@@ -15252,7 +15189,7 @@
   },
   {
     "lemma": "leurs",
-    "display_headword": "leurs",
+    "display_headword": "leur / leurs",
     "part_of_speech": "ADJ:pos",
     "gender": null,
     "number": null,
@@ -15273,6 +15210,12 @@
         "form": "leurs",
         "frequency": 1130.11,
         "shared_form": true,
+        "frequency_attributed_to": "leurs"
+      },
+      {
+        "form": "leur",
+        "frequency": 0.0,
+        "shared_form": false,
         "frequency_attributed_to": "leurs"
       }
     ],
@@ -15650,9 +15593,9 @@
   },
   {
     "lemma": "ami",
-    "display_headword": "ami",
+    "display_headword": "l'ami(e)",
     "part_of_speech": "NOM",
-    "gender": "m",
+    "gender": "m/f",
     "number": "s",
     "lemma_frequency": 1102.1,
     "freqlemfilms2": 747.98,
@@ -16522,9 +16465,9 @@
   },
   {
     "lemma": "gens",
-    "display_headword": "gens",
+    "display_headword": "les gens",
     "part_of_speech": "NOM",
-    "gender": "m/f",
+    "gender": "m",
     "number": "p",
     "lemma_frequency": 1003.68,
     "freqlemfilms2": 594.29,
@@ -16553,7 +16496,8 @@
       "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
     },
     "licence": "CC BY-SA 4.0",
-    "needs_review": true
+    "needs_review": true,
+    "note": "plural only; feminine for a preceding adjective: les vieilles gens"
   },
   {
     "lemma": "cet",
@@ -18367,6 +18311,18 @@
         "frequency": 923.05,
         "shared_form": false,
         "frequency_attributed_to": "quel"
+      },
+      {
+        "form": "quelles",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "quel"
+      },
+      {
+        "form": "quels",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "quel"
       }
     ],
     "rare_forms": [],
@@ -18400,12 +18356,6 @@
         "frequency": 144.24,
         "shared_form": true,
         "frequency_attributed_to": "mort"
-      },
-      {
-        "form": "morte",
-        "frequency": 19.72,
-        "shared_form": true,
-        "frequency_attributed_to": "mourir"
       }
     ],
     "forms": [
@@ -18420,18 +18370,6 @@
         "frequency": 144.24,
         "shared_form": true,
         "frequency_attributed_to": "mort"
-      },
-      {
-        "form": "morte",
-        "frequency": 19.72,
-        "shared_form": true,
-        "frequency_attributed_to": "mourir"
-      },
-      {
-        "form": "mortes",
-        "frequency": 2.72,
-        "shared_form": true,
-        "frequency_attributed_to": "mort"
       }
     ],
     "rare_forms": [],
@@ -18441,7 +18379,8 @@
       "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
     },
     "licence": "CC BY-SA 4.0",
-    "needs_review": true
+    "needs_review": true,
+    "note": "morte/mortes belong to the adjective/noun le mort, la morte"
   },
   {
     "lemma": "jouer",
@@ -18954,7 +18893,7 @@
   },
   {
     "lemma": "accord",
-    "display_headword": "accord",
+    "display_headword": "l'accord",
     "part_of_speech": "NOM",
     "gender": "m",
     "number": "s",
@@ -19093,6 +19032,24 @@
         "frequency": 884.29,
         "shared_form": true,
         "frequency_attributed_to": "un"
+      },
+      {
+        "form": "une",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "un"
+      },
+      {
+        "form": "unes",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "un"
+      },
+      {
+        "form": "uns",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "un"
       }
     ],
     "rare_forms": [],
@@ -19127,6 +19084,12 @@
         "form": "parce que",
         "frequency": 875.95,
         "shared_form": true,
+        "frequency_attributed_to": "parce que"
+      },
+      {
+        "form": "parce qu'",
+        "frequency": 0.0,
+        "shared_form": false,
         "frequency_attributed_to": "parce que"
       }
     ],
@@ -19270,7 +19233,7 @@
   },
   {
     "lemma": "amour",
-    "display_headword": "amour",
+    "display_headword": "l'amour",
     "part_of_speech": "NOM",
     "gender": "m",
     "number": "s",
@@ -21111,41 +21074,6 @@
     "needs_review": true
   },
   {
-    "lemma": "comment",
-    "display_headword": "comment",
-    "part_of_speech": "CON",
-    "gender": null,
-    "number": null,
-    "lemma_frequency": 799.68,
-    "freqlemfilms2": 558.33,
-    "freqlemlivres": 241.35,
-    "ranking_formula": "freqlemfilms2 + freqlemlivres",
-    "top_forms": [
-      {
-        "form": "comment",
-        "frequency": 799.68,
-        "shared_form": true,
-        "frequency_attributed_to": "comment"
-      }
-    ],
-    "forms": [
-      {
-        "form": "comment",
-        "frequency": 799.68,
-        "shared_form": true,
-        "frequency_attributed_to": "comment"
-      }
-    ],
-    "rare_forms": [],
-    "register": "unreviewed",
-    "source": {
-      "name": "Lexique 3.83",
-      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
-    },
-    "licence": "CC BY-SA 4.0",
-    "needs_review": true
-  },
-  {
     "lemma": "eux",
     "display_headword": "eux",
     "part_of_speech": "PRO:per",
@@ -21424,7 +21352,7 @@
     "lemma": "vieux",
     "display_headword": "vieux",
     "part_of_speech": "ADJ",
-    "gender": "f",
+    "gender": "m",
     "number": "s",
     "lemma_frequency": 795.11,
     "freqlemfilms2": 282.2,
@@ -21467,6 +21395,12 @@
         "form": "vieilles",
         "frequency": 72.99,
         "shared_form": true,
+        "frequency_attributed_to": "vieux"
+      },
+      {
+        "form": "vieil",
+        "frequency": 0.0,
+        "shared_form": false,
         "frequency_attributed_to": "vieux"
       }
     ],
@@ -22324,7 +22258,7 @@
   },
   {
     "lemma": "eau",
-    "display_headword": "eau",
+    "display_headword": "l'eau",
     "part_of_speech": "NOM",
     "gender": "f",
     "number": "s",
@@ -23213,7 +23147,7 @@
   },
   {
     "lemma": "histoire",
-    "display_headword": "histoire",
+    "display_headword": "l'histoire",
     "part_of_speech": "NOM",
     "gender": "f",
     "number": "s",
@@ -23488,7 +23422,7 @@
   },
   {
     "lemma": "idée",
-    "display_headword": "idée",
+    "display_headword": "l'idée",
     "part_of_speech": "NOM",
     "gender": "f",
     "number": "s",
@@ -24179,6 +24113,12 @@
         "frequency": 18.78,
         "shared_form": true,
         "frequency_attributed_to": "leur"
+      },
+      {
+        "form": "leurs",
+        "frequency": 0.0,
+        "shared_form": false,
+        "frequency_attributed_to": "leur"
       }
     ],
     "rare_forms": [],
@@ -24192,7 +24132,7 @@
   },
   {
     "lemma": "argent",
-    "display_headword": "argent",
+    "display_headword": "l'argent",
     "part_of_speech": "NOM",
     "gender": "m",
     "number": "s",
@@ -24216,14 +24156,7 @@
         "frequency_attributed_to": "argent"
       }
     ],
-    "rare_forms": [
-      {
-        "form": "argents",
-        "frequency": 0.13,
-        "shared_form": false,
-        "frequency_attributed_to": "argent"
-      }
-    ],
+    "rare_forms": [],
     "register": "unreviewed",
     "source": {
       "name": "Lexique 3.83",
@@ -24515,7 +24448,7 @@
   },
   {
     "lemma": "année",
-    "display_headword": "année",
+    "display_headword": "l'année",
     "part_of_speech": "NOM",
     "gender": "f",
     "number": "s",
@@ -26300,7 +26233,7 @@
   },
   {
     "lemma": "affaire",
-    "display_headword": "affaire",
+    "display_headword": "l'affaire",
     "part_of_speech": "NOM",
     "gender": "f",
     "number": "s",
@@ -26334,6 +26267,363 @@
         "frequency": 289.16,
         "shared_form": true,
         "frequency_attributed_to": "affaire"
+      }
+    ],
+    "rare_forms": [],
+    "register": "unreviewed",
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "coeur",
+    "display_headword": "cœur",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "number": "s",
+    "lemma_frequency": 640.71,
+    "freqlemfilms2": 239.97,
+    "freqlemlivres": 400.74,
+    "ranking_formula": "freqlemfilms2 + freqlemlivres",
+    "top_forms": [
+      {
+        "form": "cœur",
+        "frequency": 605.05,
+        "shared_form": false,
+        "frequency_attributed_to": "coeur"
+      },
+      {
+        "form": "cœurs",
+        "frequency": 35.68,
+        "shared_form": false,
+        "frequency_attributed_to": "coeur"
+      }
+    ],
+    "forms": [
+      {
+        "form": "cœur",
+        "frequency": 605.05,
+        "shared_form": false,
+        "frequency_attributed_to": "coeur"
+      },
+      {
+        "form": "cœurs",
+        "frequency": 35.68,
+        "shared_form": false,
+        "frequency_attributed_to": "coeur"
+      }
+    ],
+    "rare_forms": [],
+    "register": "unreviewed",
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "bras",
+    "display_headword": "bras",
+    "part_of_speech": "NOM",
+    "gender": "m",
+    "number": null,
+    "lemma_frequency": 637.23,
+    "freqlemfilms2": 149.26,
+    "freqlemlivres": 487.97,
+    "ranking_formula": "freqlemfilms2 + freqlemlivres",
+    "top_forms": [
+      {
+        "form": "bras",
+        "frequency": 637.23,
+        "shared_form": false,
+        "frequency_attributed_to": "bras"
+      }
+    ],
+    "forms": [
+      {
+        "form": "bras",
+        "frequency": 637.23,
+        "shared_form": false,
+        "frequency_attributed_to": "bras"
+      }
+    ],
+    "rare_forms": [],
+    "register": "unreviewed",
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "apprendre",
+    "display_headword": "apprendre",
+    "part_of_speech": "VER",
+    "gender": null,
+    "number": null,
+    "lemma_frequency": 635.16,
+    "freqlemfilms2": 348.47,
+    "freqlemlivres": 286.69,
+    "ranking_formula": "freqlemfilms2 + freqlemlivres",
+    "top_forms": [
+      {
+        "form": "appris",
+        "frequency": 218.68,
+        "shared_form": true,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendre",
+        "frequency": 172.98,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprend",
+        "frequency": 44.27,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      }
+    ],
+    "forms": [
+      {
+        "form": "appris",
+        "frequency": 218.68,
+        "shared_form": true,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendre",
+        "frequency": 172.98,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprend",
+        "frequency": 44.27,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprends",
+        "frequency": 35.88,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprit",
+        "frequency": 23.44,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendra",
+        "frequency": 16.21,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprenait",
+        "frequency": 15.03,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprennent",
+        "frequency": 12.45,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendrai",
+        "frequency": 10.74,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprenne",
+        "frequency": 10.44,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprenant",
+        "frequency": 10.11,
+        "shared_form": true,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprenez",
+        "frequency": 9.57,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendras",
+        "frequency": 7.92,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprenais",
+        "frequency": 7.08,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprise",
+        "frequency": 5.26,
+        "shared_form": true,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendrait",
+        "frequency": 4.55,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendrez",
+        "frequency": 4.09,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprennes",
+        "frequency": 3.39,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprenaient",
+        "frequency": 3.17,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendrais",
+        "frequency": 2.64,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendront",
+        "frequency": 2.46,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprises",
+        "frequency": 2.46,
+        "shared_form": true,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprirent",
+        "frequency": 2.38,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprenons",
+        "frequency": 2.07,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprenions",
+        "frequency": 1.85,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendrons",
+        "frequency": 1.31,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "appreniez",
+        "frequency": 1.13,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprîmes",
+        "frequency": 1.12,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      }
+    ],
+    "rare_forms": [
+      {
+        "form": "apprendraient",
+        "frequency": 0.93,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprît",
+        "frequency": 0.82,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendriez",
+        "frequency": 0.37,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprendrions",
+        "frequency": 0.27,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      },
+      {
+        "form": "apprissent",
+        "frequency": 0.07,
+        "shared_form": false,
+        "frequency_attributed_to": "apprendre"
+      }
+    ],
+    "register": "unreviewed",
+    "source": {
+      "name": "Lexique 3.83",
+      "url": "https://www.lexique.org/databases/Lexique383/Lexique383.tsv"
+    },
+    "licence": "CC BY-SA 4.0",
+    "needs_review": true
+  },
+  {
+    "lemma": "bon",
+    "display_headword": "bon",
+    "part_of_speech": "ONO",
+    "gender": null,
+    "number": null,
+    "lemma_frequency": 631.08,
+    "freqlemfilms2": 521.22,
+    "freqlemlivres": 109.86,
+    "ranking_formula": "freqlemfilms2 + freqlemlivres",
+    "top_forms": [
+      {
+        "form": "bon",
+        "frequency": 631.08,
+        "shared_form": true,
+        "frequency_attributed_to": "bon"
+      }
+    ],
+    "forms": [
+      {
+        "form": "bon",
+        "frequency": 631.08,
+        "shared_form": true,
+        "frequency_attributed_to": "bon"
       }
     ],
     "rare_forms": [],
