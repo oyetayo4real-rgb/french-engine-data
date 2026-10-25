@@ -102,21 +102,9 @@ jobs:
         run: python -m pip install --disable-pip-version-check openpyxl
       - name: Generate and validate French teacher workbook
         run: python scripts/generate_review_xlsx.py
-      - name: Commit pilot, cross-checks, and checksum manifest
-        if: success()
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase --autostash origin main
-          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json data/ambiguous-forms.json data/review-sheet.md data/review-sheet.csv data/review-sheet.xlsx data/teacher-override-results.json
-          if git diff --cached --quiet; then
-            echo "Pilot, cross-checks, and checksum manifest are unchanged."
-          else
-            git commit -m "Import Lexique-only pilot and source cross-check evidence"
-            git push
-          fi
+      - name: Defer generated artifact commit until diagnostics finish
+        if: always()
+        run: echo "Generated artifacts and diagnostics will be committed together at the end of this run."
       - name: Write source diagnostics (always)
         if: always()
         continue-on-error: true
@@ -159,10 +147,10 @@ jobs:
             mkdir -p diagnostics
             printf '%s\n' "Diagnostics generator did not produce diagnostics/last-run.txt; inspect the workflow logs." > diagnostics/last-run.txt
           fi
-          git add diagnostics/last-run.txt
+          git add data/pilot-300.json data/cross-checks-300.json data/source-checksums.json data/ambiguous-forms.json data/review-sheet.md data/review-sheet.csv data/review-sheet.xlsx data/teacher-override-results.json diagnostics/last-run.txt
           if git diff --cached --quiet; then
-            echo "Diagnostics file is unchanged."
+            echo "Generated artifacts and diagnostics are unchanged."
           else
-            git commit -m "Record source and pilot diagnostics"
+            git commit -m "Record French teacher review artifacts and diagnostics"
             git push
           fi

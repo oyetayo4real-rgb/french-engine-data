@@ -268,15 +268,33 @@ def read_lexique() -> tuple[list[dict], str, dict]:
     film_keys = {(r["lemma"].casefold(),r["part_of_speech"].casefold()) for r in film_ranked[:300]}
     combined_keys = {(r["lemma"].casefold(),r["part_of_speech"].casefold()) for r in combined_ranked[:300]}
     changed = len(film_keys.symmetric_difference(combined_keys)) // 2
-    # Documented teacher-review stage: apply data/teacher-overrides.json to the full ranked
-    # Lexique candidate set before selecting 300, so deletions/merges refill from next ranks.
+    # Apply owner-maintained teacher ops, then refill only with lemmas absent from all
+    # retained rows (not merely absent under the same POS). Ranks refer to pre-override
+    # Lexique frequency order and are recorded for reproducibility.
+    original_rank_by_id = {id(r): rank for rank, r in enumerate(combined_ranked, 1)}
     original_top_ids = {id(r) for r in combined_ranked[:300]}
     combined_ranked = apply_teacher_overrides(combined_ranked)
-    rows_out = combined_ranked[:300]
-    TEACHER_REFILL_LEMMAS[:] = [f'{r["lemma"]}|{r["part_of_speech"]}' for r in rows_out
-                                if id(r) not in original_top_ids]
+    rows_out = [r for r in combined_ranked if id(r) in original_top_ids]
+    selected_lemmas = {r["lemma"].casefold() for r in rows_out}
+    TEACHER_REFILL_LEMMAS.clear()
+    for candidate in combined_ranked:
+        if id(candidate) in original_top_ids:
+            continue
+        lemma_key = candidate["lemma"].casefold()
+        if lemma_key in selected_lemmas:
+            continue
+        rows_out.append(candidate)
+        selected_lemmas.add(lemma_key)
+        TEACHER_REFILL_LEMMAS.append({
+            "lemma": candidate["lemma"],
+            "pos": candidate["part_of_speech"],
+            "rank": original_rank_by_id.get(id(candidate)),
+        })
+        if len(rows_out) == 300:
+            break
+    rows_out.sort(key=lambda r:(-r["lemma_frequency"], r["lemma"].casefold(), r["lemma"], r["part_of_speech"].casefold()))
     if len(rows_out) != 300:
-        raise ValueError(f"Expected at least 300 lemma/POS entries after teacher overrides; found {len(rows_out)}")
+        raise ValueError(f"Expected exactly 300 entries after distinct-lemma refill; found {len(rows_out)}")
     (DATA / "ambiguous-forms.json").write_text(json.dumps(ambiguous,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",errors="strict")
     meta = {"source":"Lexique 3.83","licence":LICENCE_LEXIQUE,"encoding":encoding,
             "film_lemma_frequency_column":film_lemma_col,"book_lemma_frequency_column":book_lemma_col,
@@ -290,7 +308,7 @@ def read_lexique() -> tuple[list[dict], str, dict]:
 # Teacher correction audit is emitted by the later validation stage.
 APPLIED_TEACHER_OPS: list[dict] = []
 UNMATCHED_TEACHER_OPS: list[str] = []
-TEACHER_REFILL_LEMMAS: list[str] = []
+TEACHER_REFILL_LEMMAS: list[dict] = []
 
 def apply_teacher_overrides(ranked_rows: list[dict]) -> list[dict]:
     """Apply the owner's immutable teacher ops to ranked Lexique rows before the 300-row cut.
@@ -389,8 +407,16 @@ def apply_teacher_overrides(ranked_rows: list[dict]) -> list[dict]:
             if "gender" in op:
                 row["gender"] = op["gender"]
             if op.get("note"):
-                old_note = str(row.get("note", "")).strip()
-                row["note"] = (old_note + ("; " if old_note else "") + str(op["note"])).strip()
+                lemma_key = str(row.get("lemma", "")).casefold()
+                pos_key = str(row.get("part_of_speech", "")).casefold()
+                french_notes = {
+                    ("où", "adv"): "Adverbe interrogatif.",
+                    ("mort", "nom"): "Forme féminine : la mort. (la morte = autre mot)",
+                    ("gens", "nom"): "Nom pluriel ; l’adjectif antéposé peut être féminin : les vieilles gens.",
+                    ("est-ce que", "loc:int"): "Locution interrogative.",
+                }
+                row["note"] = french_notes.get((lemma_key, pos_key), "")
+
         APPLIED_TEACHER_OPS.append({"index": index, "label": label, "operation": op, "status": "applied"})
 
     # Distinct ranked lemma/POS identities only; preserve frequency order for refill.
@@ -551,15 +577,21 @@ def _review_forms(row: dict) -> list[dict]:
     ))
 
 def _review_cells(index: int, row: dict) -> list[str]:
-    head = row["display_headword"]
-    if row["part_of_speech"].upper() == "NOM" and not re.match(r"^l['’]", str(head), re.IGNORECASE):
-        article = "la" if (row.get("gender") or "").casefold() in {"f", "fem", "féminin", "feminine"} else "le"
-        head = f"{article} {head}"
+    head = str(row["display_headword"])  # Teacher-supplied display_headword is exact; never prefix le/la.
     gender = row.get("gender") or "—"
-    pos_note_lemmas = {"quoi", "peu", "voilà", "bonjour"}
-    note = str(row.get("note", "")).strip()
-    if not note and (row["lemma"].casefold() in pos_note_lemmas or row["part_of_speech"].upper() in {"ADJ:IND", "ADJ:INT", "ONO"}):
-        note = "Confirm Lexique POS"
+    lemma = str(row.get("lemma", "")).casefold()
+    pos = str(row.get("part_of_speech", "")).casefold()
+    confirmed_lemmas = {"quelque", "quelques", "chaque", "oh", "ah", "merci", "voilà", "pourquoi", "peu"}
+    confirmed = lemma in confirmed_lemmas or (lemma == "quoi" and pos in {"pro:int", "pro:rel"})
+    if lemma == "où" and pos == "adv":
+        note = "adverbe interrogatif"
+    elif confirmed:
+        note = "Confirmé par l'enseignante"
+    else:
+        note = str(row.get("note", "")).strip()
+        if note.casefold() in {"confirm lexique pos", "interrogative adverb; keep the relative pro:rel row", "interrogative locution"}:
+            note = ""
+    complete_forms = _review_forms(row)
     complete_forms = _review_forms(row)
     shown = complete_forms[:8]
     forms = ", ".join(f["form"] + (" (shared form)" if f.get("shared_form") else "") for f in shown)
@@ -579,11 +611,6 @@ def build_review_sheet(rows: list[dict]) -> str:
         cells = _review_cells(i, row)
         cells[5] = cells[5].replace("|", "\\|")
         lines.append("| " + " | ".join(cells) + " |")
-    pos_note_lemmas = {"quoi", "peu", "voilà", "bonjour"}
-    missing_notes = sorted(pos_note_lemmas - {row["lemma"].casefold() for row in rows})
-    if missing_notes:
-        lines.extend(["", "## Requested POS checks outside the ranked 300", "These requested checks have no ranked table row; confirm the code against Lexique before use."])
-        lines.extend(f"- {lemma}: POS note — no code inferred because the lemma is outside the ranked 300." for lemma in missing_notes)
     return "\n".join(lines) + "\n"
 
 def write_review_csv(rows: list[dict]) -> None:
@@ -594,13 +621,7 @@ def write_review_csv(rows: list[dict]) -> None:
         writer.writerow(headers)
         for i, row in enumerate(rows, 1):
             writer.writerow(_review_cells(i, row))
-        pos_note_lemmas = {"quoi", "peu", "voilà", "bonjour"}
-        missing_notes = sorted(pos_note_lemmas - {row["lemma"].casefold() for row in rows})
-        if missing_notes:
-            writer.writerow([])
-            writer.writerow(["Requested POS checks outside the ranked 300"])
-            for lemma in missing_notes:
-                writer.writerow([f"{lemma}: POS note — no code inferred because the lemma is outside the ranked 300"])
+
 
 if __name__ == "__main__":
     try: raise SystemExit(main())

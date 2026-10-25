@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Evidence-only source diagnostics; never performs lossy decoding."""
 from __future__ import annotations
-import hashlib, json, random, re, sys, zipfile
+import csv, hashlib, json, random, re, sys, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -345,7 +345,25 @@ def main() -> int:
     bad_noun_heads = [row.get("display_headword", row.get("lemma", "?")) for row in pilot_rows
                       if row.get("part_of_speech", "").upper() == "NOM"
                       and vowel_or_h.match(str(row.get("display_headword", row.get("lemma", ""))).strip())]
-    assertion("j", not bad_noun_heads, "no noun headword begins with le/la + vowel or h (found: " + repr(bad_noun_heads) + ")")
+    doubled_determiner = re.compile(r"^(?:le|la|les|l['’])\s*(?:le|la|les|l['’]|un|une|des|du|de la|de l['’])\b", re.IGNORECASE)
+    bad_doubled_heads = [row.get("display_headword", row.get("lemma", "?")) for row in pilot_rows
+                         if doubled_determiner.match(str(row.get("display_headword", row.get("lemma", ""))).strip())]
+    exact_headword_errors = []
+    try:
+        override_doc = json.loads((ROOT / "data/teacher-overrides.json").read_text(encoding="utf-8", errors="strict"))
+        for op in override_doc.get("ops", []):
+            if "display_headword" not in op:
+                continue
+            final_pos = str(op.get("set_pos", op.get("pos", ""))).casefold()
+            row = next((r for r in pilot_rows if r.get("lemma", "").casefold() == str(op.get("lemma", "")).casefold()
+                        and r.get("part_of_speech", "").casefold() == final_pos), None)
+            if row is not None and row.get("display_headword") != op["display_headword"]:
+                exact_headword_errors.append((op.get("lemma"), op["display_headword"], row.get("display_headword")))
+    except (OSError, ValueError, TypeError) as exc:
+        exact_headword_errors.append(str(exc))
+    assertion("j", not bad_noun_heads and not bad_doubled_heads and not exact_headword_errors,
+              "no article followed by another article/determiner; teacher display_headword preserved exactly "
+              + repr({"vowel_heads": bad_noun_heads, "doubled_determiners": bad_doubled_heads, "display_mismatches": exact_headword_errors}))
 
     headword_pos = [(str(row.get("display_headword", row.get("lemma", ""))).casefold(),
                      str(row.get("part_of_speech", "")).casefold()) for row in pilot_rows]
@@ -361,17 +379,24 @@ def main() -> int:
     csv_path = ROOT / "data/review-sheet.csv"
     xlsx_path = ROOT / "data/review-sheet.xlsx"
     try:
-        csv_bom_ok = csv_path.read_bytes().startswith(bytes.fromhex("efbbbf"))
-    except OSError:
-        csv_bom_ok = False
+        csv_bytes = csv_path.read_bytes()
+        csv_bom_ok = csv_bytes.startswith(bytes.fromhex("efbbbf"))
+        with csv_path.open("r", encoding="utf-8-sig", newline="") as handle:
+            csv_rows = list(csv.reader(handle))
+        csv_shape_ok = len(csv_rows) == 301 and all(len(row) == 8 for row in csv_rows)
+        csv_external_notes = any(row and row[0] == "Requested POS checks outside the ranked 300" for row in csv_rows)
+    except (OSError, UnicodeError, csv.Error):
+        csv_bom_ok, csv_shape_ok, csv_external_notes = False, False, True
     try:
         with zipfile.ZipFile(xlsx_path) as archive:
             workbook_xml = archive.read("xl/workbook.xml").decode("utf-8", errors="strict")
         changes_sheet_ok = 'name="Changes"' in workbook_xml
+        notes_sheet_ok = 'name="Notes"' in workbook_xml
+        recheck_sheet_ok = 'name="À revérifier"' in workbook_xml
     except (OSError, KeyError, zipfile.BadZipFile, UnicodeError):
-        changes_sheet_ok = False
-    assertion("n", csv_bom_ok and changes_sheet_ok,
-              f"review CSV has UTF-8 BOM={csv_bom_ok}; workbook has Changes sheet={changes_sheet_ok}")
+        changes_sheet_ok = notes_sheet_ok = recheck_sheet_ok = False
+    assertion("n", csv_bom_ok and csv_shape_ok and not csv_external_notes and changes_sheet_ok and notes_sheet_ok and recheck_sheet_ok,
+              f"CSV BOM={csv_bom_ok}; rows=301/301 with 8 columns={csv_shape_ok}; no outside-ranked rows={not csv_external_notes}; workbook sheets Changes/Notes/À revérifier={changes_sheet_ok}/{notes_sheet_ok}/{recheck_sheet_ok}")
 
     out.append("\n## Pilot v3.1 automated assertions")
     out.extend(assertion_lines)

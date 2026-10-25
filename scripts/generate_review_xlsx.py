@@ -37,7 +37,6 @@ CATEGORY_NAMES = {
     "ADJ": "adjectif",
     "ONO": "onomatopée",
     "LOC:int": "locution interrogative",
-    "LOC:int": "locution interrogative",
 }
 REGISTER_NAMES = {
     "unreviewed": "courant",
@@ -90,6 +89,7 @@ def read_rows() -> list[dict[str, str]]:
                 "word": (row.get("Headword") or "").strip(),
                 "gender": (row.get("Gender") or "").strip().replace("—", ""),
                 "category": category,
+                "pos": code,
                 "forms": forms,
                 "register": register,
             })
@@ -195,17 +195,114 @@ def build_workbook(rows: list[dict[str, str]]) -> None:
     for row in changes.iter_rows(min_row=2):
         for cell in row:
             cell.alignment = Alignment(vertical="top", wrap_text=True)
+    # Notes holds checks that do not belong in the fixed 300-row CSV.
+    notes = wb.create_sheet("Notes")
+    notes.append(["Sujet", "Note"])
+    for cell in notes[1]:
+        cell.font = Font(bold=True, color="FFFFFF")
+        cell.fill = PatternFill("solid", fgColor="17365D")
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    notes.append(["Demandes de vérification POS hors des 300 mots classés", "Ces demandes sont conservées ici pour ne pas ajouter de lignes au CSV des 300 mots."])
+    pilot_path = ROOT / "data" / "pilot-300.json"
+    pilot = __import__("json").loads(pilot_path.read_text(encoding="utf-8", errors="strict"))
+    pilot_lemmas = {str(row.get("lemma", "")).casefold() for row in pilot}
+    requested_checks = ["quelque", "quelques", "chaque", "oh", "ah", "merci", "voilà", "pourquoi", "peu", "quoi PRO:int", "quoi PRO:rel", "le peu"]
+    for item in requested_checks:
+        lemma = item.split(" ", 1)[0].casefold()
+        pos = item.split(" ", 1)[1] if " " in item else ""
+        present = any(str(row.get("lemma", "")).casefold() == lemma and (not pos or str(row.get("part_of_speech", "")).casefold() == pos.casefold()) for row in pilot)
+        if not present:
+            notes.append([item, "Confirmé par l'enseignante"])
+    notes.append(["bonjour", "Note POS : code à confirmer ; entrée hors des 300 mots classés."])
+    notes.freeze_panes = "A2"
+    notes.column_dimensions["A"].width = 48
+    notes.column_dimensions["B"].width = 100
+    notes.sheet_view.showGridLines = False
+    for row in notes.iter_rows():
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+    # Only corrected operation rows and ranked refills appear on this sheet.
+    recheck = wb.create_sheet("À revérifier")
+    recheck_headers = ["#", "Mot", "Genre", "Catégorie", "Formes", "Avis", "Correction"]
+    recheck.append(recheck_headers)
+    for cell in recheck[1]:
+        cell.font = Font(bold=True, color="FFFFFF")
+        cell.fill = PatternFill("solid", fgColor="17365D")
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    results = __import__("json").loads(result_path.read_text(encoding="utf-8", errors="strict"))
+    operations = __import__("json").loads((DATA / "teacher-overrides.json").read_text(encoding="utf-8", errors="strict")).get("ops", [])
+    final_by_key = {(str(row.get("lemma", "")).casefold(), str(row.get("part_of_speech", "")).casefold()): row for row in pilot}
+    category_by_code = dict(CATEGORY_NAMES)
+    category_by_code.update({"NOM": "nom", "VER": "verbe", "PRE": "préposition", "CON": "conjonction", "ADV": "adverbe"})
+    def review_forms(row):
+        forms = row.get("forms", row.get("top_forms", [])) or []
+        return ", ".join(str(form.get("form", "")) for form in forms[:12])
+    def add_recheck_row(word, pos, row, correction=""):
+        recheck.append([
+            recheck.max_row,
+            word,
+            str(row.get("gender") or ""),
+            category_by_code.get(pos, category_by_code.get(pos.split(":", 1)[0], pos)),
+            review_forms(row),
+            None,
+            correction,
+        ])
+    for op in operations:
+        if op.get("op") == "merge":
+            target = op.get("into", {})
+            key = (str(target.get("lemma", "")).casefold(), str(target.get("pos", "")).casefold())
+            row = final_by_key.get(key, {"lemma": target.get("lemma", ""), "display_headword": target.get("lemma", ""), "part_of_speech": target.get("pos", ""), "forms": []})
+            add_recheck_row(str(row.get("display_headword", row.get("lemma", ""))), str(row.get("part_of_speech", target.get("pos", "")),), row)
+            continue
+        lemma, source_pos = str(op.get("lemma", "")), str(op.get("pos", ""))
+        if op.get("op") == "delete":
+            row = {"lemma": lemma, "display_headword": lemma, "part_of_speech": source_pos, "gender": None, "forms": []}
+            add_recheck_row(lemma, source_pos, row)
+            continue
+        target_pos = str(op.get("set_pos", source_pos))
+        row = final_by_key.get((lemma.casefold(), target_pos.casefold()))
+        if row is None:
+            row = {"lemma": lemma, "display_headword": op.get("display_headword", lemma), "part_of_speech": target_pos, "gender": op.get("gender"), "forms": []}
+        add_recheck_row(str(op.get("display_headword", row.get("display_headword", lemma))), target_pos, row)
+    for refill in results.get("refill_added", []):
+        key = (str(refill.get("lemma", "")).casefold(), str(refill.get("pos", "")).casefold())
+        row = final_by_key.get(key, {})
+        if row:
+            add_recheck_row(str(row.get("display_headword", row.get("lemma", ""))), str(row.get("part_of_speech", refill.get("pos", ""))), row,
+                            "Réapprovisionnement — rang Lexique " + str(refill.get("rank", "inconnu")))
+    recheck.freeze_panes = "A2"
+    recheck.auto_filter.ref = recheck.dimensions
+    recheck.sheet_view.showGridLines = False
+    for col, width in {"A": 7, "B": 25, "C": 10, "D": 28, "E": 65, "F": 20, "G": 42}.items():
+        recheck.column_dimensions[col].width = width
+    for row in recheck.iter_rows(min_row=2):
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+    recheck_opinion = DataValidation(type="list", formula1='"OK,Faux,À corriger"', allow_blank=True)
+    recheck_opinion.error = "Choisissez OK, Faux ou À corriger."
+    recheck.add_data_validation(recheck_opinion)
+    recheck_opinion.add("F2:F" + str(recheck.max_row))
+
     wb.save(XLSX_PATH)
 
 
 def validate_workbook() -> None:
     wb = load_workbook(XLSX_PATH, read_only=False, data_only=True)
     try:
-        if wb.sheetnames != ["Instructions", "Mots", "Changes"]:
+        if wb.sheetnames != ["Instructions", "Mots", "Changes", "Notes", "À revérifier"]:
             raise AssertionError("Workbook sheets must be Instructions and Mots")
         changes = wb["Changes"]
         if changes.max_row < 2 or changes["A1"].value != "Op #":
             raise AssertionError("Changes sheet must list applied teacher operations")
+        notes = wb["Notes"]
+        if notes.max_row < 3 or not any(notes.cell(row=r, column=1).value == "bonjour" for r in range(2, notes.max_row + 1)):
+            raise AssertionError("Notes sheet must include outside-ranked checks and bonjour note")
+        recheck = wb["À revérifier"]
+        if recheck.max_row != 47 or [recheck.cell(row=1, column=c).value for c in range(1, 8)] != ["#", "Mot", "Genre", "Catégorie", "Formes", "Avis", "Correction"]:
+            raise AssertionError("À revérifier must contain only 46 corrected/refilled rows and the seven required columns")
+        if not recheck.data_validations.dataValidation or recheck.data_validations.dataValidation[0].sqref != "F2:F47":
+            raise AssertionError("À revérifier Avis dropdown must cover the corrected/refilled rows")
         ws = wb["Mots"]
         data_rows = ws.max_row - 1
         if data_rows != 300:
