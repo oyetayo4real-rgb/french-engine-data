@@ -523,12 +523,10 @@
   ],
   "unmatched_ops": [],
   "refill_added": [
-    "où|ADV",
-    "est-ce que|LOC:int",
     "coeur|NOM",
     "bras|NOM",
     "apprendre|VER",
     "bon|ONO"
   ],
-  "refill_added_count": 6
+  "refill_added_count": 4
 }
