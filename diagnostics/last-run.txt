@@ -26,7 +26,7 @@ Container bytes are not text-decoded; compressed/archive payloads are inspected 
 ## Source: Lefff 2.1 gzip
 Path: data/raw/lefff-2.1.txt.gz
 STATUS: unavailable (file was not downloaded)
-Lefff download unavailable: % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 0 0 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:01 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:02 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:03 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:04 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:05 --:--:-- 0 curl: (28) Failed to connect to www.labri.fr port 443 after 5002 ms: Timeout was reached
+Lefff download unavailable: % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 00:01 0 0 0 0 0 0 0 0 0 00:02 0 0 0 0 0 0 0 0 0 00:03 0 0 0 0 0 0 0 0 0 00:04 0 curl: (28) Connection timed out after 5002 milliseconds
 
 ## Hunspell archive inventory and .aff evidence
 FILE fr-classique.aff | size=199870
@@ -91,7 +91,7 @@ Dicollecte/Hunspell encoding: each paired .aff file declares SET UTF-8; dictiona
 Lefff decision requires one unique codec candidate preserving both cœur and œuf and matching the corresponding characteristic byte sequences. ISO-8859-1's missing œ is expected.
 
 ## Pilot and cross-check result
-Pilot output: present; distinct lemmas=277; entries=300
+Pilot output: present; distinct lemmas=280; entries=300
 Ranking formula: freqlemfilms2 + freqlemlivres (films + books lemma frequency); deterministic tie-break: lemma casefold ascending, original lemma ascending, POS casefold ascending.
 Accented output entries (at least one of é, è, ê, à, ç, ù): 46; minimum required: 20; check: PASS
 
@@ -100,7 +100,7 @@ Accented output entries (at least one of é, è, ê, à, ç, ù): 46; minimum re
 2. être | lemma_frequency=47321.97 | column=None | POS=VER | gender=None | top_forms=est(25749.45), était(6045.64), sont(2162.21)
 3. la | lemma_frequency=38580.40 | column=None | POS=ART:def | gender=None | top_forms=la(38580.40), l'(20876.17)
 4. je | lemma_frequency=36845.97 | column=None | POS=PRO:per | gender=None | top_forms=je(36845.97)
-5. ne | lemma_frequency=36129.72 | column=None | POS=ADV | gender=None | top_forms=ne(21109.12), n'(14944.57), n(76.04)
+5. ne | lemma_frequency=36129.72 | column=None | POS=ADV | gender=None | top_forms=ne(21109.12), n'(14944.57)
 6. et | lemma_frequency=33788.81 | column=None | POS=CON | gender=None | top_forms=et(33788.81)
 7. le | lemma_frequency=31963.71 | column=None | POS=ART:def | gender=None | top_forms=le(31963.71), l'(20876.17)
 8. à | lemma_frequency=31399.45 | column=None | POS=PRE | gender=None | top_forms=à(31399.45)
@@ -118,59 +118,59 @@ Accented output entries (at least one of é, è, ê, à, ç, ù): 46; minimum re
 20. qui | lemma_frequency=13439.76 | column=None | POS=PRO:int | gender=None | top_forms=qui(196.88)
 
 ## Random pilot review sample (40 lemmas)
-non | lemma_frequency=5175.99 | POS=ADV | gender=None | top_forms=non(5175.99) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+ce | lemma_frequency=5175.80 | POS=ADJ:dem | gender=None | top_forms=ce(5175.80) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 les | lemma_frequency=23382.68 | POS=ART:def | gender=None | top_forms=les(23382.68) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-chez | lemma_frequency=1522.72 | POS=PRE | gender=None | top_forms=chez(1522.72) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-main | lemma_frequency=1728.99 | POS=NOM | gender=f | top_forms=main(1075.34), mains(653.65) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-femme | lemma_frequency=2045.06 | POS=NOM | gender=f | top_forms=femme(1486.77), femmes(558.29) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-prendre | lemma_frequency=3380.25 | POS=VER | gender=None | top_forms=prendre(809.82), pris(707.64), prends(501.70) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-ils | lemma_frequency=5884.60 | POS=PRO:per | gender=None | top_forms=ils(5884.60) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-enfin | lemma_frequency=706.10 | POS=ADV | gender=None | top_forms=enfin(706.10) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+sortir | lemma_frequency=1511.83 | POS=VER | gender=None | top_forms=sortir(430.79), sors(181.60), sorti(149.05) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+autre | lemma_frequency=1656.23 | POS=ADJ | gender=None | top_forms=autre(1369.16), autres(287.07) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+fois | lemma_frequency=2039.25 | POS=NOM | gender=f | top_forms=fois(2039.25) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+quand | lemma_frequency=3307.99 | POS=CON | gender=None | top_forms=quand(3307.99) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+comme | lemma_frequency=5755.40 | POS=CON | gender=None | top_forms=comme(5755.40) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+tard | lemma_frequency=694.64 | POS=ADV | gender=None | top_forms=tard(694.64) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 lui | lemma_frequency=6533.88 | POS=PRO:per | gender=None | top_forms=lui(6533.88) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-jouer | lemma_frequency=907.35 | POS=VER | gender=None | top_forms=jouer(347.66), joue(163.35), joué(103.41) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+accord | lemma_frequency=902.35 | POS=NOM | gender=m | top_forms=accord(886.43), accords(15.91) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 des | lemma_frequency=16680.64 | POS=ART:ind | gender=None | top_forms=des(16680.64) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 vous | lemma_frequency=17096.86 | POS=PRO:per | gender=None | top_forms=vous(17096.86) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 son | lemma_frequency=6436.58 | POS=ADJ:pos | gender=None | top_forms=son(6436.58) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-donner | lemma_frequency=2105.68 | POS=VER | gender=None | top_forms=donne(550.32), donner(449.85), donné(383.31) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-demander | lemma_frequency=1894.23 | POS=VER | gender=None | top_forms=demande(497.52), demandé(341.81), demander(333.52) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-quelle | lemma_frequency=756.94 | POS=ADJ:int | gender=None | top_forms=quelle(756.94) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-une | lemma_frequency=17495.82 | POS=ART:ind | gender=None | top_forms=une(17495.82) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-travailler | lemma_frequency=682.19 | POS=VER | gender=None | top_forms=travailler(215.61), travaille(184.76), travaillé(69.81) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-la | lemma_frequency=2320.62 | POS=PRO:per | gender=None | top_forms=la(2320.62) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-quel | lemma_frequency=923.05 | POS=ADJ:int | gender=None | top_forms=quel(923.05) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 mettre | lemma_frequency=2088.55 | POS=VER | gender=None | top_forms=mettre(501.25), mis(474.25), mit(192.68) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-côté | lemma_frequency=852.48 | POS=NOM | gender=m | top_forms=côté(747.94), côtés(104.53) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-sortir | lemma_frequency=1511.83 | POS=VER | gender=None | top_forms=sortir(430.79), sors(181.60), sorti(149.05) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+grand | lemma_frequency=1883.38 | POS=ADJ | gender=m | top_forms=grand(876.24), grande(576.90), grands(261.07) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+voix | lemma_frequency=743.53 | POS=NOM | gender=f | top_forms=voix(743.53) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+une | lemma_frequency=17495.82 | POS=ART:ind | gender=None | top_forms=une(17495.82) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+matin | lemma_frequency=671.77 | POS=NOM | gender=m | top_forms=matin(641.92), matins(29.84) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+temps | lemma_frequency=2320.44 | POS=NOM | gender=m | top_forms=temps(2320.44) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+ouvrir | lemma_frequency=905.82 | POS=VER | gender=None | top_forms=ouvre(221.52), ouvrir(168.19), ouvert(113.18) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+attendre | lemma_frequency=2058.15 | POS=VER | gender=None | top_forms=attends(540.89), attendre(320.89), attendez(250.52) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+aider | lemma_frequency=847.36 | POS=VER | gender=None | top_forms=aider(423.18), aide(138.07), aidez(67.13) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+est-ce que | lemma_frequency=1481.64 | POS=LOC:int | gender=None | top_forms=est-ce que(1481.64) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 je | lemma_frequency=36845.97 | POS=PRO:per | gender=None | top_forms=je(36845.97) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-chose | lemma_frequency=2831.26 | POS=NOM | gender=f | top_forms=chose(2016.99), choses(814.26) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-maison | lemma_frequency=1181.09 | POS=NOM | gender=f | top_forms=maison(1031.85), maisons(149.22) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-falloir | lemma_frequency=2904.17 | POS=VER | gender=None | top_forms=faut(1972.03), fallait(421.49), faudrait(185.77) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-mes | lemma_frequency=2125.34 | POS=ADJ:pos | gender=None | top_forms=mes(2125.34) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-dont | lemma_frequency=1183.75 | POS=PRO:int | gender=None | top_forms=dont(38.13) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-mieux | lemma_frequency=1050.11 | POS=ADV | gender=None | top_forms=mieux(1050.11) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-tout | lemma_frequency=6120.10 | POS=ADJ | gender=m | top_forms=tous(1826.94), tout(1478.02), toute(1044.63) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-nos | lemma_frequency=1103.82 | POS=ADJ:pos | gender=None | top_forms=nos(1103.82) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-chercher | lemma_frequency=1161.45 | POS=VER | gender=None | top_forms=chercher(513.37), cherche(217.44), cherchait(68.77) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-connaître | lemma_frequency=1590.29 | POS=VER | gender=None | top_forms=connais(527.22), connaître(178.77), connaît(160.45) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+alors | lemma_frequency=2811.43 | POS=ADV | gender=None | top_forms=alors(2811.43) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+soir | lemma_frequency=1138.34 | POS=NOM | gender=m | top_forms=soir(1083.08), soirs(55.27) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+ici | lemma_frequency=2894.79 | POS=ADV | gender=None | top_forms=ici(2894.79) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+donner | lemma_frequency=2105.68 | POS=VER | gender=None | top_forms=donne(550.32), donner(449.85), donné(383.31) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+air | lemma_frequency=1175.99 | POS=NOM | gender=m | top_forms=air(1134.51), airs(41.48) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+ni | lemma_frequency=1040.00 | POS=CON | gender=None | top_forms=ni(1040.00) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+tout | lemma_frequency=6120.10 | POS=ADJ:ind | gender=None | top_forms=tout(876.84) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+oh | lemma_frequency=1094.61 | POS=ONO | gender=None | top_forms=oh(1094.61) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+leurs | lemma_frequency=1130.11 | POS=ADJ:pos | gender=None | top_forms=leurs(1130.11) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+an | lemma_frequency=1552.39 | POS=NOM | gender=m | top_forms=ans(1327.22), an(225.17) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 pour | lemma_frequency=13276.79 | POS=PRE | gender=None | top_forms=pour(13276.79) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-dernier | lemma_frequency=834.19 | POS=ADJ | gender=m | top_forms=dernière(369.68), dernier(284.99), derniers(105.19) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-leur | lemma_frequency=711.32 | POS=PRO:per | gender=None | top_forms=leur(692.53) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-où | lemma_frequency=4245.36 | POS=PRO:int | gender=None | top_forms=où(931.69) | source=Lexique 3.83 | licence=CC BY-SA 4.0
-voilà | lemma_frequency=1055.56 | POS=PRE | gender=None | top_forms=voilà(1055.56) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+assez | lemma_frequency=827.89 | POS=ADV | gender=None | top_forms=assez(827.89) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+visage | lemma_frequency=706.23 | POS=NOM | gender=m | top_forms=visage(616.06), visages(90.17) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+où | lemma_frequency=4245.36 | POS=PRO:rel | gender=None | top_forms=où(3313.67) | source=Lexique 3.83 | licence=CC BY-SA 4.0
+trois | lemma_frequency=1041.14 | POS=ADJ:num | gender=None | top_forms=trois(1041.14) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 que | lemma_frequency=7416.85 | POS=PRO:int | gender=None | top_forms=que(1110.63) | source=Lexique 3.83 | licence=CC BY-SA 4.0
 
 ## Sentinel output validation
 été: not in ranked pilot (not fabricated)
 français: not in ranked pilot (not fabricated)
-cœur: not in ranked pilot (not fabricated)
+cœur: present exactly
 garçon: not in ranked pilot (not fabricated)
 où: present exactly
 noël: not in ranked pilot (not fabricated)
 à: present exactly
-Cross-check output: present; summary={"Dicollecte_matched_forms": 2660, "Dicollecte_unknown_forms": 1, "Lefff_matched_forms": null, "Lefff_mismatches": null, "pilot_distinct_forms": 2661, "pilot_entries": 300}
-Cross-check Dicollecte: status=available; matched_forms=2660; mismatches=1; encoding=None; note=unknown forms generated by hunspell -d fr-toutesvariantes -l
+Cross-check output: present; summary={"Dicollecte_matched_forms": 2705, "Dicollecte_unknown_forms": 1, "Lefff_matched_forms": null, "Lefff_mismatches": null, "pilot_distinct_forms": 2706, "pilot_entries": 300}
+Cross-check Dicollecte: status=available; matched_forms=2705; mismatches=1; encoding=None; note=unknown forms generated by hunspell -d fr-toutesvariantes -l
   first mismatch: marchées
-Cross-check Lefff: status=unavailable; matched_forms=None; mismatches=None; encoding=None; note=Lefff download unavailable: % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 0 0 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:01 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:02 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:03 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:04 --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- 0:00:05 --:--:-- 0 curl: (28) Failed to connect to www.labri.fr port 443 after 5002 ms: Timeout was reached
+Cross-check Lefff: status=unavailable; matched_forms=None; mismatches=None; encoding=None; note=Lefff download unavailable: % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 00:01 0 0 0 0 0 0 0 0 0 00:02 0 0 0 0 0 0 0 0 0 00:03 0 0 0 0 0 0 0 0 0 00:04 0 curl: (28) Connection timed out after 5002 milliseconds
 
 ## Pilot v3 — Dicollecte unknown forms (full list)
 Unknown form count: 1
@@ -214,8 +214,8 @@ ASSERT a: PASS — no headword among l', d', s', t', n', j', m', c', qu'
 ASSERT b: PASS — exactly one row each for être and avoir (être=1; avoir=1)
 ASSERT c: PASS — 'suis' in être forms and flagged (shared form) under suivre (être=True; suivre_shared=True)
 ASSERT d: PASS — no number with more than 2 decimals in any output file
-ASSERT e: PASS — œil forms use 'œil' (not 'oeil') and cœur forms use 'cœur' (œil=ranked forms; cœur=canonical map)
+ASSERT e: FAIL — œil forms use 'œil' (not 'oeil') and cœur forms use 'cœur' (œil=ranked forms; cœur=ranked forms)
 ASSERT f: PASS — every NOM row has gender m/f/m-f; every VER row has em dash in teacher sheet (bad NOM=0; bad VER JSON gender=0; bad VER sheet=0)
 ASSERT g: PASS — no duplicate form inside one lemma's list
-ASSERT h: PASS — noun fait lists fait/faits; adjective tout lists tout/tous/toute/toutes; adjective même lists même/mêmes
-Assertion gate: PASS (8/8 assertions passed)
+ASSERT h: FAIL — noun fait lists fait/faits; adjective tout lists tout/tous/toute/toutes; adjective même lists même/mêmes
+Assertion gate: FAIL (2 failed)
