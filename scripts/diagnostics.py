@@ -345,7 +345,7 @@ def main() -> int:
     bad_noun_heads = [row.get("display_headword", row.get("lemma", "?")) for row in pilot_rows
                       if row.get("part_of_speech", "").upper() == "NOM"
                       and vowel_or_h.match(str(row.get("display_headword", row.get("lemma", ""))).strip())]
-    doubled_determiner = re.compile(r"^(?:le|la|les|l['’])\s*(?:le|la|les|l['’]|un|une|des|du|de la|de l['’])\b", re.IGNORECASE)
+    doubled_determiner = re.compile(r"^(?:le|la|les|l['’])\s*(?:le|la|les|un|une|des|du|de la|de l['’]|l['’][A-Za-zÀ-ÖØ-öø-ÿ]*)(?=\s|$)", re.IGNORECASE)
     bad_doubled_heads = [row.get("display_headword", row.get("lemma", "?")) for row in pilot_rows
                          if doubled_determiner.match(str(row.get("display_headword", row.get("lemma", ""))).strip())]
     exact_headword_errors = []
