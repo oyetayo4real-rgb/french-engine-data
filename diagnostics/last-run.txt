@@ -208,6 +208,7 @@ Ambiguous forms count: 15289
 28. {"assigned_lemma": "abhorré", "assigned_pos": "ADJ", "assignment_frequency": 0.08, "candidates": [{"form_frequency": 0.07, "lemma": "abhorrer", "lemma_frequency": 1.62, "pos": "VER"}, {"form_frequency": 0.08, "lemma": "abhorré", "lemma_frequency": 0.28, "pos": "ADJ"}], "decision": "highest_form_frequency_then_lemma_frequency", "form": "abhorrée", "override": null}
 29. {"assigned_lemma": "abolir", "assigned_pos": "VER", "assignment_frequency": 2.52, "candidates": [{"form_frequency": 1.3, "lemma": "aboli", "lemma_frequency": 2.65, "pos": "ADJ"}, {"form_frequency": 2.52, "lemma": "abolir", "lemma_frequency": 12.4, "pos": "VER"}], "decision": "highest_form_frequency_then_lemma_frequency", "form": "aboli", "override": null}
 30. {"assigned_lemma": "aboli", "assigned_pos": "ADJ", "assignment_frequency": 0.67, "candidates": [{"form_frequency": 0.67, "lemma": "aboli", "lemma_frequency": 2.65, "pos": "ADJ"}, {"form_frequency": 0.6, "lemma": "abolir", "lemma_frequency": 12.4, "pos": "VER"}], "decision": "highest_form_frequency_then_lemma_frequency", "form": "abolie", "override": null}
+Teacher refill lemmas added after deletes/merges: refill_added_count=4; refill_added=['coeur|NOM', 'bras|NOM', 'apprendre|VER', 'bon|ONO']
 
 ## Pilot v3.1 automated assertions
 ASSERT a: PASS — no headword among l', d', s', t', n', j', m', c', qu'
@@ -218,4 +219,10 @@ ASSERT e: FAIL — œil forms use 'œil' (not 'oeil') and cœur forms use 'cœur
 ASSERT f: PASS — every NOM row has gender m/f/m-f; every VER row has em dash in teacher sheet (bad NOM=0; bad VER JSON gender=0; bad VER sheet=0)
 ASSERT g: PASS — no duplicate form inside one lemma's list
 ASSERT h: FAIL — noun fait lists fait/faits; adjective tout lists tout/tous/toute/toutes; adjective même lists même/mêmes
+ASSERT i: PASS — every teacher op applied; applied=42/42; unmatched=[]
+ASSERT j: PASS — no noun headword begins with le/la + vowel or h (found: [])
+ASSERT k: PASS — no duplicate (headword, POS) pairs (found: [])
+ASSERT l: PASS — no exact 'n' form under ne (forms=['ne', "n'", 'ne', "n'"])
+ASSERT m: PASS — exactly 300 entries (found=300)
+ASSERT n: PASS — review CSV has UTF-8 BOM=True; workbook has Changes sheet=True
 Assertion gate: FAIL (2 failed)
