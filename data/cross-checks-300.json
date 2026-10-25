@@ -9,7 +9,7 @@
       "source": "Dicollecte/Grammalecte Hunspell 7.7",
       "url": "https://www.grammalecte.net/dic/hunspell-french-dictionaries-v7.7.zip",
       "licence": "MPL-2.0",
-      "matched_count": 2705,
+      "matched_count": 2709,
       "mismatch_count": 1,
       "mismatches": [
         "marchées"
@@ -34,8 +34,8 @@
   "lefff_encoding_probe": {},
   "summary": {
     "pilot_entries": 300,
-    "pilot_distinct_forms": 2706,
-    "Dicollecte_matched_forms": 2705,
+    "pilot_distinct_forms": 2710,
+    "Dicollecte_matched_forms": 2709,
     "Dicollecte_unknown_forms": 1,
     "Lefff_matched_forms": null,
     "Lefff_mismatches": null

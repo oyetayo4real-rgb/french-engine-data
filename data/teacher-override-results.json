@@ -523,10 +523,26 @@
   ],
   "unmatched_ops": [],
   "refill_added": [
-    "coeur|NOM",
-    "bras|NOM",
-    "apprendre|VER",
-    "bon|ONO"
+    {
+      "lemma": "coeur",
+      "pos": "NOM",
+      "rank": 301
+    },
+    {
+      "lemma": "bras",
+      "pos": "NOM",
+      "rank": 302
+    },
+    {
+      "lemma": "apprendre",
+      "pos": "VER",
+      "rank": 303
+    },
+    {
+      "lemma": "noir",
+      "pos": "ADJ",
+      "rank": 305
+    }
   ],
   "refill_added_count": 4
 }

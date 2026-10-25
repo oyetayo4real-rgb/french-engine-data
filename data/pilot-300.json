@@ -4944,7 +4944,7 @@
     },
     "licence": "CC BY-SA 4.0",
     "needs_review": true,
-    "note": "interrogative adverb; keep the relative PRO:rel row"
+    "note": "Adverbe interrogatif."
   },
   {
     "lemma": "où",
@@ -12524,7 +12524,7 @@
     },
     "licence": "CC BY-SA 4.0",
     "needs_review": true,
-    "note": "interrogative locution"
+    "note": "Locution interrogative."
   },
   {
     "lemma": "enfant",
@@ -16497,7 +16497,7 @@
     },
     "licence": "CC BY-SA 4.0",
     "needs_review": true,
-    "note": "plural only; feminine for a preceding adjective: les vieilles gens"
+    "note": "Nom pluriel ; l’adjectif antéposé peut être féminin : les vieilles gens."
   },
   {
     "lemma": "cet",
@@ -18380,7 +18380,7 @@
     },
     "licence": "CC BY-SA 4.0",
     "needs_review": true,
-    "note": "morte/mortes belong to the adjective/noun le mort, la morte"
+    "note": "Forme féminine : la mort. (la morte = autre mot)"
   },
   {
     "lemma": "jouer",
@@ -26601,29 +26601,59 @@
     "needs_review": true
   },
   {
-    "lemma": "bon",
-    "display_headword": "bon",
-    "part_of_speech": "ONO",
-    "gender": null,
-    "number": null,
-    "lemma_frequency": 631.08,
-    "freqlemfilms2": 521.22,
-    "freqlemlivres": 109.86,
+    "lemma": "noir",
+    "display_headword": "noir",
+    "part_of_speech": "ADJ",
+    "gender": "m",
+    "number": "s",
+    "lemma_frequency": 627.04,
+    "freqlemfilms2": 144.81,
+    "freqlemlivres": 482.23,
     "ranking_formula": "freqlemfilms2 + freqlemlivres",
     "top_forms": [
       {
-        "form": "bon",
-        "frequency": 631.08,
+        "form": "noir",
+        "frequency": 257.06,
         "shared_form": true,
-        "frequency_attributed_to": "bon"
+        "frequency_attributed_to": "noir"
+      },
+      {
+        "form": "noire",
+        "frequency": 182.45,
+        "shared_form": true,
+        "frequency_attributed_to": "noir"
+      },
+      {
+        "form": "noirs",
+        "frequency": 115.5,
+        "shared_form": true,
+        "frequency_attributed_to": "noir"
       }
     ],
     "forms": [
       {
-        "form": "bon",
-        "frequency": 631.08,
+        "form": "noir",
+        "frequency": 257.06,
         "shared_form": true,
-        "frequency_attributed_to": "bon"
+        "frequency_attributed_to": "noir"
+      },
+      {
+        "form": "noire",
+        "frequency": 182.45,
+        "shared_form": true,
+        "frequency_attributed_to": "noir"
+      },
+      {
+        "form": "noirs",
+        "frequency": 115.5,
+        "shared_form": true,
+        "frequency_attributed_to": "noir"
+      },
+      {
+        "form": "noires",
+        "frequency": 72.03,
+        "shared_form": true,
+        "frequency_attributed_to": "noir"
       }
     ],
     "rare_forms": [],
