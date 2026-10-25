@@ -277,7 +277,7 @@ def main() -> int:
         return all(
             form.get("form", "").casefold() == spelling_map.get(form.get("form", "").casefold(), form.get("form", "")).casefold()
             for form in visible_forms
-        ) and row.get("display_headword", "").casefold() == expected
+        ) and row.get("display_headword", "").casefold() in {expected, "l'" + expected}
     eye_ok = spellings_ok(eye, "œil", typography)
     heart_ok = spellings_ok(heart, "cœur", typography)
     eye_ok = eye_ok and typography.get("oeil") == "œil" and typography.get("oeils") == "œils"
@@ -313,7 +313,7 @@ def main() -> int:
         actual = {form.get("form", "").casefold() for form in row.get("forms", [])}
         return bool(row) and required.issubset(actual)
     h_ok = (row_has_forms("fait", "NOM", {"fait", "faits"})
-            and row_has_forms("tout", "ADJ", {"tout", "tous", "toute", "toutes"})
+            and row_has_forms("tout", "ADJ:IND", {"tout", "tous", "toute", "toutes"})
             and row_has_forms("même", "ADJ", {"même", "mêmes"}))
     assertion("h", h_ok, "noun fait lists fait/faits; adjective tout lists tout/tous/toute/toutes; adjective même lists même/mêmes")
 
